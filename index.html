@@ -1,182 +1,196 @@
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shombith</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <!-- Animated glitch overlay -->
-  <div id="loader">
-    <div class="spinner"></div>
-    <p class="loading-text">  Loading portfolio...</p>
+---
+layout: default
+---
+<section class="hero wrap" aria-labelledby="hero-name">
+  <div class="hero__grid">
+    <div>
+      <h1 class="hero__name" id="hero-name">Shombith Chakraborty</h1>
+      <p class="hero__line">Unity developer. I build Cosmic Shore, a real-time 3D multiplayer game, and most of the pipeline around it.</p>
+      <div class="hero__rule" aria-hidden="true"></div>
+    </div>
+    <div class="hero__photo">
+      <img src="{{ '/assets/img/shombith.webp' | relative_url }}" width="480" height="600" alt="Shombith Chakraborty">
+    </div>
   </div>
-  
-  <div class="glitch-overlay"></div>
+</section>
 
-  <div class="wrapper">
-    <header class="header">
-        <h1 class="title">Shombith Chakraborty</h1>
+<section class="section" id="cosmic-shore" aria-labelledby="cs-title">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="label">Froglet Games &middot; 2025&ndash;now</p>
+      <h2 class="h-section" id="cs-title">Cosmic Shore</h2>
+      <p class="lede">Real-time 3D multiplayer, Unity 6.3 LTS. 1,262 commits under my own identities across 19 months, 258 pull requests opened and 217 merged. A further 1,952 commits landed through those PRs from Claude Code sessions I directed.</p>
+    </div>
 
-      <p class="subtitle">Game Developer | Game Designer | Unity Specialist</p>
-      <p class="scroll">SCROLL DOWN</p>
-    </header>
-    <div class="vapor-layer"></div>
+    <dl class="figures">
+      <div class="figure"><dt class="figure__l">commits under my identities</dt><dd class="figure__n">1,262</dd></div>
+      <div class="figure"><dt class="figure__l">months</dt><dd class="figure__n">19</dd></div>
+      <div class="figure"><dt class="figure__l">pull requests opened</dt><dd class="figure__n">258</dd></div>
+      <div class="figure"><dt class="figure__l">merged</dt><dd class="figure__n">217</dd></div>
+      <div class="figure"><dt class="figure__l">commits from Claude Code sessions I directed</dt><dd class="figure__n">1,952</dd></div>
+    </dl>
 
-    <main>
-      <!-- First Row: About Me & Projects -->
-      <div class="grid-two">
-        <section class="card about">
-          <h2>ABOUT ME</h2>
-          <div class="avatar-container">
-            <img src="images/avatar.jpg" alt="My Avatar" class="avatar-image">
-          </div>
-          <p>👋👋 Hi, I’m Shombith Chakraborty, a passionate Game Developer and Multiplayer/Tools Engineer at Froglet Games.
-            I specialize in building complete Unity experiences — from gameplay, SDK integrations, backend systems to custom editor tools. 🎮🛠️
-            Always creating, always leveling up — let’s shape the future of games together! 🚀✨🎮✨</p>
-          <div class="tags">
-            <span class="tag-game">Unity Game Development</span>
-            <span class="tag-tools">Custom Editor & Tools Development</span>
-            <span class="tag-multiplayer">Multiplayer Systems (Netcode & Photon)</span>
-            <span class="tag-services">Unity Gaming Services (UGS) Specialist</span>
-            <span class="tag-backend">Backend Integration (PlayFab, Firebase, APIs)</span>
-            <span class="tag-sdk">SDK Integrations (Ads, Analytics, IAP)</span>
-            <span class="tag-cross">Cross-Platform Publishing (PC, Android, iOS)</span>
-            <span class="tag-optimization">Asset Optimization & Build Automation</span>
-            <span class="tag-rapid">Rapid Prototyping & Game Jams</span>
-            <span class="tag-uiux">UI/UX Design for Games & Tools</span>
-            <span class="tag-publisher">Asset Store Publisher</span>
-            <span class="tag-bugfix">Project Rescue & Bug Fixing</span>
-            <span class="tag-experience">4+ Years of Professional Experience</span>
-            
-          </div>
-        </section>
-        <section class="card projects">
-            <h2>PROJECTS</h2>
-            <div class="projects-grid">
-          
-              <!-- Project 1 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/scene-switcher.jpg');"></div>
-                </div>
-                <h3>Scene Switcher Master</h3>
-                <p>Unity Dev Tool</p>
-              </a>
-          
-              <!-- Project 2 -->
-              <a class="project-item project-company" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/mindarcad1e.jpg');"></div>
-                </div>
-                <h3>MindArcade</h3>
-                <p>Made for Digital Squire. Worked on Gridlock Escape and Match Master</p>
-              </a>
-          
-              <!-- Project 3 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/build-report.jpg');"></div>
-                </div>
-                <h3>Advanced Build Report Tool</h3>
-                <p>Coming Soon</p>
-              </a>
-          
-              <!-- Project 4 -->
-              <a class="project-item project-company" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/beer-pong1.jpg');"></div>
-                </div>
-                <h3>Ultimate Beer Pong</h3>
-                <p>Company Project</p>
-              </a>
-          
-              <!-- Project 5 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/3d-zigzag.jpg');"></div>
-                </div>
-                <h3>3D ZigZag</h3>
-                <p>Hyper Casual Game</p>
-              </a>
-          
-              <!-- Project 6 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/moon-racer.jpg');"></div>
-                </div>
-                <h3>Moon Racer</h3>
-                <p>Hyper Casual Game</p>
-              </a>
-          
-              <!-- Project 7 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/ugs-advanced.jpg');"></div>
-                </div>
-                <h3>Complete UGS Advanced</h3>
-                <p>Coming Soon</p>
-              </a>
-          
-              <!-- Project 8 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/weather-system.jpg');"></div>
-                </div>
-                <h3>Dynamic Weather System</h3>
-                <p>Coming Soon</p>
-              </a>
-          
-            </div> <!-- End of .projects-grid -->
-          </section> <!-- End of .projects -->
-          
-          
-      </div>
+    <div class="shots shots--wide-pair">
+      <figure>
+        <img src="{{ '/assets/img/cosmic-shore-wide.webp' | relative_url }}" width="1440" height="569" alt="A Cosmic Shore vessel flying past glowing trail blocks inside a hexagonal arena" loading="lazy">
+      </figure>
+      <figure>
+        <img src="{{ '/assets/img/cosmic-shore-vessels.webp' | relative_url }}" width="800" height="450" alt="Several Cosmic Shore vessels racing through each other's trails" loading="lazy">
+        <figcaption>Vessels leave mass behind them; the other players fly through it, steal it or break it.</figcaption>
+      </figure>
+      <figure>
+        <img src="{{ '/assets/img/cosmic-shore-maelstrom.webp' | relative_url }}" width="768" height="510" alt="Four panels from Maelstrom, Cosmic Shore's networked tournament hub" loading="lazy">
+        <figcaption>Maelstrom, the networked tournament hub.</figcaption>
+      </figure>
+    </div>
 
-      <!-- Second Row: Companies & Socials -->
-      <div class="grid-three">
-        <section class="card companies-worked">
-            <h2>COMPANIES I WORKED WITH</h2>
-            <div class="companies-list">
-              <div class="company-badge">👜 Lokii Software Development</div>
-              <div class="company-badge">👜 Virtualize Technologies</div>
-              <div class="company-badge">👜 Froglet Games</div>
-            </div>
-          </section>
+    <ul class="ledger" aria-label="Systems I built on Cosmic Shore">
+      <li class="ledger__row">
+        <h3 class="ledger__name">Vessels and abilities <span class="ledger__count">301 commits</span></h3>
+        <p class="ledger__body">Each ability became a data <code>*ActionSO</code> with a runtime <code>*ActionExecutor</code>, resolved through <code>ActionExecutorRegistry</code>. Replaced per-hull special cases with one shape.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">UI and HUD architecture <span class="ledger__count">654 commits</span></h3>
+        <p class="ledger__body">Rebuilt the ship HUD around subscriptions. {% include hash.html h="4500bd94900401be9b8c7cce90eecdb8d4002c45" %} cut <code>ShipHUDController</code> by ~300 lines, then {% include hash.html h="662e300ed46206479ece25160692e9ad305158d5" %} deleted <span class="inline-fig">2,591</span> lines of superseded HUD scripts across 80 files.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Party and multiplayer <span class="ledger__count">175 commits</span></h3>
+        <p class="ledger__body"><code>PartyGameController</code>, a <code>NetworkBehaviour</code> running a lobby, five randomised rounds, AI fill, readiness and score sync over <code>NetworkVariable</code>s and ClientRpcs.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Server-authoritative ecology <span class="ledger__count">32 files, +1,990 lines</span></h3>
+        <p class="ledger__body">{% include hash.html h="85d87a3982581bcf1868c84c9d42123ed0ee41d6" %} Flora replicates only the planting decision and grows locally per peer; fauna is host-simulated with client puppets.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Analytics <span class="ledger__count">26 commits</span></h3>
+        <p class="ledger__body">Firebase retired. One facade behind a consent and age gate, fanning out to UGS and a PostHog sink batched with an on-disk queue.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Backend cleanup <span class="ledger__count">452 files, ~87,800 lines</span></h3>
+        <p class="ledger__body">PlayFab removed entirely, after proving 209 GUIDs had zero inbound references.</p>
+      </li>
+    </ul>
 
-          <section class="card companies-run">
-            <h2>COMPANIES I RUN</h2>
-            <div class="companies-list">
-              <div class="company-badge">🚀 Yeth GameDev</div>
-              <div class="company-badge">🚀 Coming Soon</div>
-            </div>
-          </section>
-
-          <section class="card socials">
-            <h2>SOCIALS</h2>
-            <div class="social-icons">
-              <a href="https://www.linkedin.com/in/shombith/" class="linkedin" target="_blank" rel="noopener"><img src="icons/linkedin.svg" alt="LinkedIn" /></a>
-              <a href="https://github.com/Shombith03" class="github" target="_blank" rel="noopener"><img src="icons/github.svg" alt="GitHub" /></a>
-              <a href="https://www.instagram.com/yethgamedev?igsh=emtkcTluc3Nkd2lr" class="instagram" target="_blank" rel="noopener"><img src="icons/instagram.svg" alt="Instagram" /></a>
-              <a href="https://youtube.com/@yethgamedev?si=p8zp5di7mZMj_R9J" class="youtube" target="_blank" rel="noopener"><img src="icons/youtube.svg" alt="YouTube" /></a>
-              <a href="https://assetstore.unity.com" class="assetstore" target="_blank" rel="noopener"><img src="icons/unity.svg" alt="Asset Store" /></a>
-            </div>
-          </section>
-          
-      </div>
-    </main>
+    <p class="note">Claude Code is part of how this work gets done. I write the skills and hooks that make it work on a 4,700-file Unity project.</p>
+    <p class="more"><a href="{{ site.contributions_url }}">The full record</a></p>
   </div>
-  <script>
-    window.addEventListener("load", function(){
-      document.getElementById("loader").style.display = "none";
-    });
-  </script>
+</section>
 
-<footer class="site-footer">
-    <p>© 2025 Shombith Chakraborty | Social icons by <a href="https://icons8.com" target="_blank" rel="noopener">Icons8</a></p>
-  </footer>
-  
-</body>
-</html>
+<section class="section" id="amoebius" aria-labelledby="am-title">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="label">The engine &middot; June 2026&ndash;now</p>
+      <h2 class="h-section" id="am-title">Amoebius</h2>
+      <p class="lede">A Unity-free .NET 10 engine that runs the same game. 334 commits since June 2026, 15 projects.</p>
+    </div>
+
+    <dl class="figures">
+      <div class="figure"><dt class="figure__l">commits since June 2026</dt><dd class="figure__n">334</dd></div>
+      <div class="figure"><dt class="figure__l">projects</dt><dd class="figure__n">15</dd></div>
+      <div class="figure"><dt class="figure__l">compile errors in the real <code>Assets/_Scripts</code></dt><dd class="figure__n">0</dd></div>
+    </dl>
+
+    <ul class="ledger" aria-label="Amoebius milestones">
+      <li class="ledger__row">
+        <h3 class="ledger__name">Runtime</h3>
+        <p class="ledger__body">Scene graph with reflective lifecycle discovery, a deterministic <code>GameLoop</code>, <code>GameTask</code> replacing UniTask, an injection container replacing Reflex, a SOAP layer replacing Obvious.Soap.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">The game compiles</h3>
+        <p class="ledger__body">{% include hash.html h="6a4ace506ca9d93ae349289743521df55de21672" %} The real <code>Assets/_Scripts</code> compile against engine-side API surfaces, zero errors.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Cross-process networking</h3>
+        <p class="ledger__body">{% include hash.html h="aeba7a882eb423f03af98dc6271c00d5f914c83c" %} TCP transport, RPC routing, session directory, carrying Netcode's own model between processes.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Online play</h3>
+        <p class="ledger__body">{% include hash.html h="01f582228d37ae69b06ae85648bb15e082def605" %} Plays online through the same UGS Lobby and Relay as the Unity build.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Graphics parity</h3>
+        <p class="ledger__body">{% include hash.html h="fa16d6115ebfd06440e69d9bd815e6639934a84c" %} Including a reimplementation of URP 17.3's Gaussian bloom.</p>
+      </li>
+      <li class="ledger__row">
+        <h3 class="ledger__name">Launcher</h3>
+        <p class="ledger__body">{% include hash.html h="8fddab744d7f09594c0d5388fcab27cd3bd5a1cd" %} Fetches a branch, compiles it, runs it, and builds Android and iOS.</p>
+      </li>
+    </ul>
+
+    <div class="shots shots--pair">
+      <figure>
+        <img src="{{ '/assets/img/amoebius-launcher.webp' | relative_url }}" width="1360" height="820" alt="The Amoebius launcher's Play page, with a branch picker and START and START ONLINE buttons" loading="lazy">
+        <figcaption>The launcher: pick a branch, press START.</figcaption>
+      </figure>
+      <figure>
+        <img src="{{ '/assets/img/amoebius-menu.webp' | relative_url }}" width="1600" height="900" alt="Cosmic Shore's main menu rendered by Amoebius, with a frame-time overlay" loading="lazy">
+        <figcaption>Cosmic Shore's main menu, running in Amoebius from the same scene and scripts as the Unity build.</figcaption>
+      </figure>
+    </div>
+
+    {% assign port_post = site.posts | where_exp: "p", "p.tags contains 'amoebius'" | first %}
+    {% if port_post %}<p class="more"><a href="{{ port_post.url | relative_url }}">How the port works</a></p>{% endif %}
+  </div>
+</section>
+
+<section class="section" id="froglet-games" aria-labelledby="fg-title">
+  <div class="wrap split">
+    <div class="stack">
+      <p class="label">Studio site</p>
+      <h2 class="h-sub" id="fg-title">froglet.games</h2>
+      <p>Jekyll on GitHub Pages. Cloudflare Pages previews on every branch, WebGL builds served from R2, Google Consent Mode v2, and a browser Studio where the team edits their own profiles: GitHub sign-in, every save a commit through the API.</p>
+      <p><span class="inline-fig">64</span> of <span class="inline-fig">162</span> commits.</p>
+      <p class="more"><a href="https://www.froglet.games/">Visit froglet.games</a></p>
+    </div>
+    <figure>
+      <img src="{{ '/assets/img/froglet-games.webp' | relative_url }}" width="1440" height="900" alt="The froglet.games home page: the Cosmic Shore logo over an in-game scene" loading="lazy">
+      <figcaption>The home page, as it is live.</figcaption>
+    </figure>
+  </div>
+</section>
+
+{% if site.skills_repo and site.skills_install %}
+<section class="section" id="skills" aria-labelledby="sk-title">
+  <div class="wrap stack measure">
+    <p class="label">Claude Code</p>
+    <h2 class="h-sub" id="sk-title"><a href="{{ site.skills_repo }}">Claude skills</a></h2>
+    <p>The skills and hooks I use to run Claude Code on a 4,700-file Unity project.</p>
+    <pre><code>{{ site.skills_install }}</code></pre>
+  </div>
+</section>
+{% endif %}
+
+<section class="section" id="earlier" aria-label="Earlier work">
+  <div class="wrap">
+    <details class="earlier">
+      <summary><h2 class="h-sub">Earlier work</h2></summary>
+      <ul>
+        <li><strong>MindArcade</strong><span>Gridlock Escape, Match Master, AssetBundle systems, a React Native&ndash;Unity bridge. Lead Unity Developer.</span></li>
+        <li><strong>Moon Racer, 3D ZigZag, Ultimate Beer Pong</strong><span>Hypercasual, 2022&ndash;2024.</span></li>
+        <li><strong>Scene Switcher Master</strong><span>Unity editor tool, Asset Store.</span></li>
+      </ul>
+    </details>
+  </div>
+</section>
+
+<section class="section" id="blog" aria-labelledby="blog-title">
+  <div class="wrap">
+    <div class="section__head">
+      <p class="label"><a href="{{ '/blog/' | relative_url }}">Blog</a></p>
+      <h2 class="h-sub" id="blog-title">Writing</h2>
+    </div>
+    {% include post-list.html %}
+  </div>
+</section>
+
+<section class="section" id="contact" aria-labelledby="contact-title">
+  <div class="wrap contact">
+    <h2 class="h-sub" id="contact-title">Contact</h2>
+    <p class="lede">Kolkata. Open to contract work on Unity multiplayer, tooling and pipelines.</p>
+    <ul class="contact__links">
+      <li><span class="contact__k">Email</span><a href="mailto:{{ site.author.email }}">{{ site.author.email }}</a></li>
+      <li><span class="contact__k">GitHub</span><a href="https://github.com/{{ site.author.github }}">github.com/{{ site.author.github }}</a></li>
+      <li><span class="contact__k">LinkedIn</span><a href="{{ site.author.linkedin }}">linkedin.com/in/shombith</a></li>
+    </ul>
+  </div>
+</section>

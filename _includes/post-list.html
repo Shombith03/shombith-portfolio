@@ -1,0 +1,11 @@
+<ol class="posts">
+  {% for post in site.posts %}
+  <li class="posts__item">
+    <time class="posts__date" datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: '%Y-%m-%d' }}</time>
+    <div>
+      <a class="posts__title" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.description %}<p class="posts__dek">{{ post.description }}</p>{% endif %}
+    </div>
+  </li>
+  {% endfor %}
+</ol>

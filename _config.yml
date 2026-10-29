@@ -1,0 +1,45 @@
+# GitHub Pages builds this site with Jekyll on every push; no Actions to maintain.
+# Blog posts are Markdown files in _posts/ named YYYY-MM-DD-slug.md. Each is published at
+# /blog/<slug>/ and listed on the home page and on /blog/.
+title: Shombith Chakraborty
+description: Unity developer. I build Cosmic Shore, a real-time 3D multiplayer game, and most of the pipeline around it.
+url: https://shombith03.github.io
+baseurl: /shombith-portfolio
+lang: en
+
+author:
+  name: Shombith Chakraborty
+  email: shombithofficial@outlook.com
+  github: Shombith03
+  linkedin: https://www.linkedin.com/in/shombith/
+
+# The "full record" link in the Cosmic Shore section. Point it at CONTRIBUTIONS.md once that file
+# is on Cosmic Shore's default branch.
+contributions_url: https://github.com/froglet-studio/Cosmic-Shore/pulls?q=is%3Apr+author%3AShombith03
+
+# The Claude skills section stays hidden until both of these are set.
+skills_repo:      # e.g. https://github.com/Shombith03/shombith-skills
+skills_install:   # the one-line install command
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: false
+
+permalink: /blog/:title/
+
+plugins:
+  - jekyll-feed
+feed:
+  path: feed.xml
+
+defaults:
+  - scope: { path: "", type: posts }
+    values: { layout: post }
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor
+  - .bundle
