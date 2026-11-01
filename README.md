@@ -10,11 +10,11 @@ A single static page, served by GitHub Pages. No build step, no framework.
 |---|---|
 | `index.html` | All of the copy. Each tab is one `<section class="panel">`. |
 | `style.css` | The look. Colours, fonts and the background photo are tokens at the top. |
-| `js/spacetime.js`, `js/companion.js` | The hero animation; the robot, card motifs and theme switch. |
+| `js/spacetime.js`, `js/companion.js`, `js/intro.js` | The hero animation; the robot and card motifs; the opening big bang. |
 | `js/tabs.js` | Turns the sections into tabs and fades each tab's photo in. Without it, every section shows, stacked. |
 | `404.html` | Shown by GitHub Pages for any address that does not exist. |
 | `images/` | Screenshots, my photo, old project art (`work/`), the backgrounds (`bg/`) and the link-preview card. |
-| `docs/` | `PORTFOLIO_BRIEF.md`, `FACTS.md` and `VOICE.md`: what to build, what may be claimed, how it reads. |
+| `docs/` | `PORTFOLIO_BRIEF.md`, `FACTS.md` and `VOICE.md`: what to build, what may be claimed, how it reads. `COPY_OPTIONS.md`: alternative headlines and bios. |
 
 ## Common edits
 
@@ -32,10 +32,8 @@ A single static page, served by GitHub Pages. No build step, no framework.
   `frame()`; colours are in `grid()` and `hole()`.
 - **Constellations.** Orion, Cassiopeia and Ursa Major, plotted from real star
   positions, take turns drawing themselves in the Night sky tile on the About tab.
-- **Themes.** Two looks share one page: `interstellar` (default, cold blue) and
-  `vapor` (neon). Tokens for each are at the top of `style.css`
-  (`:root` is vapor, `:root[data-theme="interstellar"]` overrides it). Visitors
-  switch in the footer, or with `?theme=vapor` / `?theme=interstellar`.
+- **The opening.** `js/intro.js` plays a big bang and the motto once per visit
+  (skip button, Escape; reduced motion skips it).
 - **The companion robot.** `js/companion.js`. It patrols the bottom of the screen,
   drives round any card you hover, and follows the cursor after a click. Card
   motifs come from `data-motif` on each card (orbit, pulse, flow, transfer,

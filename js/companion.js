@@ -1,5 +1,5 @@
 /*
-  Companion, card motifs and the theme switch.
+  Companion and card motifs.
 
   The companion is a small slab-bodied robot (an original design).
   - It patrols the bottom of the screen.
@@ -13,28 +13,8 @@
   (orbit, pulse, flow, transfer, scan, wave, signal, grid).
 */
 (function () {
-  var root = document.documentElement;
   var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var finePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
-
-  /* ---------- Theme switch ---------- */
-  var switches = Array.prototype.slice.call(document.querySelectorAll("[data-theme-set]"));
-  function markTheme() {
-    var cur = root.getAttribute("data-theme");
-    switches.forEach(function (b) {
-      b.setAttribute("aria-pressed", b.getAttribute("data-theme-set") === cur ? "true" : "false");
-    });
-  }
-  switches.forEach(function (b) {
-    b.addEventListener("click", function () {
-      var t = b.getAttribute("data-theme-set");
-      root.setAttribute("data-theme", t);
-      try { localStorage.setItem("theme", t); } catch (e) {}
-      markTheme();
-      window.dispatchEvent(new CustomEvent("themechange", { detail: t }));
-    });
-  });
-  markTheme();
 
   /* ---------- Card motifs ---------- */
   Array.prototype.forEach.call(document.querySelectorAll("[data-motif]"), function (el) {

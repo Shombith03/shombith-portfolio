@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="interstellar">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -7,14 +7,19 @@
   <meta name="description" content="I build game systems, and the engine and pipeline they ship on. Cosmic Shore at Froglet, and Amoebius, a .NET engine that runs the game without Unity." />
   <meta name="color-scheme" content="dark" />
   <script>
-    /* Theme before first paint: ?theme=vapor or ?theme=interstellar, else the last choice */
+    /* The big-bang intro plays once per visit; reduced motion skips it.
+       The class hides the page until js/intro.js takes over (or 6s pass). */
     (function () {
-      var t = new URLSearchParams(location.search).get("theme");
-      try { t = t || localStorage.getItem("theme"); } catch (e) {}
-      if (t === "vapor" || t === "interstellar") document.documentElement.setAttribute("data-theme", t);
+      var seen = false;
+      try { seen = sessionStorage.getItem("introSeen") === "1"; } catch (e) {}
+      var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !calm) {
+        document.documentElement.classList.add("intro");
+        setTimeout(function () { document.documentElement.classList.remove("intro"); }, 6000);
+      }
     })();
   </script>
-  <meta name="theme-color" content="#0d0820" />
+  <meta name="theme-color" content="#05080e" />
   <link rel="canonical" href="https://shombith03.github.io/shombith-portfolio/" />
   <link rel="icon" href="favicon.svg" type="image/svg+xml" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
@@ -47,7 +52,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Chakra+Petch:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;family=Montserrat:wght@300;400;500;600&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500&amp;family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -102,6 +107,7 @@
     <header class="hero">
       <canvas class="spacetime" aria-hidden="true"></canvas>
       <div class="hero-text">
+        <p class="motto"><span class="motto-label">Motto</span><q>Do not go gentle into that good night.</q><span class="motto-by">Dylan Thomas</span></p>
         <div class="player">
           <span class="avatar"><img src="images/avatar-160.webp" alt="Shombith Chakraborty" width="160" height="160" /></span>
           <div>
@@ -116,7 +122,6 @@
           <li>Game designer</li>
         </ul>
         <h1 class="hero-lede">I build game systems, and the engine and pipeline they ship on.</h1>
-        <p class="epigraph">&ldquo;Do not go gentle into that good night.&rdquo; <span>Dylan Thomas</span></p>
         <p class="hero-intro">I&rsquo;m Shombith. At Froglet I work on Cosmic Shore: its UI, backend, cameras and the pipeline that ships it to four platforms. I&rsquo;m also building Amoebius, a .NET engine that runs the game without Unity. I&rsquo;m open to contract work.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://www.froglet.games/play">Play Cosmic Shore</a>
@@ -434,7 +439,7 @@
             <div>
               <h3>Shombith Chakraborty</h3>
               <p>I&rsquo;m a UX director, systems engineer, game developer and game designer, working on Cosmic Shore at Froglet. I&rsquo;m open to contract work on Unity multiplayer, tooling and pipelines.</p>
-              <blockquote class="quote">&ldquo;Do not go gentle into that good night.&rdquo; <cite>Dylan Thomas, and the line I keep coming back to</cite></blockquote>
+              <blockquote class="quote">&ldquo;I love exploring new ideas and bringing them to life. Music philosophy and the cosmic land is my nirvana.&rdquo; <cite>from my froglet.games profile</cite></blockquote>
             </div>
           </article>
           <a class="tile live" href="#contact">
@@ -556,27 +561,26 @@
   <footer class="footer" id="contact">
     <div class="wrap footer-in">
       <p class="footer-line">Open to contract work.</p>
-      <p class="footer-quote">&ldquo;Do not go gentle into that good night.&rdquo; <span>Dylan Thomas</span></p>
       <ul class="prompts">
         <li><a href="mailto:shombithofficial@outlook.com"><span class="k">Mail</span>shombithofficial@outlook.com</a></li>
         <li><a href="https://github.com/Shombith03"><span class="k">Code</span>GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/shombith/"><span class="k">Work</span>LinkedIn</a></li>
       </ul>
-      <div class="theme-switch" role="group" aria-label="Theme">
-        <span class="k">Theme</span>
-        <button type="button" data-theme-set="interstellar">Interstellar</button>
-        <button type="button" data-theme-set="vapor">Vaporwave</button>
-      </div>
-      <p class="credit">&copy; 2026 Shombith Chakraborty · Cosmic Shore images: Froglet Games. Space photographs: NASA, ESA, CSA, STScI, JPL-Caltech, graded blue (placeholders until my own frames go in). The robot is an original companion, not a film character.</p>
+      <p class="credit">&copy; 2026 Shombith Chakraborty · Cosmic Shore images: Froglet Games. Space photographs: NASA, ESA, CSA, STScI, JPL-Caltech, graded blue (placeholders until my own frames go in). The robot is an original companion.</p>
     </div>
   </footer>
 
   <button class="bot" type="button" aria-pressed="false" aria-label="Companion robot. Click to make it follow your cursor; click again to send it back." hidden>
-    <span class="slab"></span><span class="slab"></span><span class="slab"></span>
+    <span class="bot-body">
+      <span class="slab"></span>
+      <span class="slab face"><span class="antenna"></span><i></i><i></i></span>
+      <span class="slab"></span>
+    </span>
   </button>
 
   <script src="js/tabs.js" defer></script>
   <script src="js/spacetime.js" defer></script>
   <script src="js/companion.js" defer></script>
+  <script src="js/intro.js" defer></script>
 </body>
 </html>

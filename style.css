@@ -1,24 +1,25 @@
 /* ==========================================================================
    Tokens
-   Synthwave over deep space: violet ground, magenta and cyan light.
+   Interstellar: cold, real-sky blue with one warm accent, the colour of an
+   accretion disk.
    Every colour is set here. Change a token and the whole site follows.
    ========================================================================== */
 
 :root {
-  --bg:          #0d0820;
-  --panel:       rgba(21, 11, 46, 0.80);
-  --panel-solid: #160c2f;
-  --line:        rgba(255, 255, 255, 0.12);
-  --line-soft:   rgba(255, 255, 255, 0.07);
-  --text:        #f3eefc;
-  --muted:       #cbc1e6;
-  --faint:       #a598c8;
-  --accent:      #ff4fa3;   /* magenta: active tab, selected tile, tags */
-  --accent-2:    #3fe4ff;   /* cyan: commit hashes and PR links */
-  --live:        #5dffa8;   /* availability dot */
-  --gradient:    linear-gradient(90deg, #ff4fa3 0%, #b66bff 50%, #3fe4ff 100%);
+  --bg:          #05080e;
+  --panel:       rgba(11, 17, 28, 0.82);
+  --panel-solid: #0b121e;
+  --line:        rgba(200, 220, 255, 0.12);
+  --line-soft:   rgba(200, 220, 255, 0.07);
+  --text:        #e8eef6;
+  --muted:       #b0bfd0;
+  --faint:       #8a99ad;
+  --accent:      #e2b06a;   /* amber: active tab, selected tile, tags */
+  --accent-2:    #9cc8f5;   /* ice blue: commit hashes and PR links */
+  --live:        #9fe3c0;   /* availability dot */
+  --gradient:    linear-gradient(90deg, #e2b06a 0%, #efe6d6 50%, #9cc8f5 100%);
 
-  --font-display: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Montserrat", "Segoe UI", system-ui, sans-serif;
   --font-body:    "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -26,57 +27,19 @@
   --gutter: 24px;
 
   /* Channels for translucent colours, and theme-tinted extras */
-  --bg-rgb: 13 8 32;
-  --text-rgb: 243 238 252;
-  --muted-rgb: 203 193 230;
-  --accent-rgb: 255 79 163;
-  --accent-2-rgb: 63 228 255;
-  --neb-1: 255 79 163;
-  --neb-2: 63 228 255;
-  --neb-3: 182 107 255;
-  --lede-a: #ffd1ec;
-  --lede-b: #c9f6ff;
-  --bot-light: #3fe4ff;
-
-  /* Spacetime canvas (js/spacetime.js) */
-  --st-grid-a: 255, 79, 163;
-  --st-grid-b: 63, 228, 255;
-  --st-hot: 255, 246, 240;
-  --st-warm: 255, 170, 130;
-  --st-cool: 230, 90, 150;
-  --st-glow: 255, 120, 180;
-}
-
-/* --------------------------------------------------------------------------
-   Theme: Interstellar. Cold, real-sky blue with one warm accent.
-   The default; the other theme ("vapor") is the :root values above.
-   -------------------------------------------------------------------------- */
-:root[data-theme="interstellar"] {
-  --bg:          #05080e;
-  --bg-rgb:      5 8 14;
-  --panel:       rgba(11, 17, 28, 0.82);
-  --panel-solid: #0b121e;
-  --line:        rgba(200, 220, 255, 0.12);
-  --line-soft:   rgba(200, 220, 255, 0.07);
-  --text:        #e8eef6;
-  --text-rgb:    232 238 246;
-  --muted:       #b0bfd0;
-  --muted-rgb:   176 191 208;
-  --faint:       #8a99ad;
-  --accent:      #e2b06a;
-  --accent-rgb:  226 176 106;
-  --accent-2:    #9cc8f5;
+  --bg-rgb: 5 8 14;
+  --text-rgb: 232 238 246;
+  --muted-rgb: 176 191 208;
+  --accent-rgb: 226 176 106;
   --accent-2-rgb: 156 200 245;
-  --live:        #9fe3c0;
-  --gradient:    linear-gradient(90deg, #e2b06a 0%, #efe6d6 50%, #9cc8f5 100%);
   --neb-1: 70 100 140;
   --neb-2: 120 150 190;
   --neb-3: 40 62 98;
   --lede-a: #f3e6cf;
   --lede-b: #d6e6f7;
   --bot-light: #e2b06a;
-  --font-display: "Montserrat", "Segoe UI", system-ui, sans-serif;
 
+  /* Spacetime canvas (js/spacetime.js) */
   --st-grid-a: 143, 179, 217;
   --st-grid-b: 205, 220, 238;
   --st-hot: 255, 248, 236;
@@ -84,6 +47,7 @@
   --st-cool: 190, 112, 70;
   --st-glow: 230, 186, 128;
 }
+
 
 /* ==========================================================================
    Base
@@ -97,7 +61,7 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: 1.0625rem;
+  font-size: 1rem;
   line-height: 1.55;
   overflow-x: hidden;
 }
@@ -302,8 +266,8 @@ h1, h2, h3 { margin: 0; }
 
 .hero {
   position: relative;
-  padding: 120px 0 96px;
-  min-height: 640px;
+  padding: 96px 0 80px;
+  min-height: 560px;
 }
 /* The animated spacetime well and black hole (js/spacetime.js), full bleed behind the hero */
 .spacetime {
@@ -318,7 +282,7 @@ h1, h2, h3 { margin: 0; }
   -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 78%, transparent 100%);
           mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 78%, transparent 100%);
 }
-.hero-text { position: relative; z-index: 1; max-width: 44rem; }
+.hero-text { position: relative; z-index: 1; max-width: 38rem; }
 .player { display: flex; align-items: center; gap: 18px; }
 .avatar { position: relative; flex: none; width: 72px; height: 72px; border-radius: 50%; padding: 4px; }
 .avatar::before {
@@ -341,15 +305,15 @@ h1, h2, h3 { margin: 0; }
 .cn { position: absolute; left: 0; right: 0; top: 0; }
 .cn-2, .cn-3 { opacity: 0; }
 .player p { margin: 0; }
-.player-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+.player-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; letter-spacing: 1px; }
 .player-class { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-2); }
 
 .hero-lede {
   margin: 36px 0 0;
   font-family: var(--font-display);
   font-weight: 600;
-  font-size: 3.5rem;
-  line-height: 1.05;
+  font-size: 2.5rem;
+  line-height: 1.12;
   letter-spacing: -0.5px;
   background: linear-gradient(90deg, #ffffff 0%, var(--lede-a) 30%, #ffffff 50%, var(--lede-b) 75%, #ffffff 100%);
   background-size: 250% 100%;
@@ -361,7 +325,7 @@ h1, h2, h3 { margin: 0; }
 .hero-intro {
   margin: 20px 0 0;
   max-width: 40rem;
-  font-size: 1.1875rem;
+  font-size: 1.0625rem;
   line-height: 1.6;
   color: var(--muted);
   text-shadow: 0 1px 12px rgb(var(--bg-rgb) / 0.9);
@@ -408,7 +372,7 @@ h1, h2, h3 { margin: 0; }
 }
 .panel-head h2 {
   font-family: var(--font-display);
-  font-size: 2.125rem;
+  font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
   text-transform: uppercase;
@@ -450,8 +414,8 @@ h1, h2, h3 { margin: 0; }
 }
 .tile.sel > img:not(.logo) { width: 100%; border-radius: 4px; margin-bottom: 8px; }
 .tile.accent { border-color: rgb(var(--accent-rgb) / 0.5); }
-.tile h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; letter-spacing: 0.5px; }
-.tile p { margin: 0; font-size: 0.9688rem; color: var(--text); opacity: 0.92; }
+.tile h3 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.5px; }
+.tile p { margin: 0; font-size: 0.9063rem; color: var(--text); opacity: 0.92; }
 
 .tag {
   align-self: flex-start;
@@ -473,7 +437,7 @@ a.tile.live {
   background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.22), rgb(var(--accent-2-rgb) / 0.14)), var(--panel);
   border-color: rgb(var(--accent-rgb) / 0.55);
 }
-a.tile.live strong { font-family: var(--font-display); font-size: 1.375rem; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
+a.tile.live strong { font-family: var(--font-display); font-size: 1.125rem; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
 a.tile.live span:last-child { color: var(--muted); }
 a.tile.live:hover { border-color: var(--accent-2); box-shadow: 0 12px 34px rgb(var(--accent-2-rgb) / 0.18); }
 a.tile.live:hover span:last-child { color: #fff; }
@@ -508,7 +472,7 @@ a.ref:hover { text-decoration-color: currentColor; }
 .tile p.job-when { margin: 4px 0 0; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--faint); opacity: 1; }
 .job-main { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .job-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.job-head h3 { font-size: 1.375rem; }
+.job-head h3 { font-size: 1.125rem; }
 
 /* Role chips: in the hero and on each job */
 .roles { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -574,9 +538,20 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
    Footer
    ========================================================================== */
 
-.footer { border-top: 1px solid var(--line); background: rgb(var(--bg-rgb) / 0.9); }
-.footer-in { padding-top: 28px; padding-bottom: 40px; display: grid; gap: 16px; }
-.footer-line { margin: 0; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+.footer {
+  position: relative;
+  border-top: 1px solid var(--line);
+  background:
+    linear-gradient(180deg, rgb(var(--bg-rgb) / 0.97) 0%, rgb(var(--bg-rgb) / 0.55) 45%, rgb(var(--bg-rgb) / 0.8) 100%),
+    url("images/bg/saturn.webp") center 62% / cover no-repeat,
+    var(--bg);
+}
+.footer::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
+  background: linear-gradient(90deg, transparent, rgb(var(--accent-rgb) / 0.7), rgb(var(--accent-2-rgb) / 0.7), transparent);
+}
+.footer-in { padding-top: 72px; padding-bottom: 64px; display: grid; gap: 18px; }
+.footer-line { margin: 0; font-family: var(--font-display); font-size: 1.125rem; font-weight: 500; letter-spacing: 0.06em; }
 .prompts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 28px; }
 .prompts a {
   display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
@@ -601,7 +576,7 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
 @media (max-width: 960px) {
   .hero { padding-top: 300px; min-height: 0; }
   .sky-chart { grid-row: auto; }
-  .hero-lede { font-size: 2.5rem; }
+  .hero-lede { font-size: 2rem; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tile.sel { grid-row: auto; }
 }
@@ -611,13 +586,13 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   .bar { flex-wrap: wrap; gap: 0; }
   .status { order: -1; width: 100%; padding: 10px 0 0; }
   .tab { padding: 14px 12px 13px; }
-  .hero-lede { font-size: 2rem; }
+  .hero-lede { font-size: 1.625rem; }
   .grid { grid-template-columns: minmax(0, 1fr); }
   .tile.wide, .tile.sel { grid-column: auto; }
   .tile.about { flex-direction: column; align-items: flex-start; }
   .projects { grid-template-columns: minmax(0, 1fr); }
   .job { grid-template-columns: minmax(0, 1fr); }
-  .panel-head h2 { font-size: 1.625rem; }
+  .panel-head h2 { font-size: 1.25rem; }
   .toolbox p { padding-left: 22px; }
 }
 
@@ -667,11 +642,12 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   .cn-3 { animation-delay: 18s; }
 
   .hero-text > * { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-  .hero-text > :nth-child(2) { animation-delay: 70ms; }
-  .hero-text > :nth-child(4) { animation-delay: 210ms; }
-  .hero-text > :nth-child(5) { animation-delay: 280ms; }
+  .hero-text > :nth-child(2) { animation-delay: 90ms; }
+  .hero-text > :nth-child(3) { animation-delay: 180ms; }
+  .hero-text > :nth-child(5) { animation-delay: 360ms; }
+  .hero-text > :nth-child(6) { animation-delay: 450ms; }
 
-  .hero-lede { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 140ms both, shimmer 9s ease-in-out 900ms infinite; }
+  .hero-lede { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 270ms both, shimmer 9s ease-in-out 1s infinite; }
 
   .panel.entering .tile { animation: rise 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 55ms); }
 }
@@ -707,19 +683,19 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
 
 
 /* ==========================================================================
-   Interstellar type: wide, quiet capitals for headings and tabs
+   Type: wide, quiet capitals for headings and tabs
    ========================================================================== */
-[data-theme="interstellar"] .tab { font-weight: 500; letter-spacing: 0.12em; }
-[data-theme="interstellar"] .tab.on, [data-theme="interstellar"] .tab[aria-selected="true"] { text-shadow: none; }
-[data-theme="interstellar"] .panel-head h2 { font-weight: 400; letter-spacing: 0.3em; }
-[data-theme="interstellar"] .hero-lede { font-weight: 300; letter-spacing: -0.01em; }
-[data-theme="interstellar"] .player-name { font-weight: 500; letter-spacing: 0.08em; }
-[data-theme="interstellar"] .tile h3 { font-weight: 600; letter-spacing: 0.02em; }
-[data-theme="interstellar"] .btn { font-weight: 500; letter-spacing: 0.18em; }
+.tab { font-weight: 500; letter-spacing: 0.12em; }
+.tab.on, .tab[aria-selected="true"] { text-shadow: none; }
+.panel-head h2 { font-weight: 400; letter-spacing: 0.3em; }
+.hero-lede { font-weight: 300; letter-spacing: -0.01em; }
+.player-name { font-weight: 500; letter-spacing: 0.08em; }
+.tile h3 { font-weight: 600; letter-spacing: 0.02em; }
+.btn { font-weight: 500; letter-spacing: 0.18em; }
 
 /* ==========================================================================
    The floor of the sky
-   Interstellar: the limb of a cold planet. Vaporwave: a running neon grid.
+   The limb of a cold planet along the bottom of the screen.
    ========================================================================== */
 .floor { position: absolute; left: 0; right: 0; bottom: 0; height: 26vh; overflow: hidden; pointer-events: none; }
 .floor i {
@@ -728,92 +704,112 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   border-radius: 50%;
   background: radial-gradient(circle, #03060b 0%, #03060b 49.55%, rgba(170, 205, 240, 0.55) 49.85%, rgba(120, 160, 210, 0.14) 50.6%, rgba(120, 160, 210, 0) 52.5%);
 }
-[data-theme="vapor"] .floor i { display: none; }
-[data-theme="vapor"] .floor::before {
-  content: ""; position: absolute; left: -50%; right: -50%; top: 18%; bottom: -30%;
-  background-image:
-    linear-gradient(rgb(var(--accent-rgb) / 0.55) 1px, transparent 1px),
-    linear-gradient(90deg, rgb(var(--accent-2-rgb) / 0.35) 1px, transparent 1px);
-  background-size: 56px 56px;
-  transform: perspective(300px) rotateX(62deg);
-  transform-origin: 50% 0;
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
-          mask-image: linear-gradient(180deg, transparent 0%, #000 45%);
-}
-[data-theme="vapor"] .floor::after {
-  content: ""; position: absolute; left: 0; right: 0; top: 18%; height: 2px;
-  background: var(--gradient); box-shadow: 0 0 18px rgb(var(--accent-rgb) / 0.8);
-}
-/* Faint scanlines over everything in the vaporwave theme */
-[data-theme="vapor"] .sky::after {
-  content: ""; position: absolute; inset: 0; pointer-events: none; opacity: 0.35;
-  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, 0.35) 0 1px, transparent 1px 3px);
-}
 
 /* ==========================================================================
-   The quote
-   ========================================================================== */
-.epigraph {
-  margin: 18px 0 0;
-  font-family: var(--font-display); font-style: italic; font-size: 1.125rem;
-  color: var(--accent);
-  text-shadow: 0 1px 12px rgb(var(--bg-rgb) / 0.9);
-}
-.epigraph span, .footer-quote span {
-  display: inline-block; margin-left: 8px;
-  font-family: var(--font-mono); font-style: normal; font-size: 0.75rem; letter-spacing: 1px; color: var(--faint);
-}
-.epigraph span::before, .footer-quote span::before { content: "\2014\00a0"; }
-.footer-quote { margin: 0; font-family: var(--font-display); font-style: italic; color: var(--accent); }
-
-/* ==========================================================================
-   Theme switch (footer)
-   ========================================================================== */
-.theme-switch { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-.theme-switch button {
-  min-height: 36px; padding: 0 14px;
-  font: inherit; font-family: var(--font-display); font-size: 0.8125rem; letter-spacing: 1px;
-  color: var(--muted); background: transparent;
-  border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
-}
-.theme-switch button:hover { color: var(--text); border-color: var(--accent-2); }
-.theme-switch button[aria-pressed="true"] { color: var(--bg); background: var(--accent-2); border-color: var(--accent-2); }
-
-/* ==========================================================================
-   Companion robot (js/companion.js): three slabs and a light
+   Companion robot (js/companion.js): three rounded slabs, a face, an antenna
    ========================================================================== */
 .bot {
   position: fixed; left: 0; top: 0; z-index: 20;
   width: 34px; height: 46px; padding: 0;
-  display: flex; align-items: flex-end; justify-content: center; gap: 2px;
   background: none; border: 0; cursor: pointer;
   transform-origin: 50% 50%;
   will-change: transform;
+  transition: opacity 600ms ease;
 }
 .bot[hidden] { display: none; }
+.bot-body { position: absolute; inset: 0; display: flex; align-items: flex-end; justify-content: center; gap: 2px; transform-origin: 50% 100%; }
 .bot .slab {
-  position: relative; width: 10px; height: 100%;
-  border-radius: 1.5px;
-  background: linear-gradient(180deg, #aeb8c4 0%, #5b6573 55%, #2f3640 100%);
-  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.18), 0 2px 6px rgba(0, 0, 0, 0.5);
+  position: relative; width: 8px; height: 26px;
+  border-radius: 5px 5px 3px 3px;
+  background: linear-gradient(180deg, #e3e9f0 0%, #a3afbd 45%, #5f6b79 100%);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.28), 0 3px 6px rgba(0, 0, 0, 0.45);
   transform-origin: 50% 100%;
 }
-.bot .slab:nth-child(2) { height: 92%; }
-.bot .slab::after {
-  content: ""; position: absolute; left: 2px; right: 2px; top: 28%; height: 3px; border-radius: 2px;
-  background: var(--bot-light); box-shadow: 0 0 6px var(--bot-light);
+.bot .slab:first-child { rotate: -5deg; }
+.bot .slab:last-child { rotate: 5deg; }
+.bot .slab.face { width: 17px; height: 34px; border-radius: 8px 8px 4px 4px; }
+.bot .face::before {
+  content: ""; position: absolute; left: 2px; right: 2px; top: 6px; height: 12px;
+  border-radius: 5px; background: #0a111d; box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.5);
 }
-.bot .slab:nth-child(2)::after { top: 22%; }
-.bot.following .slab::after { background: var(--live); box-shadow: 0 0 8px var(--live); }
-@media (max-width: 640px) { .bot { scale: 0.75; opacity: 0.9; } }
-.bot:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 4px; border-radius: 4px; }
+.bot .face i {
+  position: absolute; top: 9px; width: 3px; height: 5px; border-radius: 2px; z-index: 1;
+  background: var(--bot-light); box-shadow: 0 0 5px var(--bot-light);
+  transition: transform 300ms ease;
+}
+.bot .face i:nth-of-type(1) { left: 4px; }
+.bot .face i:nth-of-type(2) { right: 4px; }
+.bot.walking .face i { transform: translateX(1.2px); }
+.bot.facing-left .face i { transform: translateX(-1.2px); }
+.bot.following .face i { background: var(--live); box-shadow: 0 0 6px var(--live); }
+.bot .antenna { position: absolute; left: 50%; top: -7px; width: 2px; height: 7px; margin-left: -1px; background: #a3afbd; border-radius: 1px; }
+.bot .antenna::after {
+  content: ""; position: absolute; left: -2px; top: -5px; width: 6px; height: 6px; border-radius: 50%;
+  background: var(--accent); box-shadow: 0 0 6px var(--accent);
+}
+.bot:focus-visible { outline: 2px solid var(--accent-2); outline-offset: 4px; border-radius: 6px; }
+@media (max-width: 640px) { .bot { scale: 0.8; } }
 @media (prefers-reduced-motion: no-preference) {
-  .bot.walking .slab { animation: step 520ms ease-in-out infinite alternate; }
-  .bot.walking .slab:nth-child(2) { animation-delay: 260ms; }
-  .bot .slab::after { animation: blink 4s steps(1) infinite; }
+  .bot.walking .bot-body { animation: bob 380ms ease-in-out infinite alternate; }
+  .bot.walking .slab:first-child { animation: arm-l 380ms ease-in-out infinite alternate; }
+  .bot.walking .slab:last-child { animation: arm-r 380ms ease-in-out infinite alternate; }
+  .bot:not(.walking) .bot-body { animation: idle 3.2s ease-in-out infinite; }
+  .bot .face i { animation: eye-blink 4.2s infinite; }
+  .bot .antenna::after { animation: blink 2.4s steps(1) infinite; }
 }
-@keyframes step  { from { transform: translateY(0) rotate(-3deg); } to { transform: translateY(-3px) rotate(3deg); } }
-@keyframes blink { 0%, 92%, 100% { opacity: 1; } 95% { opacity: 0.2; } }
+@keyframes bob       { from { transform: translateY(0) scaleY(1); } to { transform: translateY(-2px) scaleY(0.95); } }
+@keyframes arm-l     { from { rotate: -14deg; } to { rotate: 4deg; } }
+@keyframes arm-r     { from { rotate: 4deg; } to { rotate: 14deg; } }
+@keyframes idle      { 0%, 100% { rotate: 0deg; } 50% { rotate: -5deg; } }
+@keyframes eye-blink { 0%, 92%, 100% { scale: 1 1; } 95% { scale: 1 0.12; } }
+@keyframes blink     { 0%, 92%, 100% { opacity: 1; } 95% { opacity: 0.2; } }
+
+/* ==========================================================================
+   Motto, at the top of the hero
+   ========================================================================== */
+.motto { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 12px; margin: 0 0 28px; }
+.motto-label {
+  font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: var(--accent); border: 1px solid rgb(var(--accent-rgb) / 0.45); border-radius: 999px; padding: 2px 10px;
+}
+.motto q { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.9375rem; letter-spacing: 0.02em; color: var(--text); }
+.motto-by { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em; color: var(--faint); }
+.motto-by::before { content: "\2014\00a0"; }
+
+/* ==========================================================================
+   The opening (js/intro.js): a big bang, the motto, then the page arrives
+   ========================================================================== */
+html.intro::after { content: ""; position: fixed; inset: 0; z-index: 998; background: #020408; }
+.intro-overlay { position: fixed; inset: 0; z-index: 999; display: grid; place-items: center; background: #020408; }
+.intro-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+.intro-quote {
+  position: relative; margin: 0; padding: 0 24px; text-align: center;
+  opacity: 0; transform: translateY(10px) scale(0.98);
+  transition: opacity 1100ms ease, transform 1600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.intro-overlay.speak .intro-quote { opacity: 1; transform: none; }
+.intro-quote blockquote {
+  margin: 0; font-family: var(--font-display); font-style: italic; font-weight: 300;
+  font-size: clamp(1.375rem, 3.6vw, 2.5rem); letter-spacing: 0.04em; color: #f3ede2;
+  text-shadow: 0 0 30px rgb(var(--accent-rgb) / 0.35); text-wrap: balance;
+}
+.intro-quote figcaption { margin-top: 16px; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--faint); }
+.intro-skip {
+  position: absolute; right: max(20px, env(safe-area-inset-right, 0px)); bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  min-height: 40px; padding: 0 16px; font: inherit; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
+}
+.intro-skip:hover, .intro-skip:focus-visible { color: var(--text); border-color: var(--accent-2); }
+.intro-overlay.gone { opacity: 0; transition: opacity 900ms ease; pointer-events: none; }
+.intro-overlay.gone-quick { opacity: 0; transition: opacity 300ms ease; pointer-events: none; }
+
+/* While the intro plays, the page waits; then each part arrives in turn */
+.topbar { transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms; }
+.spacetime { transition: opacity 1600ms ease 300ms; }
+.panels { transition: opacity 900ms ease 700ms; }
+html.intro .topbar { transform: translateY(-110%); }
+html.intro .spacetime, html.intro .panels, html.intro .bot { opacity: 0; }
+html.intro .hero-text > *, html.intro .hero-lede { animation-play-state: paused; }
 
 /* ==========================================================================
    Card motifs: a small animated mark in the corner of each card
@@ -885,8 +881,7 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   .motif[data-m="signal"] i:nth-child(3) { animation-delay: calc(0.6s * var(--spd)); }
   .motif[data-m="grid"] i:nth-child(2) { animation: cell calc(4.5s * var(--spd)) steps(1) infinite; }
   .floor i { animation: limb 7s ease-in-out infinite alternate; }
-  [data-theme="vapor"] .floor::before { animation: floor-run 2.4s linear infinite; }
-}
+  }
 @keyframes bar   { from { transform: scaleY(0.35); } to { transform: scaleY(2.2); } }
 @keyframes run   { to { background-position: 12px 0; } }
 @keyframes hop   { 0%, 10% { transform: translateX(0); } 50%, 60% { transform: translateX(32px); } 100% { transform: translateX(0); } }
@@ -898,4 +893,3 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   66% { transform: translate(0, 24px); } 77% { transform: translate(12px, 24px); } 88% { transform: translate(24px, 24px); }
 }
 @keyframes limb  { from { opacity: 0.7; } to { opacity: 1; } }
-@keyframes floor-run { to { background-position: 0 56px, 0 0; } }
