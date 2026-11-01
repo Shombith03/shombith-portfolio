@@ -1,20 +1,33 @@
 /*
   Companion and card motifs.
 
-  The companion is a small slab-bodied robot (an original design).
-  - It patrols the bottom of the screen.
-  - Hover a card and it drives round the card's border until you leave.
+  The companion is a small slab robot (an original design): four hinged
+  metal slabs and a visor with a scanning light.
+
+  Desktop (fine pointer, wider than 640px):
+  - With nothing hovered it glides slowly across the page, behind the cards
+    (smaller and dimmer, for depth).
+  - Hover a card and it lifts in front, dashes to the card with its slabs
+    folded, then walks the card's border, swinging its slabs like legs.
+  - Leave the card and it drifts away and back behind the page.
   - Click it and it follows your cursor; click again, or press Escape,
-    and it goes back to patrolling.
-  On touch screens it only patrols. Under prefers-reduced-motion it stands
-  still in the corner and the card motifs hold still.
+    and it goes back to gliding.
+
+  Phones and touch screens: it lives in the footer and glides across the
+  photo there, behind the text, and only moves while the footer is on
+  screen. It never covers a link.
+
+  Under prefers-reduced-motion it stands still (bottom corner on desktop,
+  in the footer on phones) and the card motifs hold still.
 
   Each card with data-motif="…" gets a small animated motif in its corner
   (orbit, pulse, flow, transfer, scan, wave, signal, grid).
 */
 (function () {
-  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var finePointer = window.matchMedia && window.matchMedia("(pointer: fine)").matches;
+  var mq = function (q) { return window.matchMedia ? window.matchMedia(q) : { matches: false, addEventListener: function () {} }; };
+  var calm = mq("(prefers-reduced-motion: reduce)").matches;
+  var fineQ = mq("(pointer: fine)");
+  var narrowQ = mq("(max-width: 640px)");
 
   /* ---------- Card motifs ---------- */
   Array.prototype.forEach.call(document.querySelectorAll("[data-motif]"), function (el) {
@@ -29,41 +42,51 @@
   /* ---------- Companion ---------- */
   var bot = document.querySelector(".bot");
   if (!bot) return;
+  var footer = document.querySelector(".footer");
   bot.hidden = false;
 
+  var BW = 36, BH = 50;               // the bot's box
   var W = window.innerWidth, H = window.innerHeight;
-  var BH = 46;                       // bot height; it rides this far off an edge
-  var pos = { x: W - 70, y: H - BH / 2 - 14 }, angle = 0;
-  var mode = "patrol", dir = -1, pauseUntil = 0, nextPause = 0;
-  var card = null, along = 0, approaching = false;
+  var pos = { x: W * 0.8, y: H * 0.7 }, vel = { x: 0, y: 0 }, angle = 0;
+  var mode = "glide";                  // glide | card | follow | footer
+  var card = null, along = 0, approaching = false, frontUntil = 0;
   var pointer = { x: W / 2, y: H / 2 };
-  var last = performance.now(), raf = 0;
+  var last = performance.now(), raf = 0, t0 = Math.random() * 100;
+  var footerVisible = false;
+
+  function inFooterMode() { return !fineQ.matches || narrowQ.matches; }
 
   function place() {
-    bot.style.transform = "translate3d(" + (pos.x - 17).toFixed(1) + "px," + (pos.y - BH / 2).toFixed(1) + "px,0) rotate(" + angle.toFixed(1) + "deg)";
+    bot.style.transform = "translate3d(" + (pos.x - BW / 2).toFixed(1) + "px," + (pos.y - BH / 2).toFixed(1) + "px,0) rotate(" + angle.toFixed(1) + "deg)";
   }
+  function setClass(name, on) { bot.classList.toggle(name, !!on); }
 
-  window.addEventListener("resize", function () { W = window.innerWidth; H = window.innerHeight; });
-
-  if (calm) {
-    // Stand still in the corner
-    pos = { x: W - 40, y: H - BH / 2 - 14 };
-    place();
-    return;
+  // Exponential smoothing that behaves the same at any frame rate
+  function ease(rate, dt) { return 1 - Math.exp(-rate * dt); }
+  function moveTo(tx, ty, k) {
+    var ox = pos.x, oy = pos.y;
+    pos.x += (tx - pos.x) * k;
+    pos.y += (ty - pos.y) * k;
+    vel.x = pos.x - ox; vel.y = pos.y - oy;
+    return Math.abs(tx - pos.x) + Math.abs(ty - pos.y);
+  }
+  function turnTo(target, k) {
+    var d = ((target - angle + 540) % 360) - 180;
+    angle += d * k;
   }
 
   // Perimeter of a rectangle, walked clockwise from the top-left corner.
   // Returns the point just outside the edge and the bot's rotation there.
   function perimeter(r, s) {
-    var w = r.width, h = r.height, P = 2 * (w + h), off = BH / 2 - 2;
+    var w = r.width, h = r.height, P = 2 * (w + h), off = BH / 2 - 3;
     s = ((s % P) + P) % P;
-    if (s < w)          return { x: r.left + s,         y: r.top - off,     a: 0 };
+    if (s < w) return { x: r.left + s, y: r.top - off, a: 0 };
     s -= w;
-    if (s < h)          return { x: r.right + off,      y: r.top + s,       a: 90 };
+    if (s < h) return { x: r.right + off, y: r.top + s, a: 90 };
     s -= h;
-    if (s < w)          return { x: r.right - s,        y: r.bottom + off,  a: 180 };
+    if (s < w) return { x: r.right - s, y: r.bottom + off, a: 180 };
     s -= w;
-    return                     { x: r.left - off,       y: r.bottom - s,    a: 270 };
+    return { x: r.left - off, y: r.bottom - s, a: 270 };
   }
   function nearestAlong(r, x, y) {
     var best = 0, bd = Infinity, P = 2 * (r.width + r.height);
@@ -73,99 +96,151 @@
     }
     return best;
   }
-  function turnTo(target, k) {
-    var d = ((target - angle + 540) % 360) - 180;
-    angle += d * k;
+
+  // A slow, looping flight path across a box (two sines at unrelated rates)
+  function path(t, w, h, padX, top, bottom) {
+    return {
+      x: padX + (w - 2 * padX) * (0.5 + 0.5 * Math.sin(t * 0.11) * Math.cos(t * 0.037)),
+      y: top + (bottom - top) * (0.5 + 0.5 * Math.sin(t * 0.083 + 1.3))
+    };
   }
-  function moveTo(tx, ty, k) {
-    pos.x += (tx - pos.x) * k;
-    pos.y += (ty - pos.y) * k;
-    return Math.abs(tx - pos.x) + Math.abs(ty - pos.y);
+
+  /* ----- Where the bot lives: the page (desktop) or the footer (phones) ----- */
+  function enterFooter() {
+    mode = "footer";
+    card = null;
+    if (footer && bot.parentNode !== footer) footer.appendChild(bot);
+    setClass("in-footer", true);
+    setClass("front", false); setClass("far", false); setClass("dash", false); setClass("walking", false);
+    bot.setAttribute("tabindex", "-1");
+    bot.setAttribute("aria-hidden", "true");
+    var r = footer ? footer.getBoundingClientRect() : { width: W, height: 200 };
+    pos = { x: r.width * 0.7, y: r.height * 0.45 }; angle = 0;
+  }
+  function enterPage() {
+    mode = "glide";
+    if (bot.parentNode !== document.body) document.body.appendChild(bot);
+    setClass("in-footer", false);
+    bot.removeAttribute("tabindex");
+    bot.removeAttribute("aria-hidden");
+    pos = { x: W * 0.8, y: H * 0.7 };
+  }
+  function chooseHome() {
+    var want = inFooterMode();
+    if (want && mode !== "footer") enterFooter();
+    if (!want && mode === "footer") enterPage();
+  }
+
+  window.addEventListener("resize", function () {
+    W = window.innerWidth; H = window.innerHeight;
+    chooseHome();
+  });
+
+  if (footer && "IntersectionObserver" in window) {
+    new IntersectionObserver(function (es) { footerVisible = es[0].isIntersecting; }, { rootMargin: "80px" }).observe(footer);
+  } else {
+    footerVisible = true;
+  }
+
+  chooseHome();
+
+  if (calm) {
+    // Stand still
+    if (mode === "footer") {
+      var fr = footer.getBoundingClientRect();
+      pos = { x: fr.width - 40, y: 40 };
+    } else {
+      pos = { x: W - 40, y: H - BH / 2 - 14 };
+      setClass("front", true);
+    }
+    place();
+    return;
   }
 
   function tick(now) {
     var dt = Math.min(0.05, (now - last) / 1000);
     last = now;
-    var walking = false;
+    var t = t0 + now / 1000;
+    var walking = false, dash = false, gliding = false;
 
-    if (mode === "follow") {
-      var d = moveTo(pointer.x + 22, pointer.y + 26, 0.14);
-      turnTo(0, 0.2);
-      walking = d > 2;
+    if (mode === "footer") {
+      if (footerVisible && footer) {
+        var fr = footer.getBoundingClientRect();
+        var g = path(t * 1.4, fr.width, fr.height, 28, 34, Math.max(60, fr.height * 0.42));
+        moveTo(g.x, g.y, ease(1.6, dt));
+        turnTo(Math.max(-14, Math.min(14, vel.x * 9)), ease(4, dt));
+        gliding = true;
+      }
+    } else if (mode === "follow") {
+      var d = moveTo(pointer.x + 24, pointer.y + 30, ease(9, dt));
+      turnTo(Math.max(-16, Math.min(16, vel.x * 3)), ease(8, dt));
+      walking = d > 3;
     } else if (mode === "card" && card) {
       var r = card.getBoundingClientRect();
       if (approaching) {
+        // A quick dash to the nearest point on the card's edge
         var p0 = perimeter(r, along);
-        if (moveTo(p0.x, p0.y, 0.18) < 3) approaching = false;
-        turnTo(p0.a, 0.2);
+        if (moveTo(p0.x, p0.y, ease(11, dt)) < 4) approaching = false;
+        turnTo(p0.a, ease(10, dt));
+        dash = true;
       } else {
-        along += 170 * dt;
+        along += 150 * dt;
         var p = perimeter(r, along);
         pos.x = p.x; pos.y = p.y;
-        turnTo(p.a, 0.25);
+        turnTo(p.a, ease(14, dt));
+        walking = true;
       }
-      walking = true;
     } else {
-      // Patrol along the bottom, with the odd pause to look around
-      var floorY = H - BH / 2 - 14;
-      if (Math.abs(pos.y - floorY) > 2 || Math.abs(angle) > 1) {
-        moveTo(pos.x, floorY, 0.12);
-        turnTo(0, 0.15);
-        walking = true;
-      } else if (now < pauseUntil) {
-        walking = false;
-      } else {
-        pos.x += dir * 46 * dt;
-        if (pos.x < 40) { pos.x = 40; dir = 1; }
-        if (pos.x > W - 40) { pos.x = W - 40; dir = -1; }
-        walking = true;
-        if (now > nextPause) {
-          pauseUntil = now + 1800 + Math.random() * 2200;
-          nextPause = pauseUntil + 6000 + Math.random() * 6000;
-          if (Math.random() < 0.4) dir = -dir;
-        }
-      }
+      // Glide across the page, behind the cards
+      var gp = path(t, W, H, 60, 110, H - 60);
+      moveTo(gp.x, gp.y, ease(0.9, dt));
+      turnTo(Math.max(-12, Math.min(12, vel.x * 6)), ease(3, dt));
+      gliding = true;
     }
 
-    bot.classList.toggle("walking", walking);
-    bot.classList.toggle("facing-left", mode === "patrol" && dir < 0);
+    var front = mode === "card" || mode === "follow" || now < frontUntil;
+    if (mode !== "footer") { setClass("front", front); setClass("far", !front); }
+    setClass("walking", walking);
+    setClass("dash", dash);
+    setClass("gliding", gliding);
+    setClass("facing-left", vel.x < -0.05);
     place();
     raf = requestAnimationFrame(tick);
   }
 
-  // Hovering a card sends the bot round it
-  if (finePointer) {
-    document.addEventListener("pointerover", function (e) {
-      if (mode === "follow") return;
-      var t = e.target.closest && e.target.closest(".tile");
-      if (!t || t === card) return;
-      card = t;
-      mode = "card";
-      var r = t.getBoundingClientRect();
-      along = nearestAlong(r, pos.x, pos.y);
-      approaching = true;
-    });
-    document.addEventListener("pointerout", function (e) {
-      if (mode !== "card" || !card) return;
-      var to = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(".tile");
-      if (to === card) return;
-      if (!card.contains(e.relatedTarget)) { card = null; mode = "patrol"; }
-    });
-    document.addEventListener("pointermove", function (e) { pointer.x = e.clientX; pointer.y = e.clientY; }, { passive: true });
-
-    bot.addEventListener("click", function () {
-      mode = mode === "follow" ? "patrol" : "follow";
+  // Desktop: hovering a card sends the bot to it
+  document.addEventListener("pointerover", function (e) {
+    if (mode === "follow" || mode === "footer") return;
+    var tile = e.target.closest && e.target.closest(".tile");
+    if (!tile || tile === card) return;
+    card = tile;
+    mode = "card";
+    along = nearestAlong(tile.getBoundingClientRect(), pos.x, pos.y);
+    approaching = true;
+  });
+  document.addEventListener("pointerout", function (e) {
+    if (mode !== "card" || !card) return;
+    var to = e.relatedTarget && e.relatedTarget.closest && e.relatedTarget.closest(".tile");
+    if (to === card) return;
+    if (!card.contains(e.relatedTarget)) {
       card = null;
-      bot.setAttribute("aria-pressed", mode === "follow" ? "true" : "false");
-      bot.classList.toggle("following", mode === "follow");
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape" && mode === "follow") bot.click();
-    });
-  } else {
-    bot.setAttribute("tabindex", "-1");
-    bot.setAttribute("aria-hidden", "true");
-  }
+      mode = "glide";
+      frontUntil = performance.now() + 900;   // drift clear of the card before going behind
+    }
+  });
+  document.addEventListener("pointermove", function (e) { pointer.x = e.clientX; pointer.y = e.clientY; }, { passive: true });
+
+  bot.addEventListener("click", function () {
+    if (mode === "footer") return;
+    mode = mode === "follow" ? "glide" : "follow";
+    card = null;
+    if (mode === "glide") frontUntil = performance.now() + 900;
+    bot.setAttribute("aria-pressed", mode === "follow" ? "true" : "false");
+    setClass("following", mode === "follow");
+  });
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape" && mode === "follow") bot.click();
+  });
 
   document.addEventListener("visibilitychange", function () {
     if (document.hidden) cancelAnimationFrame(raf);
