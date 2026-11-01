@@ -1,63 +1,31 @@
 /* ==========================================================================
    Tokens
-   Light is a printed star atlas: paper and ink.
-   Dark is the night sky it charts.
+   Dark only: a pause menu over the night sky.
    Every colour is set here. Change a token and the whole site follows.
+   To use your own photo, replace images/sky.jpg (or point --sky-photo at it).
    ========================================================================== */
 
 :root {
-  --bg:          #f5f3ee;
-  --surface:     #ece8df;
-  --text:        #161b29;
-  --muted:       #4d5466;
-  --faint:       #626877;
-  --line:        #d6d1c5;
-  --ref:         #27466c;
-  --accent:      #a4470f;   /* the one warm accent */
+  --sky-photo: url("images/sky.jpg");
 
-  --star:        #161b29;
-  --star-warm:   #a4470f;
-  --chart-line:  #b9b3a5;
-  --m42-core:    #8a6a8f;
-  --m42-mid:     #9fb3c0;
-  --m42-edge:    #f5f3ee;
+  --bg:        #070912;
+  --panel:     rgba(9, 12, 22, 0.86);
+  --panel-hi:  rgba(255, 181, 71, 0.10);
+  --line:      rgba(255, 255, 255, 0.13);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --text:      #e9ecf2;
+  --muted:     #b4bac6;
+  --faint:     #8e95a4;
+  --accent:    #ffb547;   /* the one warm accent: active tab, selected tile */
+  --ref:       #9fd8ff;   /* commit hashes and PR links */
+  --live:      #7ee08a;   /* availability dot */
 
-  --font-display: "Instrument Serif", "Iowan Old Style", Georgia, serif;
-  --font-body:    "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --font-mono:    "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-display: "Chakra Petch", "Segoe UI", system-ui, sans-serif;
+  --font-body:    "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
-  /* Type scale, ratio 1.25 */
-  --step--1: 0.8125rem;
-  --step-0:  1.0625rem;
-  --step-1:  1.3125rem;
-  --step-2:  1.625rem;
-  --step-3:  2.0625rem;
-  --step-4:  2.5625rem;
-  --step-5:  3.25rem;
-
-  --measure: 40rem;
-  --page:    72rem;
-  --gutter:  16px;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg:          #070a12;
-    --surface:     #0e1322;
-    --text:        #e2e5ec;
-    --muted:       #9aa2b3;
-    --faint:       #7e879a;
-    --line:        #1d2436;
-    --ref:         #9cc9d3;
-    --accent:      #f2a65a;
-
-    --star:        #e8ecf5;
-    --star-warm:   #f2a65a;
-    --chart-line:  #283149;
-    --m42-core:    #f0a3cf;
-    --m42-mid:     #c4509a;
-    --m42-edge:    #3fb6c8;
-  }
+  --page: 80rem;
+  --gutter: 24px;
 }
 
 /* ==========================================================================
@@ -65,7 +33,6 @@
    ========================================================================== */
 
 *, *::before, *::after { box-sizing: border-box; }
-
 html { -webkit-text-size-adjust: 100%; }
 
 body {
@@ -73,308 +40,338 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
-  font-size: var(--step-0);
-  line-height: 1.6;
-  text-rendering: optimizeLegibility;
+  font-size: 1.0625rem;
+  line-height: 1.55;
+  overflow-x: hidden;
 }
 
 img { max-width: 100%; height: auto; display: block; }
-
-a { color: inherit; text-decoration-color: var(--line); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
-a:hover { text-decoration-color: currentColor; }
-a:focus-visible, summary:focus-visible {
+a { color: inherit; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+a:focus-visible, button:focus-visible, summary:focus-visible, .panel:focus-visible {
   outline: 2px solid var(--accent);
   outline-offset: 3px;
-  border-radius: 2px;
+}
+code { font-family: var(--font-mono); font-size: 0.84em; }
+h1, h2, h3 { margin: 0; }
+
+.skip {
+  position: absolute; left: 12px; top: -48px; z-index: 10;
+  background: var(--accent); color: #111; padding: 8px 14px; border-radius: 4px;
+  font-weight: 600; text-decoration: none;
+}
+.skip:focus { top: 12px; }
+
+/* The sky: a fixed photo behind everything, darkened towards the edges */
+.sky {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 50% 20%, rgba(7, 9, 18, 0.2) 0%, rgba(7, 9, 18, 0.78) 58%, var(--bg) 92%),
+    var(--sky-photo);
+  background-size: 100% 100%, cover;
+  background-position: center, center top;
+  background-repeat: no-repeat;
 }
 
-code {
-  font-family: var(--font-mono);
-  font-size: 0.88em;
-}
-
-h1, h2, h3 { margin: 0; font-weight: 400; }
+.wrap { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
 
 /* ==========================================================================
-   Hero
+   Top bar and tabs
+   ========================================================================== */
+
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: linear-gradient(180deg, rgba(7, 9, 18, 0.96), rgba(7, 9, 18, 0.82));
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(6px);
+}
+.bar {
+  max-width: var(--page);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 16px;
+}
+.tabs { display: flex; align-items: center; min-width: 0; flex: 1 1 auto; }
+.tablist {
+  display: flex;
+  gap: 2px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  min-width: 0;
+}
+.tablist::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex: none;
+  text-decoration: none;
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 0.9375rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--faint);
+  padding: 22px 16px 19px;
+  border-bottom: 3px solid transparent;
+}
+.tab:hover { color: var(--text); }
+.tab.on, .tab[aria-selected="true"] {
+  color: #fff;
+  border-bottom-color: var(--accent);
+  background: linear-gradient(180deg, rgba(255, 181, 71, 0) 0%, rgba(255, 181, 71, 0.16) 100%);
+}
+
+.step {
+  flex: none;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+  background: transparent;
+  border: 1px solid rgba(233, 236, 242, 0.35);
+  border-radius: 4px;
+  min-width: 28px;
+  min-height: 28px;
+  margin: 0 10px;
+  cursor: pointer;
+}
+.step:hover { color: #fff; border-color: var(--accent); }
+
+.status {
+  flex: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+}
+.status:hover { color: #fff; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--live); }
+
+/* ==========================================================================
+   Hero: player card, lede, receipts
    ========================================================================== */
 
 .hero {
-  max-width: var(--page);
-  margin: 0 auto;
-  padding: 72px var(--gutter) 40px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
-  gap: 48px;
-  align-items: center;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+  gap: 40px;
+  padding: 112px 0 72px;
+  align-items: end;
 }
-
-.hero-id { display: flex; align-items: center; gap: 18px; }
-
-.hero-photo {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex: none;
+.player { display: flex; align-items: center; gap: 16px; }
+.player img {
+  width: 64px; height: 64px; object-fit: cover;
+  border-radius: 6px; border: 1px solid rgba(255, 181, 71, 0.6);
 }
+.player p { margin: 0; }
+.player-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
+.player-class { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent); }
 
-.hero-name {
-  font-family: var(--font-display);
-  font-size: var(--step-3);
-  line-height: 1.1;
-}
-
-.hero-role {
-  margin: 4px 0 0;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  color: var(--muted);
-}
-
-.hero-position {
-  margin: 40px 0 0;
-  max-width: var(--measure);
-  color: var(--muted);
-  font-size: var(--step-1);
-  line-height: 1.45;
-}
-
+.hero-position { margin: 32px 0 0; font-size: 1.25rem; color: var(--muted); max-width: 36rem; text-shadow: 0 1px 12px rgba(0, 0, 0, 0.8); }
 .hero-lede {
-  margin: 14px 0 0;
-  max-width: 18em;
+  margin: 12px 0 0;
   font-family: var(--font-display);
-  font-size: var(--step-5);
-  line-height: 1.08;
-  letter-spacing: -0.01em;
+  font-weight: 600;
+  font-size: 3.5rem;
+  line-height: 1.05;
+  letter-spacing: -0.5px;
+  text-shadow: 0 2px 24px rgba(0, 0, 0, 0.6);
 }
 
-.hero-sky { margin: 0; }
-.sky { width: 100%; height: auto; display: block; overflow: visible; }
-.sky-lines line { stroke: var(--chart-line); stroke-width: 0.75; }
-.sky-stars circle { fill: var(--star); }
-.sky-stars circle.warm { fill: var(--star-warm); }
-.hero-sky figcaption {
-  margin-top: 8px;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  color: var(--faint);
-  text-align: right;
+.stats {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 22px 24px;
 }
+.stats h2 {
+  margin-bottom: 12px;
+  font-family: var(--font-display);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--faint);
+}
+.stats dl { margin: 0; }
+.stats div { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 10px 0; border-top: 1px solid var(--line-soft); }
+.stats dt { color: var(--muted); font-size: 0.9375rem; }
+.stats dd { margin: 0; font-family: var(--font-mono); font-size: 1.125rem; color: #fff; font-variant-numeric: tabular-nums; white-space: nowrap; }
 
 /* ==========================================================================
-   Sections
+   Panels and tiles
    ========================================================================== */
 
-main { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
+.panel { padding-bottom: 56px; scroll-margin-top: 80px; }
+.panel[hidden] { display: none; }
+.panel:focus { outline: none; }
 
-.section {
-  display: grid;
-  grid-template-columns: 13rem minmax(0, var(--measure));
-  column-gap: 48px;
-  padding: 88px 0 0;
+.panel-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px 24px;
+  flex-wrap: wrap;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
 }
-.section-head { padding-top: 0.35em; }
-
-
-.section-num {
-  margin: 0 0 6px;
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  color: var(--accent);
-  font-variant-numeric: tabular-nums;
-}
-
-.section h2 {
+.panel-head h2 {
   font-family: var(--font-display);
-  font-size: var(--step-3);
-  line-height: 1.1;
+  font-size: 2.125rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+.panel-head p { margin: 0; color: var(--muted); max-width: 40rem; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-auto-flow: dense;
+  gap: 16px;
+  margin-top: 24px;
 }
 
-.section-intro { margin: 0 0 8px; max-width: var(--measure); color: var(--muted); font-size: var(--step-1); line-height: 1.45; }
-
-.section p { margin: 0 0 16px; }
-.section .section-intro { margin-bottom: 24px; }
-
-.system { margin-top: 40px; }
-.system h3 {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: var(--step-1);
-  margin-bottom: 8px;
+.tile {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  padding: 22px;
 }
+.tile.wide { grid-column: span 2; }
+.tile.sel { grid-column: span 2; grid-row: span 2; border-color: var(--accent); }
+.tile.sel img { width: 100%; border-radius: 3px; margin-bottom: 8px; }
+.tile.accent { border-color: rgba(255, 181, 71, 0.6); }
+.tile h3 { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; letter-spacing: 0.5px; }
+.tile p { margin: 0; font-size: 0.9688rem; color: var(--text); opacity: 0.9; }
+
+.tag {
+  align-self: flex-start;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid rgba(255, 181, 71, 0.5);
+  padding: 2px 8px;
+  border-radius: 3px;
+}
+
+/* A tile that is itself a link: the live game, the site, the dev log */
+a.tile.live {
+  text-decoration: none;
+  justify-content: space-between;
+  background: var(--panel-hi);
+  border-color: rgba(255, 181, 71, 0.6);
+}
+a.tile.live strong { font-family: var(--font-display); font-size: 1.375rem; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
+a.tile.live span:last-child { color: var(--muted); }
+a.tile.live:hover { border-color: var(--accent); }
+a.tile.live:hover span:last-child { color: #fff; }
+
+.play { color: var(--accent); font-weight: 600; margin-top: 4px; }
 
 /* Commit hashes and PR links: the signature detail */
+.refs { display: flex; flex-wrap: wrap; gap: 4px 12px; margin-top: auto !important; padding-top: 4px; }
 a.ref {
   font-family: var(--font-mono);
-  font-size: 0.82em;
+  font-size: 0.8125rem;
   color: var(--ref);
-  text-decoration-color: color-mix(in srgb, var(--ref) 35%, transparent);
+  text-decoration-color: rgba(159, 216, 255, 0.4);
   white-space: nowrap;
 }
 a.ref:hover { text-decoration-color: currentColor; }
-.refs { display: flex; flex-wrap: wrap; gap: 4px 14px; margin-top: -4px; }
 
-/* Figures that describe the work */
-.figures {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px 48px;
-  margin: 24px 0;
-}
-.figures dt {
-  font-family: var(--font-mono);
-  font-weight: 400;
-  font-size: var(--step-4);
-  line-height: 1;
-  letter-spacing: -0.03em;
-  font-variant-numeric: tabular-nums;
-}
-.figures dd {
-  margin: 8px 0 0;
-  font-size: var(--step--1);
-  color: var(--muted);
-  max-width: 14rem;
-}
-
-.shot { margin: 8px 0 24px; }
-.shot img {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-}
-
-/* Platform and engine-part tables */
-.platforms, .parts { margin: 24px 0 0; border-top: 1px solid var(--line); }
-.platforms > div, .parts > div {
-  display: grid;
-  grid-template-columns: 7.5rem minmax(0, 1fr);
-  gap: 16px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--line);
-}
-.platforms dt, .parts dt {
-  font-family: var(--font-mono);
-  font-size: var(--step--1);
-  color: var(--muted);
-  padding-top: 0.2em;
-}
-.platforms dd, .parts dd { margin: 0; }
-
-.play { margin: 0 0 8px; }
-.play a, .visit a {
-  color: var(--accent);
-  font-weight: 500;
-  text-decoration-color: color-mix(in srgb, var(--accent) 40%, transparent);
-}
-.play a::after, .visit a::after { content: " \2192"; }
-
-/* ==========================================================================
-   Quieter material
-   ========================================================================== */
-
-.section-quiet { padding-top: 104px; }
-.section-quiet h2 { font-size: var(--step-2); color: var(--muted); }
-
-details { border-top: 1px solid var(--line); }
-details:last-of-type { border-bottom: 1px solid var(--line); }
+/* More work: quiet drawers */
+.drawers { margin-top: 24px; background: var(--panel); border: 1px solid var(--line); border-radius: 4px; }
+details + details { border-top: 1px solid var(--line-soft); }
 summary {
   cursor: pointer;
-  padding: 14px 0;
-  color: var(--muted);
   list-style: none;
+  padding: 16px 22px;
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.9375rem;
+  color: var(--muted);
 }
 summary::-webkit-details-marker { display: none; }
-summary::before {
-  content: "+";
-  display: inline-block;
-  width: 1.25em;
-  font-family: var(--font-mono);
-  color: var(--faint);
-}
+summary::before { content: "+"; display: inline-block; width: 1.5em; font-family: var(--font-mono); color: var(--accent); }
 details[open] summary::before { content: "\2212"; }
-details > p { color: var(--muted); font-size: 0.95em; }
+summary:hover { color: #fff; }
+details > p { margin: 0; padding: 0 22px 16px 49px; color: var(--muted); font-size: 0.9688rem; }
 
-#writing .post-title { font-family: var(--font-display); font-size: var(--step-2); line-height: 1.2; }
-#writing .post-meta { font-family: var(--font-mono); font-size: var(--step--1); color: var(--faint); }
+/* With no JavaScript, every panel shows, stacked */
+html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
 
-.contact-line { font-family: var(--font-display); font-size: var(--step-2); }
-.contact-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 28px;
+/* ==========================================================================
+   Footer: contact as button prompts
+   ========================================================================== */
+
+.footer { border-top: 1px solid var(--line); background: rgba(7, 9, 18, 0.88); }
+.footer-in { padding-top: 28px; padding-bottom: 40px; display: grid; gap: 16px; }
+.footer-line { margin: 0; font-family: var(--font-display); font-size: 1.5rem; font-weight: 600; }
+.prompts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 28px; }
+.prompts a {
+  display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
+  font-family: var(--font-display); letter-spacing: 1px; text-decoration: none; color: var(--text);
 }
-.contact-links a { display: inline-block; padding: 6px 0; }
-
-.footer {
-  max-width: var(--page);
-  margin: 0 auto;
-  padding: 104px var(--gutter) 48px;
-  font-size: var(--step--1);
-  color: var(--faint);
+.prompts a:hover { color: var(--accent); }
+.k {
+  font-family: var(--font-mono); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 1px;
+  color: var(--muted); border: 1px solid rgba(233, 236, 242, 0.35); border-radius: 4px; padding: 2px 7px;
 }
-.footer p { margin: 0; }
+.credit { margin: 0; font-family: var(--font-mono); font-size: 0.6875rem; color: var(--faint); }
 
 /* ==========================================================================
    Narrow screens
    ========================================================================== */
 
-@media (max-width: 860px) {
-  .hero { grid-template-columns: minmax(0, 1fr); padding-top: 48px; gap: 24px; }
-  .hero-sky { order: -1; max-width: 220px; justify-self: end; margin-bottom: -96px; opacity: 0.9; }
-  .hero-sky figcaption { display: none; }
-  .hero-lede { font-size: var(--step-4); }
-
-  .section { grid-template-columns: minmax(0, 1fr); padding-top: 64px; }
-  .section h2 { margin-bottom: 16px; }
+@media (max-width: 960px) {
+  .hero { grid-template-columns: minmax(0, 1fr); padding-top: 56px; }
+  .hero-lede { font-size: 2.5rem; }
+  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tile.sel { grid-row: auto; }
 }
 
-@media (max-width: 480px) {
-  .hero-name { font-size: var(--step-2); }
-  .hero-lede { font-size: var(--step-3); }
-  .hero-sky { max-width: 150px; margin-bottom: -40px; }
-  .figures dt { font-size: var(--step-3); }
-  .platforms > div, .parts > div { grid-template-columns: minmax(0, 1fr); gap: 4px; }
+@media (max-width: 640px) {
+  :root { --gutter: 16px; }
+  .bar { flex-wrap: wrap; gap: 0; }
+  .status { order: -1; width: 100%; padding: 10px 0 0; }
+  .step { display: none; }
+  .tablist { -webkit-mask-image: linear-gradient(90deg, #000 85%, transparent); mask-image: linear-gradient(90deg, #000 85%, transparent); }
+  .tab { padding: 14px 12px 12px; font-size: 0.8125rem; letter-spacing: 1.5px; }
+  .hero-lede { font-size: 2rem; }
+  .grid { grid-template-columns: minmax(0, 1fr); }
+  .tile.wide, .tile.sel { grid-column: auto; }
+  .panel-head h2 { font-size: 1.625rem; }
+  details > p { padding-left: 22px; }
 }
 
 /* ==========================================================================
-   The one moment of motion
-   On load, the sky resolves the way eyes adapt to the dark: brightest
-   stars first, then fainter ones (each star's --d delay follows its
-   magnitude), then the constellation lines, then M42 last.
-   Text never moves. With reduced motion, the chart is simply there.
+   The one moment of motion: the sky boots up behind the menu.
+   The photo fades in from black and settles. Text never moves.
    ========================================================================== */
 
 @media (prefers-reduced-motion: no-preference) {
-  .sky-stars circle {
-    opacity: 0;
-    animation: star-in 900ms ease-out forwards;
-    animation-delay: calc(200ms + var(--d, 0ms));
-  }
-  .sky-lines {
-    opacity: 0;
-    animation: fade-in 1400ms ease-out 1500ms forwards;
-  }
-  .m42 {
-    opacity: 0;
-    transform-box: fill-box;
-    transform-origin: center;
-    animation: bloom 2200ms cubic-bezier(0.2, 0.7, 0.2, 1) 2100ms forwards;
-  }
+  .sky { animation: sky-boot 1800ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
 }
-
-@keyframes star-in {
-  0%   { opacity: 0; }
-  60%  { opacity: 1; }
-  100% { opacity: 1; }
-}
-@keyframes fade-in {
-  to { opacity: 1; }
-}
-@keyframes bloom {
-  from { opacity: 0; transform: scale(0.6); }
+@keyframes sky-boot {
+  from { opacity: 0; transform: scale(1.04); }
   to   { opacity: 1; transform: scale(1); }
 }
