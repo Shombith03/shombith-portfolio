@@ -5,8 +5,6 @@
    ========================================================================== */
 
 :root {
-  --sky-base: url("images/bg/synthwave.webp");   /* the city at the bottom of the sky */
-
   --bg:          #0d0820;
   --panel:       rgba(21, 11, 46, 0.80);
   --panel-solid: #160c2f;
@@ -65,18 +63,26 @@ h1, h2, h3 { margin: 0; }
 
 /* ==========================================================================
    The sky: everything behind the page, fixed to the viewport
-   - sky-base:  the synthwave city
-   - sky-photo: two layers that cross-fade the space photo of the current tab
-   - stars:     three drifting layers at different depths
+   - nebula:    three slow clouds of magenta, violet and cyan light
+   - sky-photo: two layers that cross-fade the photo of the current tab
+                (Cosmic Shore in-game shots and deep-space photographs)
+   - starfield: three drifting star layers at different depths, which shift
+                with the mouse and jump to warp when the tab changes
    - shooting:  streaks that cross every few seconds
    ========================================================================== */
 
 .sky { position: fixed; inset: 0; z-index: -1; overflow: hidden; background: var(--bg); }
 
-.sky-base {
-  position: absolute; inset: 0;
-  background: var(--sky-base) center bottom / cover no-repeat;
+.nebula i {
+  position: absolute; border-radius: 50%;
+  width: 70vmax; height: 70vmax;
 }
+.nebula i:nth-child(1) { left: -20vmax; top: -25vmax; background: radial-gradient(closest-side, rgba(255, 79, 163, 0.30), rgba(255, 79, 163, 0) 70%); }
+.nebula i:nth-child(2) { right: -25vmax; top: 5vmax; background: radial-gradient(closest-side, rgba(63, 228, 255, 0.20), rgba(63, 228, 255, 0) 70%); }
+.nebula i:nth-child(3) { left: 20vmax; bottom: -35vmax; background: radial-gradient(closest-side, rgba(182, 107, 255, 0.24), rgba(182, 107, 255, 0) 70%); }
+
+.starfield { position: absolute; inset: 0; transform-origin: 50% 40%; }
+.layer { position: absolute; inset: -40px; }
 
 .sky-photo {
   position: absolute; inset: -4%;
@@ -84,12 +90,12 @@ h1, h2, h3 { margin: 0; }
   background-size: cover;
   background-repeat: no-repeat;
   mix-blend-mode: screen;
-  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 35%, transparent 80%);
-          mask-image: linear-gradient(180deg, #000 0%, #000 35%, transparent 80%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 90%);
+          mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 90%);
   opacity: 0;
   transition: opacity 1400ms ease;
 }
-.sky-photo.show { opacity: 0.55; }
+.sky-photo.show { opacity: 0.5; }
 
 .stars { position: absolute; left: 0; right: 0; top: 0; bottom: 0; background-repeat: repeat; }
 .stars-far {
@@ -235,13 +241,34 @@ h1, h2, h3 { margin: 0; }
    Hero
    ========================================================================== */
 
-.hero { padding: 104px 0 72px; max-width: 60rem; }
-.player { display: flex; align-items: center; gap: 16px; }
-.player img {
-  width: 64px; height: 64px; object-fit: cover; border-radius: 8px;
-  border: 1px solid transparent;
-  background: linear-gradient(var(--panel-solid), var(--panel-solid)) padding-box, var(--gradient) border-box;
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
+  gap: 32px;
+  align-items: center;
+  padding: 96px 0 72px;
 }
+.player { display: flex; align-items: center; gap: 18px; }
+.avatar { position: relative; flex: none; width: 72px; height: 72px; border-radius: 50%; padding: 4px; }
+.avatar::before {
+  content: ""; position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(from 0deg, #ff4fa3, #b66bff, #3fe4ff, rgba(63, 228, 255, 0) 70%, #ff4fa3);
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+          mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
+}
+.avatar img { width: 64px; height: 64px; object-fit: cover; border-radius: 50%; }
+
+/* Constellations: three real charts that take turns drawing themselves */
+.hero-sky { margin: 0; position: relative; }
+.constellations { width: 100%; max-width: 380px; height: auto; display: block; margin-left: auto; overflow: visible; }
+.con line { stroke: rgba(203, 193, 230, 0.55); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; }
+.con circle { fill: #f3eefc; }
+.con circle.warm { fill: #ffb27a; }
+.con circle.neb { fill: rgba(255, 79, 163, 0.35); }
+.con-2, .con-3 { opacity: 0; }
+.con-names { position: relative; height: 1.2em; margin-top: 8px; text-align: right; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); }
+.cn { position: absolute; right: 0; top: 0; }
+.cn-2, .cn-3 { opacity: 0; }
 .player p { margin: 0; }
 .player-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
 .player-class { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-2); }
@@ -501,7 +528,9 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
 }
 
 @media (max-width: 960px) {
-  .hero { padding-top: 56px; }
+  .hero { padding-top: 56px; grid-template-columns: minmax(0, 1fr); }
+  .hero-sky { order: -1; width: 200px; justify-self: end; margin-bottom: -80px; opacity: 0.85; }
+  .con-names { display: none; }
   .hero-lede { font-size: 2.5rem; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tile.sel { grid-row: auto; }
@@ -538,14 +567,41 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   .shooting i:nth-child(5) { animation-duration: 19s; animation-delay: 5s; }
 
   .sky-photo { animation: pan 40s ease-in-out infinite alternate; }
-  .sky-base { animation: boot 1800ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .nebula i:nth-child(1) { animation: cloud-a 38s ease-in-out infinite alternate; }
+  .nebula i:nth-child(2) { animation: cloud-b 46s ease-in-out infinite alternate; }
+  .nebula i:nth-child(3) { animation: cloud-a 54s ease-in-out infinite alternate-reverse; }
+  .sky { animation: boot 1600ms ease both; }
 
-  .hero > * { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
-  .hero > :nth-child(2) { animation-delay: 80ms; }
-  .hero > :nth-child(3) { animation-delay: 160ms; }
-  .hero > :nth-child(4) { animation-delay: 240ms; }
+  /* Mouse parallax: tabs.js sets --px and --py between -1 and 1 */
+  .layer { transition: transform 600ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+  .layer-far  { transform: translate3d(calc(var(--px, 0) * -6px),  calc(var(--py, 0) * -6px), 0); }
+  .layer-mid  { transform: translate3d(calc(var(--px, 0) * -14px), calc(var(--py, 0) * -14px), 0); }
+  .layer-near { transform: translate3d(calc(var(--px, 0) * -26px), calc(var(--py, 0) * -26px), 0); }
 
-  .hero-lede { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 80ms both, shimmer 9s ease-in-out 800ms infinite; }
+  /* Warp: a short jump through the stars when the tab changes */
+  .sky.warp .starfield { animation: warp 900ms cubic-bezier(0.2, 0.7, 0.2, 1); }
+
+  /* Avatar ring */
+  .avatar::before { animation: spin 8s linear infinite; }
+
+  /* Constellations take turns: draw, hold, fade */
+  .con { opacity: 0; animation: con-show 27s linear infinite; }
+  .con line { stroke-dashoffset: 1; animation: con-draw 27s ease-out infinite; }
+  .con circle { animation: star-pulse 3s ease-in-out infinite alternate; }
+  .con circle:nth-of-type(3n) { animation-delay: 1.2s; }
+  .con circle:nth-of-type(3n+1) { animation-delay: 2.1s; }
+  .con-2, .con-2 line { animation-delay: 9s; }
+  .con-3, .con-3 line { animation-delay: 18s; }
+  .cn { opacity: 0; animation: con-show 27s linear infinite; }
+  .cn-2 { animation-delay: 9s; }
+  .cn-3 { animation-delay: 18s; }
+
+  .hero-text > * { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+  .hero-text > :nth-child(2) { animation-delay: 70ms; }
+  .hero-text > :nth-child(4) { animation-delay: 210ms; }
+  .hero-text > :nth-child(5) { animation-delay: 280ms; }
+
+  .hero-lede { animation: rise 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 140ms both, shimmer 9s ease-in-out 900ms infinite; }
 
   .panel.entering .tile { animation: rise 520ms cubic-bezier(0.2, 0.7, 0.2, 1) both; animation-delay: calc(var(--i, 0) * 55ms); }
 }
@@ -564,6 +620,17 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   100% { opacity: 0; transform: rotate(150deg) translateX(900px); }
 }
 @keyframes pan     { from { transform: scale(1) translate(0, 0); } to { transform: scale(1.08) translate(-1.5%, 1%); } }
-@keyframes boot    { from { opacity: 0; transform: scale(1.04); } to { opacity: 1; transform: scale(1); } }
+@keyframes boot    { from { opacity: 0; } to { opacity: 1; } }
+@keyframes cloud-a { from { transform: translate(0, 0) scale(1); } to { transform: translate(8vmax, 5vmax) scale(1.15); } }
+@keyframes cloud-b { from { transform: translate(0, 0) scale(1.1); } to { transform: translate(-10vmax, 6vmax) scale(0.95); } }
+@keyframes warp {
+  0%   { transform: scale(1); filter: none; }
+  35%  { transform: scale(1.35); filter: brightness(1.8) blur(0.4px); }
+  100% { transform: scale(1); filter: none; }
+}
+@keyframes spin       { to { transform: rotate(360deg); } }
+@keyframes con-show   { 0% { opacity: 0; } 3% { opacity: 1; } 30% { opacity: 1; } 33.3% { opacity: 0; } 100% { opacity: 0; } }
+@keyframes con-draw   { 0%, 3% { stroke-dashoffset: 1; } 14% { stroke-dashoffset: 0; } 100% { stroke-dashoffset: 0; } }
+@keyframes star-pulse { from { opacity: 0.55; } to { opacity: 1; } }
 @keyframes shimmer { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
 @keyframes rise    { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }

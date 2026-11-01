@@ -15,7 +15,6 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Chakra+Petch:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/shombith-portfolio/style.css" />
   <style>
-    :root { --sky-base: url("/shombith-portfolio/images/bg/synthwave.webp"); }
     .lost { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding-top: 96px; padding-bottom: 96px; }
     .lost .tag { margin-bottom: 18px; }
     .lost h1 { font-family: var(--font-display); font-weight: 600; font-size: 3rem; line-height: 1.05; }
@@ -26,10 +25,12 @@
 </head>
 <body>
   <div class="sky" aria-hidden="true">
-    <div class="sky-base"></div>
-    <div class="stars stars-far"></div>
-    <div class="stars stars-mid"></div>
-    <div class="stars stars-near"></div>
+    <div class="nebula"><i></i><i></i><i></i></div>
+    <div class="starfield">
+      <div class="layer layer-far"><div class="stars stars-far"></div></div>
+      <div class="layer layer-mid"><div class="stars stars-mid"></div></div>
+      <div class="layer layer-near"><div class="stars stars-near"></div></div>
+    </div>
     <div class="shooting"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="sky-shade"></div>
   </div>

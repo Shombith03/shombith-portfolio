@@ -51,16 +51,18 @@
       matching <section id="your-id" class="panel" data-bg="images/bg/....webp">.
     - data-bg on each panel is the space photo that fades in behind that tab.
       Swap any of them for your own frames in images/bg/.
-    - Colours, fonts and the base background are tokens at the top of style.css.
+    - Colours and fonts are tokens at the top of style.css.
   -->
 
   <div class="sky" aria-hidden="true">
-    <div class="sky-base"></div>
+    <div class="nebula"><i></i><i></i><i></i></div>
     <div class="sky-photo"></div>
     <div class="sky-photo"></div>
-    <div class="stars stars-far"></div>
-    <div class="stars stars-mid"></div>
-    <div class="stars stars-near"></div>
+    <div class="starfield">
+      <div class="layer layer-far"><div class="stars stars-far"></div></div>
+      <div class="layer layer-mid"><div class="stars stars-mid"></div></div>
+      <div class="layer layer-near"><div class="stars stars-near"></div></div>
+    </div>
     <div class="shooting"><i></i><i></i><i></i><i></i><i></i></div>
     <div class="sky-shade"></div>
   </div>
@@ -89,25 +91,99 @@
   <main class="wrap">
 
     <header class="hero">
-      <div class="player">
-        <img src="images/avatar-160.webp" alt="Shombith Chakraborty" width="160" height="160" />
-        <div>
-          <p class="player-name">Shombith Chakraborty</p>
-          <p class="player-class">Cosmic Shore at Froglet Games</p>
+      <div class="hero-text">
+        <div class="player">
+          <span class="avatar"><img src="images/avatar-160.webp" alt="Shombith Chakraborty" width="160" height="160" /></span>
+          <div>
+            <p class="player-name">Shombith Chakraborty</p>
+            <p class="player-class">Cosmic Shore at Froglet Games</p>
+          </div>
+        </div>
+        <ul class="roles hero-roles" aria-label="Roles">
+          <li>UX director</li>
+          <li>Systems engineer</li>
+          <li>Game developer</li>
+          <li>Game designer</li>
+        </ul>
+        <h1 class="hero-lede">I build game systems, and the engine and pipeline they ship on.</h1>
+        <p class="hero-intro">I&rsquo;m Shombith. At Froglet I work on Cosmic Shore: its UI, backend, cameras and the pipeline that ships it to four platforms. I&rsquo;m also building Amoebius, a .NET engine that runs the game without Unity. I&rsquo;m open to contract work.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://www.froglet.games/play">Play Cosmic Shore</a>
+          <a class="btn" href="#about">About me</a>
         </div>
       </div>
-      <ul class="roles hero-roles" aria-label="Roles">
-        <li>UX director</li>
-        <li>Systems engineer</li>
-        <li>Game developer</li>
-        <li>Game designer</li>
-      </ul>
-      <h1 class="hero-lede">I build game systems, and the engine and pipeline they ship on.</h1>
-      <p class="hero-intro">I&rsquo;m Shombith. At Froglet I work on Cosmic Shore: its UI, backend, cameras and the pipeline that ships it to four platforms. I&rsquo;m also building Amoebius, a .NET engine that runs the game without Unity. I&rsquo;m open to contract work.</p>
-      <div class="hero-actions">
-        <a class="btn btn-primary" href="https://www.froglet.games/play">Play Cosmic Shore</a>
-        <a class="btn" href="#about">About me</a>
-      </div>
+      <figure class="hero-sky">
+        <svg class="constellations" viewBox="0 0 360 360" role="img" aria-label="Constellation charts drawn from real star positions: Orion, Cassiopeia and Ursa Major">
+        <g class="con con-1">
+          <line pathLength="1" x1="168.6" y1="134.8" x2="120.0" y2="159.4"></line>
+          <line pathLength="1" x1="168.6" y1="134.8" x2="192.8" y2="169.8"></line>
+          <line pathLength="1" x1="120.0" y1="159.4" x2="154.6" y2="250.6"></line>
+          <line pathLength="1" x1="192.8" y1="169.8" x2="176.0" y2="234.6"></line>
+          <line pathLength="1" x1="176.0" y1="234.6" x2="165.8" y2="243.4"></line>
+          <line pathLength="1" x1="165.8" y1="243.4" x2="154.6" y2="250.6"></line>
+          <line pathLength="1" x1="154.6" y1="250.6" x2="138.1" y2="326.0"></line>
+          <line pathLength="1" x1="176.0" y1="234.6" x2="218.3" y2="311.7"></line>
+          <line pathLength="1" x1="120.0" y1="159.4" x2="103.0" y2="137.6"></line>
+          <line pathLength="1" x1="103.0" y1="137.6" x2="81.8" y2="93.1"></line>
+          <line pathLength="1" x1="81.8" y1="93.1" x2="92.2" y2="87.6"></line>
+          <line pathLength="1" x1="92.2" y1="87.6" x2="125.0" y2="34.0"></line>
+          <line pathLength="1" x1="192.8" y1="169.8" x2="278.2" y2="163.8"></line>
+          <line pathLength="1" x1="265.1" y1="132.7" x2="275.8" y2="144.9"></line>
+          <line pathLength="1" x1="275.8" y1="144.9" x2="278.2" y2="163.8"></line>
+          <line pathLength="1" x1="278.2" y1="163.8" x2="275.1" y2="177.1"></line>
+          <line pathLength="1" x1="275.1" y1="177.1" x2="268.1" y2="207.9"></line>
+          <line pathLength="1" x1="268.1" y1="207.9" x2="257.7" y2="215.0"></line>
+          <circle class="neb" cx="167.8" cy="297.3" r="14"></circle>
+          <circle cx="218.3" cy="311.7" r="3.91"></circle>
+          <circle class="warm" cx="120.0" cy="159.4" r="3.65"></circle>
+          <circle cx="192.8" cy="169.8" r="2.85"></circle>
+          <circle cx="165.8" cy="243.4" r="2.82"></circle>
+          <circle cx="154.6" cy="250.6" r="2.76"></circle>
+          <circle cx="138.1" cy="326.0" r="2.56"></circle>
+          <circle cx="176.0" cy="234.6" r="2.44"></circle>
+          <circle cx="167.8" cy="289.3" r="2.06"></circle>
+          <circle cx="278.2" cy="163.8" r="1.77"></circle>
+          <circle cx="168.6" cy="134.8" r="1.63"></circle>
+          <circle cx="275.1" cy="177.1" r="1.42"></circle>
+          <circle cx="268.1" cy="207.9" r="1.41"></circle>
+          <circle cx="103.0" cy="137.6" r="1.12"></circle>
+          <circle cx="275.8" cy="144.9" r="1.10"></circle>
+          <circle cx="125.0" cy="34.0" r="1.10"></circle>
+          <circle cx="92.2" cy="87.6" r="1.10"></circle>
+          <circle cx="81.8" cy="93.1" r="1.10"></circle>
+          <circle cx="257.7" cy="215.0" r="1.10"></circle>
+          <circle cx="265.1" cy="132.7" r="1.10"></circle>
+        </g>
+        <g class="con con-2">
+          <line pathLength="1" x1="326.0" y1="202.2" x2="237.6" y2="262.8"></line>
+          <line pathLength="1" x1="237.6" y1="262.8" x2="183.9" y2="165.7"></line>
+          <line pathLength="1" x1="183.9" y1="165.7" x2="100.3" y2="176.9"></line>
+          <line pathLength="1" x1="100.3" y1="176.9" x2="34.0" y2="97.2"></line>
+          <circle cx="183.9" cy="165.7" r="2.50"></circle>
+          <circle cx="237.6" cy="262.8" r="2.43"></circle>
+          <circle cx="326.0" cy="202.2" r="2.41"></circle>
+          <circle cx="100.3" cy="176.9" r="2.12"></circle>
+          <circle cx="34.0" cy="97.2" r="1.64"></circle>
+        </g>
+        <g class="con con-3">
+          <line pathLength="1" x1="303.9" y1="107.3" x2="326.0" y2="170.1"></line>
+          <line pathLength="1" x1="326.0" y1="170.1" x2="245.3" y2="201.5"></line>
+          <line pathLength="1" x1="245.3" y1="201.5" x2="206.6" y2="162.5"></line>
+          <line pathLength="1" x1="206.6" y1="162.5" x2="303.9" y2="107.3"></line>
+          <line pathLength="1" x1="206.6" y1="162.5" x2="143.9" y2="175.0"></line>
+          <line pathLength="1" x1="143.9" y1="175.0" x2="92.4" y2="187.0"></line>
+          <line pathLength="1" x1="92.4" y1="187.0" x2="34.0" y2="252.7"></line>
+          <circle cx="143.9" cy="175.0" r="2.76"></circle>
+          <circle cx="303.9" cy="107.3" r="2.75"></circle>
+          <circle cx="34.0" cy="252.7" r="2.70"></circle>
+          <circle cx="92.4" cy="187.0" r="2.44"></circle>
+          <circle cx="326.0" cy="170.1" r="2.34"></circle>
+          <circle cx="245.3" cy="201.5" r="2.29"></circle>
+          <circle cx="206.6" cy="162.5" r="1.68"></circle>
+        </g>
+        </svg>
+        <figcaption class="con-names"><span class="cn cn-1">Orion</span><span class="cn cn-2">Cassiopeia</span><span class="cn cn-3">Ursa Major</span></figcaption>
+      </figure>
     </header>
 
     <div id="panels" class="panels">
@@ -134,12 +210,6 @@
             <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/93">#93</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/346">#346</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/136">#136</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/537">#537</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/405">#405</a></p>
           </article>
 
-          <article class="tile">
-            <span class="tag">Owned</span>
-            <h3>Cameras</h3>
-            <p>A custom camera controller, <code>CameraSettingsSO</code> assets and an interface-based <code>CameraManager</code>, replacing ad-hoc follow logic. Trailer and cinematic cameras sit on top.</p>
-            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/50">#50</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/59">#59</a></p>
-          </article>
 
           <article class="tile">
             <span class="tag">Owned</span>
@@ -150,9 +220,10 @@
 
           <article class="tile">
             <span class="tag">Owned</span>
-            <h3>Unity 6.3 LTS</h3>
-            <p>Moved the project to Unity 6.3 LTS.</p>
+            <h3>Delivery pipeline</h3>
+            <p>Automated, scheduled builds for iOS, Android, WebGL and Steam, with a Unity CI job that compiles on every push. I also moved the project to Unity 6.3 LTS.</p>
             <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/555">#555</a></p>
+            <a class="play" href="#shipping">See Shipping &rarr;</a>
           </article>
 
           <article class="tile">
@@ -171,7 +242,7 @@
       </section>
 
       <!-- ===================== Shipping ===================== -->
-      <section id="shipping" class="panel" aria-labelledby="shipping-h" data-bg="images/bg/carina.webp">
+      <section id="shipping" class="panel" aria-labelledby="shipping-h" data-bg="images/bg/cs-scene.webp">
         <div class="panel-head">
           <h2 id="shipping-h">Shipping</h2>
           <p>I run the delivery pipeline. Builds for four platforms are automated and run on a schedule.</p>
@@ -188,7 +259,6 @@
             <span class="tag">Mobile</span>
             <h3>iOS</h3>
             <p>TestFlight uploads from GitHub Actions, signing a Windows-made Xcode export on a macOS runner.</p>
-            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/566bd5888">566bd5888</a></p>
           </article>
           <article class="tile">
             <span class="tag">Mobile</span>
@@ -211,7 +281,7 @@
       </section>
 
       <!-- ===================== froglet.games ===================== -->
-      <section id="froglet-games" class="panel" aria-labelledby="froglet-games-h" data-bg="images/bg/mystic-mountain.webp">
+      <section id="froglet-games" class="panel" aria-labelledby="froglet-games-h" data-bg="images/bg/cs-cell.webp">
         <div class="panel-head">
           <h2 id="froglet-games-h">froglet.games</h2>
           <p>The studio&rsquo;s website. I built it.</p>
@@ -340,7 +410,7 @@
       </section>
 
       <!-- ===================== Experience ===================== -->
-      <section id="experience" class="panel" aria-labelledby="experience-h" data-bg="images/bg/synthwave.webp">
+      <section id="experience" class="panel" aria-labelledby="experience-h" data-bg="images/bg/carina.webp">
         <div class="panel-head">
           <h2 id="experience-h">Experience</h2>
           <p>Studios I&rsquo;ve worked at, and earlier projects.</p>
@@ -374,16 +444,16 @@
             <p class="job-when"><span class="ph">Years</span></p>
             <div class="job-main">
               <div class="job-head"><h3>Virtualize Technologies</h3></div>
-              <ul class="roles" aria-label="Roles"><li class="ph">Your role</li></ul>
-              <p class="ph">One line on what you built here.</p>
+              <ul class="roles" aria-label="Roles"><li>Game Developer II</li></ul>
+              <p>Led Unity development on Mind Arcade (Gridlock Escape, Match Master), built client projects, and made Ultimate Beer Pong.</p>
             </div>
           </li>
           <li class="job tile">
             <p class="job-when"><span class="ph">Years</span></p>
             <div class="job-main">
               <div class="job-head"><h3>Lokii Software Development</h3></div>
-              <ul class="roles" aria-label="Roles"><li class="ph">Your role</li></ul>
-              <p class="ph">One line on what you built here.</p>
+              <ul class="roles" aria-label="Roles"><li>Unity Developer</li></ul>
+              <p>Unity development on the studio&rsquo;s in-house projects and on client projects.</p>
             </div>
           </li>
         </ol>
@@ -392,7 +462,7 @@
         <ul class="projects">
           <li class="project tile">
             <img src="images/work/mind-arcade.webp" alt="" width="240" height="240" loading="lazy" />
-            <div><h4>Mind Arcade</h4><p>Lead Unity developer. Gridlock Escape, Match Master, AssetBundle systems and a React Native&ndash;Unity bridge.</p></div>
+            <div><h4>Mind Arcade</h4><p>At Virtualize Technologies, as lead Unity developer. Gridlock Escape, Match Master, AssetBundle systems and a React Native&ndash;Unity bridge.</p></div>
           </li>
           <li class="project tile">
             <img src="images/work/scene-switcher.webp" alt="" width="640" height="552" loading="lazy" />
@@ -408,7 +478,7 @@
           </li>
           <li class="project tile">
             <span class="thumb-blank" aria-hidden="true"></span>
-            <div><h4>Ultimate Beer Pong</h4><p>Hypercasual, 2022&ndash;2024.</p></div>
+            <div><h4>Ultimate Beer Pong</h4><p>At Virtualize Technologies. Hypercasual, 2022&ndash;2024.</p></div>
           </li>
         </ul>
       </section>
@@ -478,7 +548,7 @@
         <li><a href="https://github.com/Shombith03"><span class="k">Code</span>GitHub</a></li>
         <li><a href="https://www.linkedin.com/in/shombith/"><span class="k">Work</span>LinkedIn</a></li>
       </ul>
-      <p class="credit">&copy; 2026 Shombith Chakraborty · Space photographs: NASA, ESA, CSA, STScI, JPL-Caltech (placeholders until my own frames go in).</p>
+      <p class="credit">&copy; 2026 Shombith Chakraborty · Cosmic Shore images: Froglet Games. Space photographs: NASA, ESA, CSA, STScI, JPL-Caltech (placeholders until my own frames go in).</p>
     </div>
   </footer>
 

@@ -6,7 +6,9 @@
   - click a tab, or the Q / E buttons beside the tab bar
   - with focus on a tab: Left / Right arrows, Q / E, Home / End
   - links to #amoebius, #about and so on open that tab directly
-  Each panel's data-bg photo fades in behind the page when its tab opens.
+  Each panel's data-bg photo fades in behind the page when its tab opens,
+  the starfield jumps to warp on each switch, and the star layers drift a
+  little with the mouse. Motion is skipped under prefers-reduced-motion.
 */
 (function () {
   var nav = document.querySelector("[data-tabs]");
@@ -23,6 +25,34 @@
   var photoFront = 0;
   var currentBg = null;
   var current = -1;
+  var sky = document.querySelector(".sky");
+  var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  function warp() {
+    if (!sky || calm) return;
+    sky.classList.remove("warp");
+    void sky.offsetWidth; // restart the animation
+    sky.classList.add("warp");
+  }
+  if (sky) sky.addEventListener("animationend", function (e) {
+    if (e.animationName === "warp") sky.classList.remove("warp");
+  });
+
+  // Mouse parallax on the star layers, on devices with a precise pointer
+  if (sky && !calm && window.matchMedia("(pointer: fine)").matches) {
+    var pending = false, px = 0, py = 0;
+    window.addEventListener("pointermove", function (e) {
+      px = (e.clientX / window.innerWidth) * 2 - 1;
+      py = (e.clientY / window.innerHeight) * 2 - 1;
+      if (pending) return;
+      pending = true;
+      requestAnimationFrame(function () {
+        sky.style.setProperty("--px", px.toFixed(3));
+        sky.style.setProperty("--py", py.toFixed(3));
+        pending = false;
+      });
+    }, { passive: true });
+  }
 
   document.documentElement.classList.add("has-tabs");
   list.setAttribute("role", "tablist");
@@ -79,7 +109,10 @@
     current = i;
     tabs[i].scrollIntoView({ block: "nearest", inline: "nearest" });
     setSky(panels[i].getAttribute("data-bg"));
-    if (changed) enter(panels[i]);
+    if (changed) {
+      enter(panels[i]);
+      if (opts.warp !== false) warp();
+    }
     if (opts.focus) tabs[i].focus();
     if (opts.updateHash && history.replaceState) {
       history.replaceState(null, "", "#" + panels[i].id);
@@ -119,5 +152,5 @@
   });
 
   var start = fromHash();
-  select(start >= 0 ? start : 0);
+  select(start >= 0 ? start : 0, { warp: false });
 })();

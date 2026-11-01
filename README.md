@@ -23,8 +23,11 @@ A single static page, served by GitHub Pages. No build step, no framework.
   and a matching `<section id="my-id" class="panel">` inside `#panels`.
 - **Use my own night-sky photos.** Each tab has a `data-bg` photo that fades in
   behind it (`images/bg/`). Replace any of those files with my own frames, then
-  update the credit line in the footer of `index.html`. The synthwave city at the
-  bottom of the sky is `images/bg/synthwave.webp` (`--sky-base` in `style.css`).
+  update the credit line in the footer of `index.html`. Behind the photos are
+  animated nebula clouds and star layers, all CSS, in the sky section of `style.css`.
+- **Constellations in the hero.** Orion, Cassiopeia and Ursa Major, plotted from
+  real star positions, take turns drawing themselves. They are inline SVG in the
+  hero of `index.html`.
 - **Change colours or fonts.** Edit the tokens at the top of `style.css`.
 - **Refresh the link preview.** `images/og.jpg` is 1200 × 630 and is what
   LinkedIn, Slack and Discord show when the link is shared.
