@@ -3,7 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shombith Chakraborty</title>
+  <title>Shombith Chakraborty — a .NET 10 engine that runs a Unity game without Unity</title>
+  <meta name="description" content="I wrote a .NET 10 engine that compiles and runs an existing Unity game without Unity." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -11,23 +12,57 @@
   <header class="hero">
     <img class="hero-photo" src="images/avatar.jpg" alt="Shombith Chakraborty" width="160" height="160" />
     <h1 class="hero-name">Shombith Chakraborty</h1>
-    <p class="hero-role">[Role line]</p>
-    <p class="hero-position">[Positioning line]</p>
-    <p class="hero-lede">[The lede sentence]</p>
+    <p class="hero-role">Software engineer · Kolkata</p>
+    <p class="hero-position">I build engines, multiplayer systems and the pipelines that ship them.</p>
+    <p class="hero-lede">I wrote a .NET 10 engine that compiles and runs an existing Unity game without Unity.</p>
   </header>
 
   <main>
 
     <!-- Tier 1: five sections, in order -->
 
-    <section id="cosmic-shore" class="section">
-      <h2>Cosmic Shore — systems I own</h2>
-      <p class="section-intro">[One line of context]</p>
-      <article class="system"><h3>The UI, rebuilt</h3><p>[Copy]</p></article>
-      <article class="system"><h3>Backend: PlayFab to UGS</h3><p>[Copy]</p></article>
-      <article class="system"><h3>Data-driven cameras</h3><p>[Copy]</p></article>
-      <article class="system"><h3>Analytics and consent</h3><p>[Copy]</p></article>
-      <article class="system"><h3>Tooling inside the project</h3><p>[Copy]</p></article>
+    <section id="cosmic-shore" class="section" aria-labelledby="cosmic-shore-h">
+      <p class="section-num">01</p>
+      <h2 id="cosmic-shore-h">Cosmic Shore — systems I own</h2>
+      <p class="section-intro">Cosmic Shore is the game I work on at Froglet. These are the systems in it that are mine.</p>
+      <figure class="shot">
+        <img src="images/cosmic-shore.webp" alt="A Cosmic Shore vessel flying through a lattice of blocks" width="1600" height="900" loading="lazy" />
+      </figure>
+
+      <article class="system">
+        <h3>The UI, rebuilt</h3>
+        <p>I redid the game&rsquo;s entire UI, the architecture and the look. The ship HUD moved onto subscriptions: <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/4500bd94900401be9b8c7cce90eecdb8d4002c45">4500bd949</a> cut <code>ShipHUDController</code> by ~300 lines into <code>HudSubscriptionSO</code> and per-ability views, and <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/662e300ed46206479ece25160692e9ad305158d5">662e300ed</a> then deleted the superseded HUD scripts. On top of that, a new visual language across every screen: menus, the hangar, the arcade flow, the event feed and toasts.</p>
+        <dl class="figures">
+          <div><dt>2,591</dt><dd>lines deleted across 80 files</dd></div>
+        </dl>
+        <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/87">#87</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/343">#343</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/364">#364</a></p>
+      </article>
+
+      <article class="system">
+        <h3>Backend: PlayFab to UGS</h3>
+        <p>I moved the game&rsquo;s whole backend onto Unity Gaming Services and took the old one out. Anonymous sign-in and player profiles (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/93">#93</a>), one <code>UGSDataService</code> as the single entry point for cloud save and data (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/346">#346</a>), profiles and avatars on a live <code>PlayerDataService</code> across every menu (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/136">#136</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/537">#537</a>), leaderboards, Cloud Code, and Unity IAP with web checkout (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/405">#405</a>). PlayFab then came out entirely, after proving it was dead.</p>
+        <dl class="figures">
+          <div><dt>~87,800</dt><dd>lines removed across 452 files</dd></div>
+          <div><dt>209</dt><dd>GUIDs with zero inbound references</dd></div>
+        </dl>
+      </article>
+
+      <article class="system">
+        <h3>Data-driven cameras</h3>
+        <p>A custom camera controller, <code>CameraSettingsSO</code> assets and an interface-based <code>CameraManager</code>, replacing ad-hoc follow logic. Trailer and cinematic cameras sit on top.</p>
+        <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/50">#50</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/59">#59</a></p>
+      </article>
+
+      <article class="system">
+        <h3>Analytics and consent</h3>
+        <p>I retired Firebase for one facade behind a consent and age gate, fanning out to UGS and a PostHog sink batched through an on-disk queue. Debounced cloud saves, per-vessel tracking and UGS stat keys.</p>
+        <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/101">#101</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/546">#546</a></p>
+      </article>
+
+      <article class="system">
+        <h3>Tooling inside the project</h3>
+        <p>Central logging: <code>CSDebug</code>, with per-type flags and a tabbed control window, replacing raw <code>Debug.Log</code> across the codebase (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/102">#102</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/530">#530</a>). A performance benchmark tool with a CPU/GPU split and bound-verdict overlays (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/529">#529</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/544">#544</a>). A dialogue system driven by SOAP events (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/434">#434</a>). The Unity 6.3 LTS migration (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/555">#555</a>).</p>
+      </article>
     </section>
 
     <section id="shipping" class="section">
