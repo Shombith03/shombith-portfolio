@@ -25,9 +25,12 @@ A single static page, served by GitHub Pages. No build step, no framework.
   behind it (`images/bg/`). Replace any of those files with my own frames, then
   update the credit line in the footer of `index.html`. Behind the photos are
   animated nebula clouds and star layers, all CSS, in the sky section of `style.css`.
-- **Constellations in the hero.** Orion, Cassiopeia and Ursa Major, plotted from
-  real star positions, take turns drawing themselves. They are inline SVG in the
-  hero of `index.html`.
+- **The black hole in the hero.** `js/spacetime.js` draws it on a canvas: a
+  spacetime grid bending into a gravity well, ripples running outward, and a
+  black hole with a lensed accretion disk. Its size and position are in
+  `frame()`; colours are in `grid()` and `hole()`.
+- **Constellations.** Orion, Cassiopeia and Ursa Major, plotted from real star
+  positions, take turns drawing themselves in the Night sky tile on the About tab.
 - **Change colours or fonts.** Edit the tokens at the top of `style.css`.
 - **Refresh the link preview.** `images/og.jpg` is 1200 × 630 and is what
   LinkedIn, Slack and Discord show when the link is shared.

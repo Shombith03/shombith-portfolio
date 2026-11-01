@@ -242,12 +242,24 @@ h1, h2, h3 { margin: 0; }
    ========================================================================== */
 
 .hero {
-  display: grid;
-  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
-  gap: 32px;
-  align-items: center;
-  padding: 96px 0 72px;
+  position: relative;
+  padding: 120px 0 96px;
+  min-height: 640px;
 }
+/* The animated spacetime well and black hole (js/spacetime.js), full bleed behind the hero */
+.spacetime {
+  position: absolute;
+  top: -40px;
+  height: calc(100% + 80px);
+  left: 50%;
+  width: 100vw;
+  transform: translateX(-50%);
+  z-index: 0;
+  pointer-events: none;
+  -webkit-mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 78%, transparent 100%);
+          mask-image: linear-gradient(180deg, transparent 0, #000 12%, #000 78%, transparent 100%);
+}
+.hero-text { position: relative; z-index: 1; max-width: 44rem; }
 .player { display: flex; align-items: center; gap: 18px; }
 .avatar { position: relative; flex: none; width: 72px; height: 72px; border-radius: 50%; padding: 4px; }
 .avatar::before {
@@ -258,16 +270,16 @@ h1, h2, h3 { margin: 0; }
 }
 .avatar img { width: 64px; height: 64px; object-fit: cover; border-radius: 50%; }
 
-/* Constellations: three real charts that take turns drawing themselves */
-.hero-sky { margin: 0; position: relative; }
-.constellations { width: 100%; max-width: 380px; height: auto; display: block; margin-left: auto; overflow: visible; }
+/* Night sky tile in About: three real charts that take turns drawing themselves */
+.sky-chart { margin: 0; grid-row: span 2; }
+.constellations { width: 100%; max-width: 300px; height: auto; display: block; margin: 0 auto; overflow: visible; }
 .con line { stroke: rgba(203, 193, 230, 0.55); stroke-width: 1; stroke-dasharray: 1; stroke-dashoffset: 0; }
 .con circle { fill: #f3eefc; }
 .con circle.warm { fill: #ffb27a; }
 .con circle.neb { fill: rgba(255, 79, 163, 0.35); }
 .con-2, .con-3 { opacity: 0; }
-.con-names { position: relative; height: 1.2em; margin-top: 8px; text-align: right; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); }
-.cn { position: absolute; right: 0; top: 0; }
+.con-names { position: relative; height: 1.2em; text-align: center; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--faint); }
+.cn { position: absolute; left: 0; right: 0; top: 0; }
 .cn-2, .cn-3 { opacity: 0; }
 .player p { margin: 0; }
 .player-name { font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; letter-spacing: 1px; }
@@ -528,9 +540,8 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
 }
 
 @media (max-width: 960px) {
-  .hero { padding-top: 56px; grid-template-columns: minmax(0, 1fr); }
-  .hero-sky { order: -1; width: 200px; justify-self: end; margin-bottom: -80px; opacity: 0.85; }
-  .con-names { display: none; }
+  .hero { padding-top: 300px; min-height: 0; }
+  .sky-chart { grid-row: auto; }
   .hero-lede { font-size: 2.5rem; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tile.sel { grid-row: auto; }
