@@ -468,7 +468,7 @@ a.ref:hover { text-decoration-color: currentColor; }
 .jobs::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--gradient); border-radius: 2px; opacity: 0.6; }
 .job { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 24px; padding: 20px 24px; }
 /* Add <p class="job-when">2022 &ndash; 2024</p> as a job's first child and a dates column appears */
-.job:has(> .job-when) { grid-template-columns: 9rem minmax(0, 1fr); }
+.job:has(> .job-when) { grid-template-columns: 11rem minmax(0, 1fr); }
 .job::before {
   content: ""; position: absolute; left: -27px; top: 26px; width: 12px; height: 12px; border-radius: 50%;
   background: var(--panel-solid); border: 2px solid var(--accent-2);
@@ -961,4 +961,15 @@ a.tile.live strong { font-size: 1.75rem; letter-spacing: 0.04em; }
   .hero-lede { font-size: 2.5rem; }
   .panel-head h2 { font-size: 1.75rem; }
   .tab { font-size: 0.9375rem; }
+}
+
+/* Company marks on the Experience timeline */
+.job-logo { width: 40px; height: 40px; border-radius: 8px; flex: none; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
+.job-mono {
+  display: grid; place-items: center;
+  font-family: var(--font-display); font-size: 1.375rem; letter-spacing: 0.04em; color: var(--text);
+  background: linear-gradient(145deg, rgb(var(--accent-rgb) / 0.35), rgb(var(--bg-rgb) / 0.9));
+}
+@media (max-width: 640px) {
+  .job:has(> .job-when) { grid-template-columns: minmax(0, 1fr); gap: 8px; }
 }
