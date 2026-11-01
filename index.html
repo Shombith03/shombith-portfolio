@@ -1,182 +1,582 @@
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shombith</title>
-  <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600&display=swap" rel="stylesheet">
-</head>
-<body>
-  <!-- Animated glitch overlay -->
-  <div id="loader">
-    <div class="spinner"></div>
-    <p class="loading-text">  Loading portfolio...</p>
-  </div>
-  
-  <div class="glitch-overlay"></div>
-
-  <div class="wrapper">
-    <header class="header">
-        <h1 class="title">Shombith Chakraborty</h1>
-
-      <p class="subtitle">Game Developer | Game Designer | Unity Specialist</p>
-      <p class="scroll">SCROLL DOWN</p>
-    </header>
-    <div class="vapor-layer"></div>
-
-    <main>
-      <!-- First Row: About Me & Projects -->
-      <div class="grid-two">
-        <section class="card about">
-          <h2>ABOUT ME</h2>
-          <div class="avatar-container">
-            <img src="images/avatar.jpg" alt="My Avatar" class="avatar-image">
-          </div>
-          <p>👋👋 Hi, I’m Shombith Chakraborty, a passionate Game Developer and Multiplayer/Tools Engineer at Froglet Games.
-            I specialize in building complete Unity experiences — from gameplay, SDK integrations, backend systems to custom editor tools. 🎮🛠️
-            Always creating, always leveling up — let’s shape the future of games together! 🚀✨🎮✨</p>
-          <div class="tags">
-            <span class="tag-game">Unity Game Development</span>
-            <span class="tag-tools">Custom Editor & Tools Development</span>
-            <span class="tag-multiplayer">Multiplayer Systems (Netcode & Photon)</span>
-            <span class="tag-services">Unity Gaming Services (UGS) Specialist</span>
-            <span class="tag-backend">Backend Integration (PlayFab, Firebase, APIs)</span>
-            <span class="tag-sdk">SDK Integrations (Ads, Analytics, IAP)</span>
-            <span class="tag-cross">Cross-Platform Publishing (PC, Android, iOS)</span>
-            <span class="tag-optimization">Asset Optimization & Build Automation</span>
-            <span class="tag-rapid">Rapid Prototyping & Game Jams</span>
-            <span class="tag-uiux">UI/UX Design for Games & Tools</span>
-            <span class="tag-publisher">Asset Store Publisher</span>
-            <span class="tag-bugfix">Project Rescue & Bug Fixing</span>
-            <span class="tag-experience">4+ Years of Professional Experience</span>
-            
-          </div>
-        </section>
-        <section class="card projects">
-            <h2>PROJECTS</h2>
-            <div class="projects-grid">
-          
-              <!-- Project 1 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/scene-switcher.jpg');"></div>
-                </div>
-                <h3>Scene Switcher Master</h3>
-                <p>Unity Dev Tool</p>
-              </a>
-          
-              <!-- Project 2 -->
-              <a class="project-item project-company" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/mindarcad1e.jpg');"></div>
-                </div>
-                <h3>MindArcade</h3>
-                <p>Made for Digital Squire. Worked on Gridlock Escape and Match Master</p>
-              </a>
-          
-              <!-- Project 3 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/build-report.jpg');"></div>
-                </div>
-                <h3>Advanced Build Report Tool</h3>
-                <p>Coming Soon</p>
-              </a>
-          
-              <!-- Project 4 -->
-              <a class="project-item project-company" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/beer-pong1.jpg');"></div>
-                </div>
-                <h3>Ultimate Beer Pong</h3>
-                <p>Company Project</p>
-              </a>
-          
-              <!-- Project 5 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/3d-zigzag.jpg');"></div>
-                </div>
-                <h3>3D ZigZag</h3>
-                <p>Hyper Casual Game</p>
-              </a>
-          
-              <!-- Project 6 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/moon-racer.jpg');"></div>
-                </div>
-                <h3>Moon Racer</h3>
-                <p>Hyper Casual Game</p>
-              </a>
-          
-              <!-- Project 7 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/ugs-advanced.jpg');"></div>
-                </div>
-                <h3>Complete UGS Advanced</h3>
-                <p>Coming Soon</p>
-              </a>
-          
-              <!-- Project 8 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/weather-system.jpg');"></div>
-                </div>
-                <h3>Dynamic Weather System</h3>
-                <p>Coming Soon</p>
-              </a>
-          
-            </div> <!-- End of .projects-grid -->
-          </section> <!-- End of .projects -->
-          
-          
-      </div>
-
-      <!-- Second Row: Companies & Socials -->
-      <div class="grid-three">
-        <section class="card companies-worked">
-            <h2>COMPANIES I WORKED WITH</h2>
-            <div class="companies-list">
-              <div class="company-badge">👜 Lokii Software Development</div>
-              <div class="company-badge">👜 Virtualize Technologies</div>
-              <div class="company-badge">👜 Froglet Games</div>
-            </div>
-          </section>
-
-          <section class="card companies-run">
-            <h2>COMPANIES I RUN</h2>
-            <div class="companies-list">
-              <div class="company-badge">🚀 Yeth GameDev</div>
-              <div class="company-badge">🚀 Coming Soon</div>
-            </div>
-          </section>
-
-          <section class="card socials">
-            <h2>SOCIALS</h2>
-            <div class="social-icons">
-              <a href="https://www.linkedin.com/in/shombith/" class="linkedin" target="_blank" rel="noopener"><img src="icons/linkedin.svg" alt="LinkedIn" /></a>
-              <a href="https://github.com/Shombith03" class="github" target="_blank" rel="noopener"><img src="icons/github.svg" alt="GitHub" /></a>
-              <a href="https://www.instagram.com/yethgamedev?igsh=emtkcTluc3Nkd2lr" class="instagram" target="_blank" rel="noopener"><img src="icons/instagram.svg" alt="Instagram" /></a>
-              <a href="https://youtube.com/@yethgamedev?si=p8zp5di7mZMj_R9J" class="youtube" target="_blank" rel="noopener"><img src="icons/youtube.svg" alt="YouTube" /></a>
-              <a href="https://assetstore.unity.com" class="assetstore" target="_blank" rel="noopener"><img src="icons/unity.svg" alt="Asset Store" /></a>
-            </div>
-          </section>
-          
-      </div>
-    </main>
-  </div>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shombith Chakraborty — UX director, systems engineer, game developer and designer</title>
+  <meta name="description" content="Game systems, the engines under them, and the pipelines that ship them. Cosmic Shore at Froglet, and Amoebius, a .NET engine that runs the game without Unity." />
+  <meta name="color-scheme" content="dark" />
   <script>
-    window.addEventListener("load", function(){
-      document.getElementById("loader").style.display = "none";
-    });
+    /* The big-bang intro plays once per visit; reduced motion skips it.
+       The class hides the page until js/intro.js takes over (or 6s pass). */
+    (function () {
+      var seen = false;
+      try { seen = sessionStorage.getItem("introSeen") === "1"; } catch (e) {}
+      var calm = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (!seen && !calm) {
+        document.documentElement.classList.add("intro");
+        setTimeout(function () { document.documentElement.classList.remove("intro"); }, 6000);
+      }
+    })();
+  </script>
+  <meta name="theme-color" content="#06060b" />
+  <link rel="canonical" href="https://shombith03.github.io/shombith-portfolio/" />
+  <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Link previews (LinkedIn, Slack, Discord, X) -->
+  <meta property="og:type" content="profile" />
+  <meta property="og:site_name" content="Shombith Chakraborty" />
+  <meta property="og:title" content="Shombith Chakraborty — UX director, systems engineer, game developer and designer" />
+  <meta property="og:description" content="Game systems, the engines under them, and the pipelines that ship them." />
+  <meta property="og:url" content="https://shombith03.github.io/shombith-portfolio/" />
+  <meta property="og:image" content="https://shombith03.github.io/shombith-portfolio/images/og.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Shombith Chakraborty: game systems, the engines under them, and the pipelines that ship them." />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Shombith Chakraborty",
+    "jobTitle": ["UX director", "Systems engineer", "Game developer", "Game designer"],
+    "url": "https://shombith03.github.io/shombith-portfolio/",
+    "email": "mailto:shombithofficial@outlook.com",
+    "address": { "@type": "PostalAddress", "addressLocality": "Kolkata", "addressCountry": "IN" },
+    "worksFor": { "@type": "Organization", "name": "Froglet Games", "url": "https://www.froglet.games/" },
+    "sameAs": ["https://github.com/Shombith03", "https://www.linkedin.com/in/shombith/"]
+  }
   </script>
 
-<footer class="site-footer">
-    <p>© 2025 Shombith Chakraborty | Social icons by <a href="https://icons8.com" target="_blank" rel="noopener">Icons8</a></p>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&amp;family=Bebas+Neue&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!--
+    Editing this page
+    - All copy lives in this file. Each tab is a <section class="panel">.
+    - To add a tab: add a link in .tablist (href="#your-id", data-tab) and a
+      matching <section id="your-id" class="panel" data-bg="images/bg/....webp">.
+    - data-bg on each panel is the space photo that fades in behind that tab.
+      Swap any of them for your own frames in images/bg/.
+    - Colours and fonts are tokens at the top of style.css.
+  -->
+
+  <div class="sky" aria-hidden="true">
+    <div class="nebula"><i></i><i></i><i></i></div>
+    <div class="sky-photo"></div>
+    <div class="sky-photo"></div>
+    <div class="starfield">
+      <div class="layer layer-far"><div class="stars stars-far"></div></div>
+      <div class="layer layer-mid"><div class="stars stars-mid"></div></div>
+      <div class="layer layer-near"><div class="stars stars-near"></div></div>
+    </div>
+    <div class="shooting"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="sky-shade"></div>
+    <div class="floor"><i></i></div>
+  </div>
+
+  <a class="skip" href="#panels">Skip to content</a>
+
+  <header class="topbar">
+    <div class="bar">
+      <nav class="tabs" aria-label="Sections" data-tabs>
+        <button class="step" type="button" data-step="-1" aria-label="Previous tab" hidden>Q</button>
+        <div class="tablist">
+          <a class="tab on" href="#cosmic-shore" data-tab>Cosmic Shore</a>
+          <a class="tab" href="#shipping" data-tab>Shipping</a>
+          <a class="tab" href="#froglet-games" data-tab>froglet.games</a>
+          <a class="tab" href="#amoebius" data-tab>Amoebius</a>
+          <a class="tab" href="#tooling" data-tab>Tooling</a>
+          <a class="tab" href="#experience" data-tab>Experience</a>
+          <a class="tab" href="#about" data-tab>About</a>
+        </div>
+        <button class="step" type="button" data-step="1" aria-label="Next tab" hidden>E</button>
+      </nav>
+      <a class="status" href="#contact"><span class="dot" aria-hidden="true"></span>Open to contract work</a>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <header class="hero">
+      <canvas class="spacetime" aria-hidden="true"></canvas>
+      <div class="hero-text">
+        <p class="motto"><span class="motto-label">Motto</span><q>Do not go gentle into that good night.</q><span class="motto-by">Dylan Thomas</span></p>
+        <div class="player">
+          <span class="avatar"><img src="images/avatar-160.webp" alt="Shombith Chakraborty" width="160" height="160" /></span>
+          <div>
+            <p class="player-name">Shombith Chakraborty</p>
+            <p class="player-class">Cosmic Shore at Froglet Games</p>
+          </div>
+        </div>
+        <ul class="roles hero-roles" aria-label="Roles">
+          <li>UX director</li>
+          <li>Systems engineer</li>
+          <li>Game developer</li>
+          <li>Game designer</li>
+        </ul>
+        <h1 class="hero-lede">Game systems, the engines under them, and the pipelines that ship them.</h1>
+        <p class="hero-intro">Game developer at Froglet. I work on Cosmic Shore, from its interface to its build pipeline, and I&rsquo;m writing an engine that runs it without Unity.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="https://www.froglet.games/play">Play Cosmic Shore</a>
+          <a class="btn" href="#about">About me</a>
+        </div>
+      </div>
+    </header>
+
+    <div id="panels" class="panels">
+
+      <!-- ===================== Cosmic Shore ===================== -->
+      <section id="cosmic-shore" class="panel" aria-labelledby="cosmic-shore-h" data-bg="images/bg/saturn.webp">
+        <div class="panel-head">
+          <h2 id="cosmic-shore-h">Cosmic Shore</h2>
+          <p>The game I work on at Froglet. The systems I own, with the commits and PRs behind them.</p>
+        </div>
+        <div class="grid">
+          <article class="tile sel">
+            <img src="images/cosmic-shore.webp" alt="A Cosmic Shore vessel flying through a lattice of blocks" width="1600" height="900" />
+            <span class="tag">Owned</span>
+            <h3>UI rebuild</h3>
+            <p>I redid the game&rsquo;s UI, architecture and look. The ship HUD moved onto subscriptions: <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/4500bd94900401be9b8c7cce90eecdb8d4002c45">4500bd949</a> cut <code>ShipHUDController</code> by ~300 lines into <code>HudSubscriptionSO</code> and per-ability views, and <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/662e300ed46206479ece25160692e9ad305158d5">662e300ed</a> deleted 2,591 lines of old HUD scripts across 80 files. Then a new visual language across menus, the hangar, the arcade flow, the event feed and toasts.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/87">#87</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/343">#343</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/364">#364</a></p>
+          </article>
+
+          <article class="tile" data-motif="transfer">
+            <span class="tag">Owned</span>
+            <h3>PlayFab to UGS</h3>
+            <p>Moved the backend onto Unity Gaming Services: anonymous sign-in and profiles, one <code>UGSDataService</code> for cloud save and data, a live <code>PlayerDataService</code> across every menu, leaderboards, Cloud Code, and Unity IAP with web checkout. Then PlayFab came out: ~87,800 lines across 452 files, after checking 209 GUIDs had zero inbound references.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/93">#93</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/346">#346</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/136">#136</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/537">#537</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/405">#405</a></p>
+          </article>
+
+
+          <article class="tile" data-motif="pulse">
+            <span class="tag">Owned</span>
+            <h3>Analytics and consent</h3>
+            <p>Replaced Firebase with one facade behind a consent and age gate, sending to UGS and to PostHog through a batched on-disk queue. Debounced cloud saves, per-vessel tracking and UGS stat keys.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/101">#101</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/546">#546</a></p>
+          </article>
+
+          <article class="tile" data-motif="flow">
+            <span class="tag">Owned</span>
+            <h3>Delivery pipeline</h3>
+            <p>Automated, scheduled builds for iOS, Android, WebGL and Steam, with a Unity CI job that compiles on every push. I also moved the project to Unity 6.3 LTS.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/555">#555</a></p>
+            <a class="play" href="#shipping">See Shipping &rarr;</a>
+          </article>
+
+          <article class="tile" data-motif="orbit">
+            <span class="tag">Shared</span>
+            <h3>Also worked on</h3>
+            <p>The vessel ability system: each ability became a data <code>ActionSO</code> with a runtime <code>ActionExecutor</code> resolved through <code>ActionExecutorRegistry</code>. Arcade modes: Drag Scouting, Dog Fight, Explosive Joust, Needle Thread and BlockBandit. Quest-driven progression, QuickPlay and the hangar unlock grid.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/424">#424</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/444">#444</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/223">#223</a></p>
+          </article>
+
+          <a class="tile live" href="https://www.froglet.games/play">
+            <span class="tag">Live</span>
+            <strong>Play Cosmic Shore</strong>
+            <span>In the browser, at froglet.games/play &rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===================== Shipping ===================== -->
+      <section id="shipping" class="panel" aria-labelledby="shipping-h" data-bg="images/bg/earth.webp">
+        <div class="panel-head">
+          <h2 id="shipping-h">Shipping</h2>
+          <p>I run the delivery pipeline. Builds for four platforms are automated and run on a schedule.</p>
+        </div>
+        <div class="grid">
+          <article class="tile wide accent" data-motif="flow">
+            <span class="tag">Live</span>
+            <h3>WebGL</h3>
+            <p>Build entry point, pre-export step and browser template, published to Cloudflare R2. Rollback is one file.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/402b61929">402b61929</a></p>
+            <a class="play" href="https://www.froglet.games/play">Play it at froglet.games/play &rarr;</a>
+          </article>
+          <article class="tile" data-motif="signal">
+            <span class="tag">Mobile</span>
+            <h3>iOS</h3>
+            <p>TestFlight uploads from GitHub Actions, signing a Windows-made Xcode export on a macOS runner.</p>
+          </article>
+          <article class="tile" data-motif="signal">
+            <span class="tag">Mobile</span>
+            <h3>Android</h3>
+            <p>A scripted release App Bundle build with a pre-upload Play check.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/dc0613aa2">dc0613aa2</a></p>
+          </article>
+          <article class="tile" data-motif="wave">
+            <span class="tag">Desktop</span>
+            <h3>Steam</h3>
+            <p>Steamworks.NET integration and release tooling.</p>
+          </article>
+          <article class="tile" data-motif="scan">
+            <span class="tag">CI</span>
+            <h3>Unity CI</h3>
+            <p>The Unity CI job had never run because its runner label was never set, so green builds only meant the Python checks passed. I replaced it with a push-triggered job that validates, compiles and opens an autofix PR.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/14129ba73">14129ba73</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== froglet.games ===================== -->
+      <section id="froglet-games" class="panel" aria-labelledby="froglet-games-h" data-bg="images/bg/deep-field.webp">
+        <div class="panel-head">
+          <h2 id="froglet-games-h">froglet.games</h2>
+        </div>
+        <div class="grid">
+          <article class="tile sel">
+            <img src="images/froglet-games.webp" alt="The froglet.games home page, with the Cosmic Shore logo over gameplay" width="1440" height="900" />
+            <span class="tag">Built</span>
+            <h3>Site</h3>
+            <p>Jekyll on GitHub Pages, Cloudflare Pages previews on every branch, Google Consent Mode v2, forms posting through a Google Apps Script to a Sheet, and WebGL builds served from R2.</p>
+          </article>
+          <article class="tile" data-motif="grid">
+            <span class="tag">Built</span>
+            <h3>Team Studio</h3>
+            <p>A browser editor where the team updates their own profiles. They sign in with GitHub, and every save is a commit through the API.</p>
+          </article>
+          <a class="tile live" href="https://www.froglet.games/">
+            <span class="tag">Live</span>
+            <strong>froglet.games</strong>
+            <span>Visit the site &rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===================== Amoebius ===================== -->
+      <section id="amoebius" class="panel" aria-labelledby="amoebius-h" data-bg="images/bg/bh-lensing.webp">
+        <div class="panel-head">
+          <h2 id="amoebius-h">Amoebius</h2>
+          <p>A .NET 10 engine I&rsquo;m writing that compiles and runs Cosmic Shore without Unity. Started June 2026; 15 projects under <code>Port/</code> in the game&rsquo;s repo.</p>
+        </div>
+        <div class="grid">
+          <article class="tile sel">
+            <img src="images/amoebius-launcher.webp" alt="The Amoebius launcher&rsquo;s Play page, with START and START ONLINE buttons" width="1360" height="820" />
+            <span class="tag">Owned</span>
+            <h3>Running Cosmic Shore</h3>
+            <p>The game&rsquo;s own <code>Assets/_Scripts</code> compile against the engine&rsquo;s API surfaces with zero errors. The launcher fetches a branch, compiles it, runs it, and builds Android and iOS.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/6a4ace506ca9d93ae349289743521df55de21672">6a4ace506</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/8fddab744d7f09594c0d5388fcab27cd3bd5a1cd">8fddab744</a></p>
+          </article>
+          <article class="tile" data-motif="orbit">
+            <span class="tag">Engine</span>
+            <h3>Runtime</h3>
+            <p>A scene graph with reflective lifecycle discovery, a deterministic <code>GameLoop</code>, <code>GameTask</code> in place of UniTask, an injection container in place of Reflex, and a SOAP layer in place of Obvious.Soap.</p>
+          </article>
+          <article class="tile" data-motif="wave">
+            <span class="tag">Engine</span>
+            <h3>Networking</h3>
+            <p>TCP transport, RPC routing and a session directory, carrying Netcode&rsquo;s model between processes.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/aeba7a882eb423f03af98dc6271c00d5f914c83c">aeba7a882</a></p>
+          </article>
+          <article class="tile" data-motif="signal">
+            <span class="tag">Engine</span>
+            <h3>Online play</h3>
+            <p>Uses the same UGS Lobby and Relay as the Unity build.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/01f582228d37ae69b06ae85648bb15e082def605">01f582228</a></p>
+          </article>
+          <article class="tile" data-motif="grid">
+            <span class="tag">Engine</span>
+            <h3>Rendering</h3>
+            <p>Matches the Unity build&rsquo;s rendering, including a reimplementation of URP 17.3&rsquo;s Gaussian bloom.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/fa16d6115ebfd06440e69d9bd815e6639934a84c">fa16d6115</a></p>
+          </article>
+          <article class="tile" data-motif="scan">
+            <span class="tag">Engine</span>
+            <h3>MCP server</h3>
+            <p>Lets an agent build the game, start it, take screenshots, click and steer, and read live values.</p>
+          </article>
+          <article class="tile wide" data-motif="pulse">
+            <span class="tag">Engine</span>
+            <h3>Capture</h3>
+            <p>The loop is deterministic, so the engine doubles as a render environment for the game&rsquo;s trailers and marketing footage: repeatable runs instead of hand-flown takes.</p>
+          </article>
+          <a class="tile live" href="https://www.froglet.games/blog/amoebius-our-own-engine/">
+            <span class="tag">Dev log</span>
+            <strong>Amoebius dev log</strong>
+            <span>On froglet.games, 23 October 2026 &rarr;</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- ===================== Tooling ===================== -->
+      <section id="tooling" class="panel" aria-labelledby="tooling-h" data-bg="images/bg/andromeda.webp">
+        <div class="panel-head">
+          <h2 id="tooling-h">Tooling</h2>
+          <p>Tools I built for the project and the team.</p>
+        </div>
+        <div class="grid">
+          <article class="tile wide" data-motif="pulse">
+            <span class="tag">Owned</span>
+            <h3>Froglet Compute</h3>
+            <p>A compute server on a VM. It takes job requests through git, runs them, and writes each job&rsquo;s best result and a heartbeat back to the repo. It runs per-vessel tuning, a bioform forge and Unity training jobs.</p>
+          </article>
+          <article class="tile" data-motif="transfer">
+            <span class="tag">Owned</span>
+            <h3>cs-asset</h3>
+            <p>Edits Unity scenes and prefabs and writes them back byte for byte, without Unity. Checked against 2,030 files.</p>
+          </article>
+          <article class="tile" data-motif="flow">
+            <span class="tag">Agents</span>
+            <h3>/ship</h3>
+            <p>A release protocol for agent work: review the branch, prove any editor tool&rsquo;s output landed, finish the docs, make a go/no-go call, then open the PR. Three lanes: <code>/ship-quick</code>, <code>/ship-deep</code> and <code>/ship-tools</code>.</p>
+          </article>
+          <article class="tile" data-motif="scan">
+            <span class="tag">Agents</span>
+            <h3>Skills and hooks</h3>
+            <p>I work heavily with Claude Code, and write skills and hooks that make it useful on a 4,700-file Unity project, which has a library of 35 skills. 1,952 commits from sessions I directed landed through my pull requests.</p>
+          </article>
+          <article class="tile" data-motif="wave">
+            <span class="tag">In-project</span>
+            <h3>CSDebug</h3>
+            <p>Central logging with per-type flags and a tabbed control window, replacing raw <code>Debug.Log</code> across the codebase.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/102">#102</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/530">#530</a></p>
+          </article>
+          <article class="tile" data-motif="pulse">
+            <span class="tag">In-project</span>
+            <h3>Benchmark tool</h3>
+            <p>Performance runs with a CPU/GPU split and bound-verdict overlays.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/529">#529</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/544">#544</a></p>
+          </article>
+          <article class="tile" data-motif="orbit">
+            <span class="tag">In-project</span>
+            <h3>Dialogue system</h3>
+            <p>In-game dialogue driven by SOAP events.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/434">#434</a></p>
+          </article>
+        </div>
+      </section>
+
+      <!-- ===================== Experience ===================== -->
+      <section id="experience" class="panel" aria-labelledby="experience-h" data-bg="images/bg/bh-disk.webp">
+        <div class="panel-head">
+          <h2 id="experience-h">Experience</h2>
+          <p>Studios I&rsquo;ve worked at, and earlier projects.</p>
+        </div>
+
+        <ol class="jobs">
+          <li class="job tile current">
+            <div class="job-main">
+              <div class="job-head">
+                <h3>Froglet Games</h3>
+                <span class="tag">Now</span>
+              </div>
+              <ul class="roles" aria-label="Roles">
+                <li>UX director</li>
+                <li>Systems engineer</li>
+                <li>Game developer</li>
+                <li>Game designer</li>
+              </ul>
+              <p>Cosmic Shore: the UI, backend, cameras, analytics and the delivery pipeline. Amoebius, the engine. The froglet.games site.</p>
+              <ul class="job-links" aria-label="Related tabs">
+                <li><a href="#cosmic-shore">Cosmic Shore</a></li>
+                <li><a href="#shipping">Shipping</a></li>
+                <li><a href="#amoebius">Amoebius</a></li>
+                <li><a href="#froglet-games">froglet.games</a></li>
+                <li><a href="#tooling">Tooling</a></li>
+              </ul>
+            </div>
+          </li>
+          <li class="job tile">
+            <div class="job-main">
+              <div class="job-head"><h3>Virtualize Technologies</h3></div>
+              <ul class="roles" aria-label="Roles"><li>Game Developer II</li></ul>
+              <p>Led Unity development on Mind Arcade (Gridlock Escape, Match Master), built client projects, and made Ultimate Beer Pong.</p>
+            </div>
+          </li>
+          <li class="job tile">
+            <div class="job-main">
+              <div class="job-head"><h3>Lokii Software Development</h3></div>
+              <ul class="roles" aria-label="Roles"><li>Unity Developer</li></ul>
+              <p>Unity development on the studio&rsquo;s in-house projects and on client projects.</p>
+            </div>
+          </li>
+        </ol>
+
+        <h3 class="subhead">Earlier projects</h3>
+        <ul class="projects">
+          <li class="project tile">
+            <img src="images/work/mind-arcade.webp" alt="" width="240" height="240" loading="lazy" />
+            <div><h4>Mind Arcade</h4><p>At Virtualize Technologies, as lead Unity developer. Gridlock Escape, Match Master, AssetBundle systems and a React Native&ndash;Unity bridge.</p></div>
+          </li>
+          <li class="project tile">
+            <img src="images/work/scene-switcher.webp" alt="" width="640" height="552" loading="lazy" />
+            <div><h4>Scene Switcher Master</h4><p>A Unity editor tool on the Asset Store.</p></div>
+          </li>
+          <li class="project tile">
+            <img src="images/work/moon-racer.webp" alt="" width="640" height="640" loading="lazy" />
+            <div><h4>Moon Racer</h4><p>Hypercasual, 2022&ndash;2024.</p></div>
+          </li>
+          <li class="project tile">
+            <img src="images/work/3d-zigzag.webp" alt="" width="640" height="640" loading="lazy" />
+            <div><h4>3D ZigZag</h4><p>Hypercasual, 2022&ndash;2024.</p></div>
+          </li>
+          <li class="project tile">
+            <span class="thumb-blank" aria-hidden="true"></span>
+            <div><h4>Ultimate Beer Pong</h4><p>At Virtualize Technologies. Hypercasual, 2022&ndash;2024.</p></div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ===================== About ===================== -->
+      <section id="about" class="panel" aria-labelledby="about-h" data-bg="images/bg/carina.webp">
+        <div class="panel-head">
+          <h2 id="about-h">About</h2>
+          <p>Kolkata, India.</p>
+        </div>
+        <div class="grid">
+          <article class="tile wide about">
+            <img class="about-photo" src="images/avatar-160.webp" alt="Shombith Chakraborty" width="160" height="160" loading="lazy" />
+            <div>
+              <h3>Shombith Chakraborty</h3>
+              <p>I live in Kolkata and build Cosmic Shore at Froglet Games. Outside work it&rsquo;s the night sky, film (Interstellar above all), music, psychology and travel.</p>
+              <blockquote class="quote">&ldquo;I love exploring new ideas and bringing them to life. Music philosophy and the cosmic land is my nirvana.&rdquo; <cite>from my froglet.games profile</cite></blockquote>
+            </div>
+          </article>
+          <a class="tile live" href="#contact">
+            <span class="tag">Contact</span>
+            <strong>Get in touch</strong>
+            <span>Email, GitHub, LinkedIn &rarr;</span>
+          </a>
+
+          <figure class="tile sky-chart">
+            <span class="tag">Night sky</span>
+            <svg class="constellations" viewBox="0 0 360 360" role="img" aria-label="Constellation charts drawn from real star positions: Orion, Cassiopeia and Ursa Major">
+        <g class="con con-1">
+          <line pathLength="1" x1="168.6" y1="134.8" x2="120.0" y2="159.4"></line>
+          <line pathLength="1" x1="168.6" y1="134.8" x2="192.8" y2="169.8"></line>
+          <line pathLength="1" x1="120.0" y1="159.4" x2="154.6" y2="250.6"></line>
+          <line pathLength="1" x1="192.8" y1="169.8" x2="176.0" y2="234.6"></line>
+          <line pathLength="1" x1="176.0" y1="234.6" x2="165.8" y2="243.4"></line>
+          <line pathLength="1" x1="165.8" y1="243.4" x2="154.6" y2="250.6"></line>
+          <line pathLength="1" x1="154.6" y1="250.6" x2="138.1" y2="326.0"></line>
+          <line pathLength="1" x1="176.0" y1="234.6" x2="218.3" y2="311.7"></line>
+          <line pathLength="1" x1="120.0" y1="159.4" x2="103.0" y2="137.6"></line>
+          <line pathLength="1" x1="103.0" y1="137.6" x2="81.8" y2="93.1"></line>
+          <line pathLength="1" x1="81.8" y1="93.1" x2="92.2" y2="87.6"></line>
+          <line pathLength="1" x1="92.2" y1="87.6" x2="125.0" y2="34.0"></line>
+          <line pathLength="1" x1="192.8" y1="169.8" x2="278.2" y2="163.8"></line>
+          <line pathLength="1" x1="265.1" y1="132.7" x2="275.8" y2="144.9"></line>
+          <line pathLength="1" x1="275.8" y1="144.9" x2="278.2" y2="163.8"></line>
+          <line pathLength="1" x1="278.2" y1="163.8" x2="275.1" y2="177.1"></line>
+          <line pathLength="1" x1="275.1" y1="177.1" x2="268.1" y2="207.9"></line>
+          <line pathLength="1" x1="268.1" y1="207.9" x2="257.7" y2="215.0"></line>
+          <circle class="neb" cx="167.8" cy="297.3" r="14"></circle>
+          <circle cx="218.3" cy="311.7" r="3.91"></circle>
+          <circle class="warm" cx="120.0" cy="159.4" r="3.65"></circle>
+          <circle cx="192.8" cy="169.8" r="2.85"></circle>
+          <circle cx="165.8" cy="243.4" r="2.82"></circle>
+          <circle cx="154.6" cy="250.6" r="2.76"></circle>
+          <circle cx="138.1" cy="326.0" r="2.56"></circle>
+          <circle cx="176.0" cy="234.6" r="2.44"></circle>
+          <circle cx="167.8" cy="289.3" r="2.06"></circle>
+          <circle cx="278.2" cy="163.8" r="1.77"></circle>
+          <circle cx="168.6" cy="134.8" r="1.63"></circle>
+          <circle cx="275.1" cy="177.1" r="1.42"></circle>
+          <circle cx="268.1" cy="207.9" r="1.41"></circle>
+          <circle cx="103.0" cy="137.6" r="1.12"></circle>
+          <circle cx="275.8" cy="144.9" r="1.10"></circle>
+          <circle cx="125.0" cy="34.0" r="1.10"></circle>
+          <circle cx="92.2" cy="87.6" r="1.10"></circle>
+          <circle cx="81.8" cy="93.1" r="1.10"></circle>
+          <circle cx="257.7" cy="215.0" r="1.10"></circle>
+          <circle cx="265.1" cy="132.7" r="1.10"></circle>
+        </g>
+        <g class="con con-2">
+          <line pathLength="1" x1="326.0" y1="202.2" x2="237.6" y2="262.8"></line>
+          <line pathLength="1" x1="237.6" y1="262.8" x2="183.9" y2="165.7"></line>
+          <line pathLength="1" x1="183.9" y1="165.7" x2="100.3" y2="176.9"></line>
+          <line pathLength="1" x1="100.3" y1="176.9" x2="34.0" y2="97.2"></line>
+          <circle cx="183.9" cy="165.7" r="2.50"></circle>
+          <circle cx="237.6" cy="262.8" r="2.43"></circle>
+          <circle cx="326.0" cy="202.2" r="2.41"></circle>
+          <circle cx="100.3" cy="176.9" r="2.12"></circle>
+          <circle cx="34.0" cy="97.2" r="1.64"></circle>
+        </g>
+        <g class="con con-3">
+          <line pathLength="1" x1="303.9" y1="107.3" x2="326.0" y2="170.1"></line>
+          <line pathLength="1" x1="326.0" y1="170.1" x2="245.3" y2="201.5"></line>
+          <line pathLength="1" x1="245.3" y1="201.5" x2="206.6" y2="162.5"></line>
+          <line pathLength="1" x1="206.6" y1="162.5" x2="303.9" y2="107.3"></line>
+          <line pathLength="1" x1="206.6" y1="162.5" x2="143.9" y2="175.0"></line>
+          <line pathLength="1" x1="143.9" y1="175.0" x2="92.4" y2="187.0"></line>
+          <line pathLength="1" x1="92.4" y1="187.0" x2="34.0" y2="252.7"></line>
+          <circle cx="143.9" cy="175.0" r="2.76"></circle>
+          <circle cx="303.9" cy="107.3" r="2.75"></circle>
+          <circle cx="34.0" cy="252.7" r="2.70"></circle>
+          <circle cx="92.4" cy="187.0" r="2.44"></circle>
+          <circle cx="326.0" cy="170.1" r="2.34"></circle>
+          <circle cx="245.3" cy="201.5" r="2.29"></circle>
+          <circle cx="206.6" cy="162.5" r="1.68"></circle>
+        </g>
+        </svg>
+            <figcaption class="con-names"><span class="cn cn-1">Orion</span><span class="cn cn-2">Cassiopeia</span><span class="cn cn-3">Ursa Major</span></figcaption>
+          </figure>
+          <article class="tile hobby" data-motif="orbit">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M3 15l12-6 2 4-12 6z"/><path d="M15 9l3-1.5 2 4-3 1.5"/><path d="M9 18l-2 4M11 17l2 5"/></svg>
+            <h3>Stargazing</h3>
+            <p>I photograph the night sky. The space photos behind this site are placeholders until my own frames go in.</p>
+          </article>
+          <article class="tile hobby" data-motif="orbit">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-25 12 12)"/></svg>
+            <h3>Deep space</h3>
+          </article>
+          <article class="tile hobby" data-motif="pulse">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="M7 5v14M17 5v14M3 9h4M3 15h4M17 9h4M17 15h4"/></svg>
+            <h3>Film</h3>
+            <p>Interstellar is my favourite film of all time, which is why there is a black hole at the top of this page.</p>
+          </article>
+          <article class="tile hobby" data-motif="wave">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M9 18V5l11-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="17" cy="16" r="3"/></svg>
+            <h3>Music</h3>
+          </article>
+          <article class="tile hobby" data-motif="signal">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3a7 7 0 0 0-4 12.7V20h8v-4.3A7 7 0 0 0 12 3z"/><path d="M10 20v1h4v-1M12 7v4M10 9h4"/></svg>
+            <h3>Psychology</h3>
+          </article>
+          <article class="tile hobby" data-motif="flow">
+            <svg aria-hidden="true" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/></svg>
+            <h3>Travel</h3>
+          </article>
+
+          <details class="tile wide toolbox">
+            <summary>Toolbox</summary>
+            <p>C#, .NET 10, Unity 6 / 6.3 LTS, Unity UI and TextMeshPro, ScriptableObjects and SOAP, dependency injection (Reflex), UniTask and async, DOTween, UGS Lobby and Relay, UGS Authentication and Cloud Save, PlayFab, Firebase, PostHog, Unity IAP, AssetBundles, React Native&ndash;Unity bridge, URP and shaders, OpenGL, FMOD, Silk.NET and Dear ImGui, Android and iOS builds, Unity editor tooling, performance profiling, Jekyll and GitHub Pages, Cloudflare Pages and R2, git and pull-request workflow, Claude Code skills and hooks, MCP, Claude artifacts, optimisation and AI-training jobs, Linux VMs and job queues.</p>
+          </details>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <footer class="footer" id="contact">
+    <div class="wrap footer-in">
+      <p class="footer-line">Open to contract work.</p>
+      <ul class="prompts">
+        <li><a href="mailto:shombithofficial@outlook.com"><span class="k">Mail</span>shombithofficial@outlook.com</a></li>
+        <li><a href="https://github.com/Shombith03"><span class="k">Code</span>GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/shombith/"><span class="k">Work</span>LinkedIn</a></li>
+      </ul>
+      <p class="credit">&copy; 2026 Shombith Chakraborty · Cosmic Shore images: Froglet Games. Space photographs: NASA, ESA, CSA, STScI, JPL-Caltech, in black and white with a violet tint (placeholders until my own frames go in). The robot is an original companion.</p>
+    </div>
   </footer>
-  
+
+  <button class="bot" type="button" aria-pressed="false" aria-label="Companion robot. Click to make it follow your cursor; click again to send it back." hidden>
+    <span class="bot-body">
+      <span class="slab"></span>
+      <span class="slab face"><span class="antenna"></span><i></i><i></i></span>
+      <span class="slab"></span>
+    </span>
+  </button>
+
+  <script src="js/tabs.js" defer></script>
+  <script src="js/spacetime.js" defer></script>
+  <script src="js/companion.js" defer></script>
+  <script src="js/intro.js" defer></script>
 </body>
 </html>
