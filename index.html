@@ -65,37 +65,116 @@
       </article>
     </section>
 
-    <section id="shipping" class="section">
-      <h2>Shipping it</h2>
-      <p class="section-intro">[One line of context]</p>
-      <p>[iOS, Android, WebGL, Steam, CI]</p>
+    <section id="shipping" class="section" aria-labelledby="shipping-h">
+      <p class="section-num">02</p>
+      <h2 id="shipping-h">Shipping it</h2>
+      <p class="section-intro">I run the delivery pipeline across four platforms. It is automated and scheduled: builds run on their own, not when someone remembers to press a button.</p>
+      <p class="play"><a href="https://www.froglet.games/play">Play Cosmic Shore in your browser at froglet.games/play</a></p>
+      <dl class="platforms">
+        <div>
+          <dt>iOS</dt>
+          <dd>TestFlight uploads from GitHub Actions, signing a Windows-made Xcode export on a macOS runner. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/566bd5888">566bd5888</a></dd>
+        </div>
+        <div>
+          <dt>Android</dt>
+          <dd>A scripted release App Bundle build with a pre-upload Play check. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/dc0613aa2">dc0613aa2</a></dd>
+        </div>
+        <div>
+          <dt>WebGL</dt>
+          <dd>Build entry point, pre-export step and browser template, published to Cloudflare R2. Rollback is one file. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/402b61929">402b61929</a></dd>
+        </div>
+        <div>
+          <dt>Steam</dt>
+          <dd>Steamworks.NET integration and release tooling.</dd>
+        </div>
+        <div>
+          <dt>CI</dt>
+          <dd>The Unity job had never run: its runner label was never set, so every green build was Python checks only. I replaced it with a push-triggered guard that validates, compiles and opens an autofix PR. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/14129ba73">14129ba73</a></dd>
+        </div>
+      </dl>
     </section>
 
-    <section id="froglet-games" class="section">
-      <h2>froglet.games</h2>
-      <p>[Copy, screenshot, link]</p>
+    <section id="froglet-games" class="section" aria-labelledby="froglet-games-h">
+      <p class="section-num">03</p>
+      <h2 id="froglet-games-h">froglet.games</h2>
+      <p>The studio site, which I built. Jekyll on GitHub Pages, Cloudflare Pages previews on every branch, Google Consent Mode v2, forms posting through a Google Apps Script to a Sheet, and WebGL builds served from R2. It also has a browser Studio where the team edits their own profiles: GitHub sign-in, and every save is a commit through the API.</p>
+      <figure class="shot">
+        <img src="images/froglet-games.webp" alt="The froglet.games home page, with the Cosmic Shore logo over gameplay" width="1440" height="900" loading="lazy" />
+      </figure>
+      <p class="visit"><a href="https://www.froglet.games/">Visit froglet.games</a></p>
     </section>
 
-    <section id="amoebius" class="section">
-      <h2>Amoebius</h2>
-      <p>[Copy, screenshot]</p>
+    <section id="amoebius" class="section" aria-labelledby="amoebius-h">
+      <p class="section-num">04</p>
+      <h2 id="amoebius-h">Amoebius</h2>
+      <p class="section-intro">My engine: a .NET 10 engine that runs Cosmic Shore without Unity. Started June 2026, it is 15 projects under <code>Port/</code> in the game&rsquo;s repo.</p>
+      <dl class="figures">
+        <div><dt>0</dt><dd>compile errors in the real game scripts</dd></div>
+        <div><dt>15</dt><dd>projects</dd></div>
+      </dl>
+      <figure class="shot">
+        <img src="images/amoebius-launcher.webp" alt="The Amoebius launcher&rsquo;s Play page, with START and START ONLINE buttons" width="1360" height="820" loading="lazy" />
+      </figure>
+      <dl class="parts">
+        <div><dt>Runtime</dt><dd>A scene graph with reflective lifecycle discovery, a deterministic <code>GameLoop</code>, <code>GameTask</code> in place of UniTask, an injection container in place of Reflex, and a SOAP layer in place of Obvious.Soap.</dd></div>
+        <div><dt>The real game</dt><dd>The actual <code>Assets/_Scripts</code> compile against engine-side API surfaces with zero errors. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/6a4ace506ca9d93ae349289743521df55de21672">6a4ace506</a></dd></div>
+        <div><dt>Networking</dt><dd>TCP transport, RPC routing and a session directory, carrying Netcode&rsquo;s own model between processes. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/aeba7a882eb423f03af98dc6271c00d5f914c83c">aeba7a882</a></dd></div>
+        <div><dt>Online play</dt><dd>Runs through the same UGS Lobby and Relay as the Unity build. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/01f582228d37ae69b06ae85648bb15e082def605">01f582228</a></dd></div>
+        <div><dt>Graphics</dt><dd>Matches the Unity build&rsquo;s rendering, including a reimplementation of URP 17.3&rsquo;s Gaussian bloom. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/fa16d6115ebfd06440e69d9bd815e6639934a84c">fa16d6115</a></dd></div>
+        <div><dt>Launcher</dt><dd>Fetches a branch, compiles it, runs it, and builds Android and iOS. <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/8fddab744d7f09594c0d5388fcab27cd3bd5a1cd">8fddab744</a></dd></div>
+        <div><dt>MCP server</dt><dd>An agent can build the game, start it, take screenshots, click and steer, and read live values.</dd></div>
+        <div><dt>Capture</dt><dd>The loop is deterministic, so the engine doubles as a controlled render environment for the game&rsquo;s trailers and marketing footage: exact repeatable runs instead of hand-flown takes.</dd></div>
+      </dl>
     </section>
 
-    <section id="tooling" class="section">
-      <h2>Tooling</h2>
-      <article class="system"><h3>Froglet Compute</h3><p>[Copy]</p></article>
-      <article class="system"><h3>cs-asset</h3><p>[Copy]</p></article>
-      <article class="system"><h3>The agent pipeline</h3><p>[Copy]</p></article>
+    <section id="tooling" class="section" aria-labelledby="tooling-h">
+      <p class="section-num">05</p>
+      <h2 id="tooling-h">Tooling</h2>
+
+      <article class="system">
+        <h3>Froglet Compute</h3>
+        <p>An automated compute server on a VM. It takes job requests through git, runs them, and writes each job&rsquo;s best result and a heartbeat back to the repo. It drives per-vessel tuning runs, a bioform forge and Unity training.</p>
+      </article>
+
+      <article class="system">
+        <h3>cs-asset</h3>
+        <p>Edits Unity scenes and prefabs and writes them back byte for byte, with no Unity involved.</p>
+        <dl class="figures">
+          <div><dt>2,030</dt><dd>files verified byte-for-byte</dd></div>
+        </dl>
+      </article>
+
+      <article class="system">
+        <h3>The agent pipeline</h3>
+        <p>I work heavily with Claude Code, and I write the skills and hooks that make it useful on a 4,700-file Unity project. The <code>/ship</code> protocol reviews the branch, proves any editor tool&rsquo;s output landed, finishes the docs, makes a go/no-go call, then opens the PR, in three lanes: <code>/ship-quick</code>, <code>/ship-deep</code> and <code>/ship-tools</code>. 1,952 commits from Claude Code sessions I directed landed through my pull requests. Directing that well is its own skill.</p>
+      </article>
     </section>
 
     <!-- Tier 2: collapsed -->
 
-    <section id="more" class="section section-quiet">
-      <h2>More work</h2>
-      <details><summary>More Cosmic Shore work</summary><p>[Copy]</p></details>
-      <details><summary>Earlier work</summary><p>[Scene Switcher Master, MindArcade, Ultimate Beer Pong, 3D ZigZag, Moon Racer]</p></details>
-      <details><summary>Companies</summary><p>[Lokii Software Development, Virtualize Technologies, Froglet Games]</p></details>
-      <details><summary>Skills</summary><p>[Copy]</p></details>
+    <section id="more" class="section section-quiet" aria-labelledby="more-h">
+      <h2 id="more-h">More work</h2>
+
+      <details>
+        <summary>More Cosmic Shore work</summary>
+        <p>Worked on the vessel ability system: each ability became a data <code>ActionSO</code> with a runtime <code>ActionExecutor</code> resolved through <code>ActionExecutorRegistry</code>.</p>
+        <p>Arcade game modes: Drag Scouting, Dog Fight, Explosive Joust, Needle Thread and BlockBandit (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/424">#424</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/444">#444</a>). Quest-driven progression (<a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/223">#223</a>). QuickPlay and the hangar unlock grid.</p>
+      </details>
+
+      <details>
+        <summary>Earlier work</summary>
+        <p>Mind Arcade, as Lead Unity Developer: Gridlock Escape, Match Master, AssetBundle systems and a React Native&ndash;Unity bridge. Moon Racer, 3D ZigZag and Ultimate Beer Pong, hypercasual games from 2022&ndash;2024. Scene Switcher Master, a Unity editor tool on the Asset Store.</p>
+      </details>
+
+      <details>
+        <summary>Companies</summary>
+        <p>Lokii Software Development, Virtualize Technologies, Froglet Games.</p>
+      </details>
+
+      <details>
+        <summary>Skills</summary>
+        <p>C#, .NET 10, Unity 6 / 6.3 LTS, Unity UI and TextMeshPro, ScriptableObjects and SOAP, dependency injection (Reflex), UniTask and async, DOTween, UGS Lobby and Relay, UGS Authentication and Cloud Save, PlayFab, Firebase, PostHog, Unity IAP, AssetBundles, React Native&ndash;Unity bridge, URP and shaders, OpenGL, FMOD, Silk.NET and Dear ImGui, Android and iOS builds, Unity editor tooling, performance profiling, Jekyll and GitHub Pages, Cloudflare Pages and R2, git and pull-request workflow, Claude Code skills and hooks, MCP, Claude artifacts, optimisation and AI-training jobs, Linux VMs and job queues.</p>
+      </details>
     </section>
 
     <!-- Tier 3 -->
@@ -105,9 +184,14 @@
       <p>[Published dev log]</p>
     </section>
 
-    <section id="contact" class="section">
-      <h2>Contact</h2>
-      <p>[Email, GitHub, LinkedIn]</p>
+    <section id="contact" class="section" aria-labelledby="contact-h">
+      <h2 id="contact-h">Contact</h2>
+      <p class="contact-line">Kolkata. Open to contract work.</p>
+      <ul class="contact-links">
+        <li><a href="mailto:shombithofficial@outlook.com">shombithofficial@outlook.com</a></li>
+        <li><a href="https://github.com/Shombith03">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/shombith/">LinkedIn</a></li>
+      </ul>
     </section>
 
   </main>
