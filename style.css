@@ -911,19 +911,26 @@ html.intro .hero-text > *, html.intro .hero-lede { animation-play-state: paused;
 
 
 /* ==========================================================================
-   Card backgrounds: each card shows its own patch of deep space,
-   darkened so the text stays readable. The photos are the same ones that
-   fade in behind the tabs, so they are already cached.
+   Card backgrounds: each card shows its own patch of deep space. The photos
+   are the same ones that fade in behind the tabs, so they are already cached.
+   Readability is the same on every card, however busy its photo:
+   - the cap layer (blend: darken) clips every channel of the photo at
+     --card-cap, so a bright star or nebula can't rise above that;
+   - the scrim on top darkens it all by the same amount.
+   With the cap at 110 the brightest possible pixel behind text is about
+   L 0.02, which keeps even --faint text above 4.5:1 (WCAG AA).
    ========================================================================== */
 .tile {
   --card-img: url("images/bg/saturn.webp");
   --card-pos: 70% 40%;
+  --card-cap: rgb(110 110 110);
   background:
-    linear-gradient(165deg, rgb(var(--bg-rgb) / 0.62) 0%, rgb(var(--bg-rgb) / 0.86) 55%, rgb(var(--bg-rgb) / 0.94) 100%),
+    linear-gradient(165deg, rgb(var(--bg-rgb) / 0.66) 0%, rgb(var(--bg-rgb) / 0.82) 55%, rgb(var(--bg-rgb) / 0.92) 100%),
     linear-gradient(var(--tint-layer), var(--tint-layer)),
+    linear-gradient(var(--card-cap), var(--card-cap)),
     var(--card-img) var(--card-pos) / cover no-repeat,
     var(--panel-solid);
-  background-blend-mode: normal, color, normal;
+  background-blend-mode: normal, color, darken, normal, normal;
 }
 .tile:nth-child(7n+2) { --card-img: url("images/bg/carina.webp");     --card-pos: 30% 20%; }
 .tile:nth-child(7n+3) { --card-img: url("images/bg/bh-disk.webp");    --card-pos: 55% 55%; }
