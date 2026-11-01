@@ -782,11 +782,19 @@ html.intro::after { content: ""; position: fixed; inset: 0; z-index: 998; backgr
 .intro-overlay { position: fixed; inset: 0; z-index: 999; display: grid; place-items: center; background: #020408; }
 .intro-canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
 .intro-quote {
-  position: relative; margin: 0; padding: 0 24px; text-align: center;
-  opacity: 0; transform: translateY(10px) scale(0.98);
-  transition: opacity 1100ms ease, transform 1600ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  position: relative; z-index: 1; margin: 0; padding: 0 24px; text-align: center;
+  opacity: 0; transform: translateY(8px);
+  transition: opacity 450ms ease, transform 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+/* A dark pool behind the motto so nothing behind it competes with the words */
+.intro-quote::before {
+  content: ""; position: absolute; z-index: -1; left: 50%; top: 50%;
+  width: min(140vw, 1100px); height: 22rem; transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side, #020408 0%, rgb(2 4 8 / 0.85) 45%, rgb(2 4 8 / 0) 100%);
 }
 .intro-overlay.speak .intro-quote { opacity: 1; transform: none; }
+.intro-overlay.leaving .intro-quote { opacity: 0; transform: none; transition: opacity 340ms ease; }
+.intro-overlay.leaving .intro-skip { opacity: 0; transition: opacity 200ms ease; }
 .intro-quote blockquote {
   margin: 0; font-family: var(--font-display);
   font-size: clamp(2rem, 5.4vw, 3.75rem); letter-spacing: 0.05em; line-height: 1; color: #f3ede2;
@@ -799,15 +807,16 @@ html.intro::after { content: ""; position: fixed; inset: 0; z-index: 998; backgr
   color: var(--muted); background: transparent; border: 1px solid var(--line); border-radius: 999px; cursor: pointer;
 }
 .intro-skip:hover, .intro-skip:focus-visible { color: var(--text); border-color: var(--accent-2); }
-.intro-overlay.gone { opacity: 0; transition: opacity 900ms ease; pointer-events: none; }
+.intro-overlay.gone { opacity: 0; transition: opacity 700ms ease; pointer-events: none; }
 .intro-overlay.gone-quick { opacity: 0; transition: opacity 300ms ease; pointer-events: none; }
+.intro-overlay.leaving { pointer-events: none; }
 
 /* While the intro plays, the page waits; then each part arrives in turn */
 .topbar { transition: transform 700ms cubic-bezier(0.2, 0.7, 0.2, 1) 200ms; }
 .spacetime { transition: opacity 1600ms ease 300ms; }
 .panels { transition: opacity 900ms ease 700ms; }
 html.intro .topbar { transform: translateY(-110%); }
-html.intro .spacetime, html.intro .panels, html.intro .bot { opacity: 0; }
+html.intro .spacetime, html.intro .panels, html.intro .bot, html.intro-tail .bot { opacity: 0; }
 html.intro .hero-text > *, html.intro .hero-lede { animation-play-state: paused; }
 
 /* ==========================================================================
