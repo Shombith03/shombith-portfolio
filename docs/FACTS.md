@@ -49,6 +49,8 @@ Everything else on the site supports that sentence. It is the headline, the
 page title's subject, and the first thing a visitor reads.
 
 **Role line:** Software engineer, Kolkata.
+**Designations (from Shombith, 2026-11-01):** UX director, systems engineer,
+game developer, game designer. Shown in the hero and on the Froglet Games job.
 **Positioning:** I build engines, multiplayer systems and the pipelines that
 ship them.
 **Availability:** Kolkata. Open to contract work.
