@@ -1,129 +1,85 @@
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Shombith</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shombith Chakraborty</title>
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Oxanium:wght@600&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Animated glitch overlay -->
-  <div id="loader">
-    <div class="spinner"></div>
-    <p class="loading-text">  Loading portfolio...</p>
-  </div>
-  
-  <div class="glitch-overlay"></div>
 
-  <div class="wrapper">
-    <header class="header">
-        <h1 class="title">Shombith Chakraborty</h1>
+  <header class="hero">
+    <img class="hero-photo" src="images/avatar.jpg" alt="Shombith Chakraborty" width="160" height="160" />
+    <h1 class="hero-name">Shombith Chakraborty</h1>
+    <p class="hero-role">[Role line]</p>
+    <p class="hero-position">[Positioning line]</p>
+    <p class="hero-lede">[The lede sentence]</p>
+  </header>
 
-      <p class="subtitle">Game Developer | Game Designer | Unity Specialist</p>
-      <p class="scroll">SCROLL DOWN</p>
-    </header>
-    <div class="vapor-layer"></div>
+  <main>
 
-    <main>
-      <!-- First Row: About Me & Projects -->
-      <div class="grid-two">
-        <section class="card about">
-          <h2>ABOUT ME</h2>
-          <div class="avatar-container">
-            <img src="images/avatar.jpg" alt="My Avatar" class="avatar-image">
-          </div>
-          <p>Hi, I’m Shombith Chakraborty, a passionate Game Developer and Multiplayer/Tools Engineer at Froglet Games.
-            I specialize in building complete Unity experiences — from gameplay, SDK integrations, backend systems to custom editor tools.
-            Always creating, always leveling up — let’s shape the future of games together!</p>
-        </section>
-        <section class="card projects">
-            <h2>PROJECTS</h2>
-            <div class="projects-grid">
-          
-              <!-- Project 1 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/scene-switcher.jpg');"></div>
-                </div>
-                <h3>Scene Switcher Master</h3>
-                <p>Unity Dev Tool</p>
-              </a>
-          
-              <!-- Project 2 -->
-              <a class="project-item project-company" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/mindarcad1e.jpg');"></div>
-                </div>
-                <h3>MindArcade</h3>
-                <p>Made for Digital Squire. Worked on Gridlock Escape and Match Master</p>
-              </a>
-          
-              <!-- Project 4 -->
-              <a class="project-item project-company" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/beer-pong1.jpg');"></div>
-                </div>
-                <h3>Ultimate Beer Pong</h3>
-                <p>Company Project</p>
-              </a>
-          
-              <!-- Project 5 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/3d-zigzag.jpg');"></div>
-                </div>
-                <h3>3D ZigZag</h3>
-                <p>Hyper Casual Game</p>
-              </a>
-          
-              <!-- Project 6 -->
-              <a class="project-item project-self" href="#">
-                <div class="project-image">
-                  <div class="project-placeholder" style="background-image: url('images/moon-racer.jpg');"></div>
-                </div>
-                <h3>Moon Racer</h3>
-                <p>Hyper Casual Game</p>
-              </a>
-          
-            </div> <!-- End of .projects-grid -->
-          </section> <!-- End of .projects -->
-          
-          
-      </div>
+    <!-- Tier 1: five sections, in order -->
 
-      <!-- Second Row: Companies & Socials -->
-      <div class="grid-three">
-        <section class="card companies-worked">
-            <h2>COMPANIES I WORKED WITH</h2>
-            <div class="companies-list">
-              <div class="company-badge">Lokii Software Development</div>
-              <div class="company-badge">Virtualize Technologies</div>
-              <div class="company-badge">Froglet Games</div>
-            </div>
-          </section>
+    <section id="cosmic-shore" class="section">
+      <h2>Cosmic Shore — systems I own</h2>
+      <p class="section-intro">[One line of context]</p>
+      <article class="system"><h3>The UI, rebuilt</h3><p>[Copy]</p></article>
+      <article class="system"><h3>Backend: PlayFab to UGS</h3><p>[Copy]</p></article>
+      <article class="system"><h3>Data-driven cameras</h3><p>[Copy]</p></article>
+      <article class="system"><h3>Analytics and consent</h3><p>[Copy]</p></article>
+      <article class="system"><h3>Tooling inside the project</h3><p>[Copy]</p></article>
+    </section>
 
-          <section class="card socials">
-            <h2>SOCIALS</h2>
-            <div class="social-icons">
-              <a href="https://www.linkedin.com/in/shombith/" class="linkedin" target="_blank" rel="noopener"><img src="icons/linkedin.svg" alt="LinkedIn" /></a>
-              <a href="https://github.com/Shombith03" class="github" target="_blank" rel="noopener"><img src="icons/github.svg" alt="GitHub" /></a>
-              <a href="https://assetstore.unity.com" class="assetstore" target="_blank" rel="noopener"><img src="icons/unity.svg" alt="Asset Store" /></a>
-            </div>
-          </section>
-          
-      </div>
-    </main>
-  </div>
-  <script>
-    window.addEventListener("load", function(){
-      document.getElementById("loader").style.display = "none";
-    });
-  </script>
+    <section id="shipping" class="section">
+      <h2>Shipping it</h2>
+      <p class="section-intro">[One line of context]</p>
+      <p>[iOS, Android, WebGL, Steam, CI]</p>
+    </section>
 
-<footer class="site-footer">
-    <p>© 2025 Shombith Chakraborty | Social icons by <a href="https://icons8.com" target="_blank" rel="noopener">Icons8</a></p>
+    <section id="froglet-games" class="section">
+      <h2>froglet.games</h2>
+      <p>[Copy, screenshot, link]</p>
+    </section>
+
+    <section id="amoebius" class="section">
+      <h2>Amoebius</h2>
+      <p>[Copy, screenshot]</p>
+    </section>
+
+    <section id="tooling" class="section">
+      <h2>Tooling</h2>
+      <article class="system"><h3>Froglet Compute</h3><p>[Copy]</p></article>
+      <article class="system"><h3>cs-asset</h3><p>[Copy]</p></article>
+      <article class="system"><h3>The agent pipeline</h3><p>[Copy]</p></article>
+    </section>
+
+    <!-- Tier 2: collapsed -->
+
+    <section id="more" class="section section-quiet">
+      <h2>More work</h2>
+      <details><summary>More Cosmic Shore work</summary><p>[Copy]</p></details>
+      <details><summary>Earlier work</summary><p>[Scene Switcher Master, MindArcade, Ultimate Beer Pong, 3D ZigZag, Moon Racer]</p></details>
+      <details><summary>Companies</summary><p>[Lokii Software Development, Virtualize Technologies, Froglet Games]</p></details>
+      <details><summary>Skills</summary><p>[Copy]</p></details>
+    </section>
+
+    <!-- Tier 3 -->
+
+    <section id="writing" class="section">
+      <h2>Writing</h2>
+      <p>[Published dev log]</p>
+    </section>
+
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <p>[Email, GitHub, LinkedIn]</p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2026 Shombith Chakraborty</p>
   </footer>
-  
+
 </body>
 </html>
