@@ -19,7 +19,7 @@
   --live:        #9fe3c0;   /* availability dot */
   --gradient:    linear-gradient(90deg, #e2b06a 0%, #f1e6d2 55%, #c9b896 100%);
 
-  --font-display: "Montserrat", "Segoe UI", system-ui, sans-serif;
+  --font-display: "Bebas Neue", "Oswald", Impact, "Arial Narrow", sans-serif;
   --font-body:    "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
@@ -914,3 +914,37 @@ html.intro .hero-text > *, html.intro .hero-lede { animation-play-state: paused;
 .tile:nth-child(7n+5) { --card-img: url("images/bg/earth.webp");      --card-pos: 50% 85%; }
 .tile:nth-child(7n+6) { --card-img: url("images/bg/andromeda.webp");  --card-pos: 50% 50%; }
 .tile:nth-child(7n+7) { --card-img: url("images/bg/bh-lensing.webp"); --card-pos: 50% 50%; }
+
+
+/* ==========================================================================
+   Type: movie-poster headings. Bebas Neue has a single weight and no
+   italic, so every heading uses 400 and the browser never fakes bold.
+   ========================================================================== */
+.hero-lede, .panel-head h2, .tile h3, .tab, .btn, .player-name, a.tile.live strong,
+.footer-line, .project h4, .intro-quote blockquote, .job-head h3, .subhead, .motto-label, .status,
+.prompts a, .toolbox summary, .post-title {
+  font-weight: 400;
+  font-synthesis: none;
+}
+.hero-lede { font-size: 3.75rem; line-height: 0.98; letter-spacing: 0.01em; }
+.player-name { font-size: 1.75rem; letter-spacing: 0.05em; }
+.tab { font-size: 1.0625rem; letter-spacing: 0.08em; padding-top: 20px; padding-bottom: 19px; }
+.btn { font-size: 1.125rem; letter-spacing: 0.1em; }
+.panel-head h2 { font-size: 2.25rem; letter-spacing: 0.06em; }
+.tile h3 { font-size: 1.5rem; letter-spacing: 0.03em; line-height: 1.05; }
+a.tile.live strong { font-size: 1.75rem; letter-spacing: 0.04em; }
+.job-head h3 { font-size: 1.625rem; letter-spacing: 0.03em; }
+.project h4 { font-size: 1.3125rem; letter-spacing: 0.03em; }
+.footer-line { font-size: 1.875rem; letter-spacing: 0.05em; }
+.status { font-size: 1rem; letter-spacing: 0.1em; }
+.prompts a { font-size: 1.125rem; letter-spacing: 0.06em; }
+.subhead { font-size: 1.125rem; letter-spacing: 0.12em; }
+.toolbox summary { font-size: 1.125rem; letter-spacing: 0.08em; }
+.motto q { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 0.9375rem; }
+.intro-quote blockquote { font-style: normal; font-size: clamp(2rem, 5.4vw, 3.75rem); letter-spacing: 0.05em; line-height: 1; }
+@media (max-width: 960px) { .hero-lede { font-size: 3rem; } }
+@media (max-width: 640px) {
+  .hero-lede { font-size: 2.5rem; }
+  .panel-head h2 { font-size: 1.75rem; }
+  .tab { font-size: 0.9375rem; }
+}
