@@ -426,6 +426,12 @@ h1, h2, h3 { margin: 0; }
   box-shadow: 0 0 40px rgb(var(--accent-rgb) / 0.12);
 }
 .tile.sel > img:not(.logo) { width: 100%; border-radius: 4px; margin-bottom: 8px; }
+/* Wide screens: the two cards beside a two-row card share its height equally,
+   and its screenshot grows (cropped) to fill, so the row ends level. */
+@media (min-width: 961px) {
+  .grid:has(> .tile.sel:first-child) { grid-template-rows: repeat(2, minmax(0, 1fr)); }
+  .tile.sel > img:not(.logo) { flex: 1 1 auto; height: 0; min-height: 15rem; object-fit: cover; object-position: 50% 0; }
+}
 .tile.accent { border-color: rgb(var(--accent-rgb) / 0.5); }
 .tile h3 { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.03em; line-height: 1.05; }
 .tile p { margin: 0; font-size: 0.9063rem; color: var(--text); opacity: 0.92; }
@@ -589,6 +595,7 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   .hero-lede { font-size: 3rem; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tile.sel { grid-row: auto; }
+  .tile.fill-md { grid-column: span 2; }   /* would otherwise sit alone in its row */
 }
 
 @media (max-width: 640px) {
@@ -598,7 +605,7 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   .tab { font-size: 0.9375rem; }
   .hero-lede { font-size: 2.5rem; }
   .grid { grid-template-columns: minmax(0, 1fr); }
-  .tile.wide, .tile.sel { grid-column: auto; }
+  .tile.wide, .tile.sel, .tile.fill-md { grid-column: auto; }
   .tile.about { flex-direction: column; align-items: flex-start; }
   .projects { grid-template-columns: minmax(0, 1fr); }
   .job { grid-template-columns: minmax(0, 1fr); }
