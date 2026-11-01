@@ -7,17 +7,17 @@
 
 :root {
   --bg:          #05080e;
-  --panel:       rgba(11, 17, 28, 0.82);
-  --panel-solid: #0b121e;
-  --line:        rgba(200, 220, 255, 0.12);
-  --line-soft:   rgba(200, 220, 255, 0.07);
-  --text:        #e8eef6;
-  --muted:       #b0bfd0;
-  --faint:       #8a99ad;
+  --panel:       rgba(16, 15, 15, 0.84);
+  --panel-solid: #121111;
+  --line:        rgba(235, 225, 210, 0.13);
+  --line-soft:   rgba(235, 225, 210, 0.07);
+  --text:        #efebe4;
+  --muted:       #c4bdb2;
+  --faint:       #978f84;
   --accent:      #e2b06a;   /* amber: active tab, selected tile, tags */
-  --accent-2:    #9cc8f5;   /* ice blue: commit hashes and PR links */
+  --accent-2:    #dccfb8;   /* warm sand: commit hashes and PR links */
   --live:        #9fe3c0;   /* availability dot */
-  --gradient:    linear-gradient(90deg, #e2b06a 0%, #efe6d6 50%, #9cc8f5 100%);
+  --gradient:    linear-gradient(90deg, #e2b06a 0%, #f1e6d2 55%, #c9b896 100%);
 
   --font-display: "Montserrat", "Segoe UI", system-ui, sans-serif;
   --font-body:    "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -28,20 +28,20 @@
 
   /* Channels for translucent colours, and theme-tinted extras */
   --bg-rgb: 5 8 14;
-  --text-rgb: 232 238 246;
-  --muted-rgb: 176 191 208;
+  --text-rgb: 239 235 228;
+  --muted-rgb: 196 189 178;
   --accent-rgb: 226 176 106;
-  --accent-2-rgb: 156 200 245;
+  --accent-2-rgb: 220 207 184;
   --neb-1: 70 100 140;
   --neb-2: 120 150 190;
   --neb-3: 40 62 98;
   --lede-a: #f3e6cf;
-  --lede-b: #d6e6f7;
+  --lede-b: #efe3cf;
   --bot-light: #e2b06a;
 
   /* Spacetime canvas (js/spacetime.js) */
-  --st-grid-a: 143, 179, 217;
-  --st-grid-b: 205, 220, 238;
+  --st-grid-a: 176, 182, 192;
+  --st-grid-b: 226, 214, 194;
   --st-hot: 255, 248, 236;
   --st-warm: 238, 196, 136;
   --st-cool: 190, 112, 70;
@@ -893,3 +893,24 @@ html.intro .hero-text > *, html.intro .hero-lede { animation-play-state: paused;
   66% { transform: translate(0, 24px); } 77% { transform: translate(12px, 24px); } 88% { transform: translate(24px, 24px); }
 }
 @keyframes limb  { from { opacity: 0.7; } to { opacity: 1; } }
+
+
+/* ==========================================================================
+   Card backgrounds: each card shows its own patch of deep space,
+   darkened so the text stays readable. The photos are the same ones that
+   fade in behind the tabs, so they are already cached.
+   ========================================================================== */
+.tile {
+  --card-img: url("images/bg/saturn.webp");
+  --card-pos: 70% 40%;
+  background:
+    linear-gradient(165deg, rgb(var(--bg-rgb) / 0.62) 0%, rgb(var(--bg-rgb) / 0.86) 55%, rgb(var(--bg-rgb) / 0.94) 100%),
+    var(--card-img) var(--card-pos) / cover no-repeat,
+    var(--panel-solid);
+}
+.tile:nth-child(7n+2) { --card-img: url("images/bg/carina.webp");     --card-pos: 30% 20%; }
+.tile:nth-child(7n+3) { --card-img: url("images/bg/bh-disk.webp");    --card-pos: 55% 55%; }
+.tile:nth-child(7n+4) { --card-img: url("images/bg/deep-field.webp"); --card-pos: 40% 60%; }
+.tile:nth-child(7n+5) { --card-img: url("images/bg/earth.webp");      --card-pos: 50% 85%; }
+.tile:nth-child(7n+6) { --card-img: url("images/bg/andromeda.webp");  --card-pos: 50% 50%; }
+.tile:nth-child(7n+7) { --card-img: url("images/bg/bh-lensing.webp"); --card-pos: 50% 50%; }
