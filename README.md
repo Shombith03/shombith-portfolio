@@ -32,8 +32,10 @@ A single static page, served by GitHub Pages. No build step, no framework.
   positions, take turns drawing themselves in the Night sky tile on the About tab.
 - **The opening.** `js/intro.js` plays a big bang and the motto once per visit
   (skip button, Escape; reduced motion skips it).
-- **The companion robot.** `js/companion.js`. It patrols the bottom of the screen,
-  drives round any card you hover, and follows the cursor after a click. Card
+- **The companion robot.** `js/companion.js`, styled in the companion section
+  of `style.css`. On desktop it glides behind the page, dashes in front to any
+  card you hover and walks its border, and follows the cursor after a click.
+  On phones it glides across the footer, behind the text. Card
   motifs come from `data-motif` on each card (orbit, pulse, flow, transfer,
   scan, wave, signal, grid).
 - **Change the tint.** The space photos are black and white; `--tint` (an R G B

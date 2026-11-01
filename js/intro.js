@@ -6,6 +6,11 @@
   then the curtain lifts and the page's details arrive one by one (their
   animations wait on the "intro" class, which this script removes).
 
+  The motto never shares the screen with anything busy: the burst is dimmed
+  behind it, it waits for its font so it never swaps mid-fade, and on the way
+  out it fades fully before the curtain lifts (so it never sits on top of the
+  arriving page or the robot).
+
   Plays once per visit (sessionStorage). Skip with the button or Escape.
   Under prefers-reduced-motion the inline script in <head> never adds the
   "intro" class, so none of this runs.
@@ -58,7 +63,25 @@
   }
 
   var start = performance.now(), banged = false, finished = false, raf = 0;
-  var BANG = 650, QUOTE = 1500, END = 3900;
+  var BANG = 650, QUOTE = 1500, END = 4100, OUT = 380;
+
+  // The motto is set in Bebas Neue: wait for it (briefly) so it never shows
+  // in a fallback face and then jumps.
+  var fontReady = false;
+  try {
+    document.fonts.load('400 1em "Bebas Neue"').then(function () { fontReady = true; }, function () { fontReady = true; });
+  } catch (e) { fontReady = true; }
+  setTimeout(function () { fontReady = true; }, 900);
+
+  // 0 outside the motto's box, 1 well inside: used to clear the burst behind it
+  var quiet = 0;
+  function calm(x, y) {
+    if (!quiet) return 1;
+    var dx = (x - cx) / Math.min(W * 0.48, 520), dy = (y - cy) / Math.min(H * 0.2, 150);
+    var d = Math.sqrt(dx * dx + dy * dy);
+    var k = d >= 1 ? 1 : d * d;
+    return 1 - quiet * (1 - k);
+  }
 
   function frame(now) {
     var t = now - start;
@@ -89,6 +112,8 @@
         ctx.lineWidth = 2;
         ctx.beginPath(); ctx.arc(cx, cy, fr * 0.55, 0, Math.PI * 2); ctx.stroke();
       }
+      // From just before the motto speaks, the centre clears
+      quiet = Math.max(0, Math.min(1, (t - (QUOTE - 350)) / 350));
       ctx.globalCompositeOperation = "lighter";
       for (var i = 0; i < parts.length; i++) {
         var p = parts[i];
@@ -96,26 +121,38 @@
         p.vx *= 0.975; p.vy *= 0.975;
         p.x += p.vx / 60; p.y += p.vy / 60;
         var age = Math.min(1, p.life / 2.6);
-        ctx.fillStyle = colour(age, 0.85 * (1 - age * 0.55));
+        var a = 0.85 * (1 - age * 0.55) * calm(p.x, p.y);
+        if (a < 0.02) continue;
+        ctx.fillStyle = colour(age, a);
         ctx.fillRect(p.x, p.y, p.size, p.size);
       }
       ctx.globalCompositeOperation = "source-over";
     }
 
-    if (t > QUOTE && !overlay.classList.contains("speak")) overlay.classList.add("speak");
+    if (t > QUOTE && fontReady && !overlay.classList.contains("speak")) overlay.classList.add("speak");
     if (t > END) return finish();
     raf = requestAnimationFrame(frame);
   }
 
+  // Leaving: the motto fades out completely first, then the curtain lifts and
+  // the page arrives. The robot stays hidden until the curtain is gone.
   function finish(quick) {
     if (finished) return;
     finished = true;
-    cancelAnimationFrame(raf);
-    try { sessionStorage.setItem("introSeen", "1"); } catch (e) {}
-    overlay.classList.add(quick ? "gone-quick" : "gone");
-    root.classList.remove("intro");     // lets the page's own animations run
-    setTimeout(function () { overlay.remove(); window.removeEventListener("resize", size); }, quick ? 350 : 900);
     document.removeEventListener("keydown", onKey);
+    try { sessionStorage.setItem("introSeen", "1"); } catch (e) {}
+    root.classList.add("intro-tail");
+    overlay.classList.add("leaving");
+    setTimeout(function () {
+      cancelAnimationFrame(raf);
+      overlay.classList.add(quick ? "gone-quick" : "gone");
+      root.classList.remove("intro");     // lets the page's own animations run
+      setTimeout(function () {
+        overlay.remove();
+        window.removeEventListener("resize", size);
+        root.classList.remove("intro-tail");
+      }, quick ? 320 : 750);
+    }, quick ? 150 : OUT);
   }
   function onKey(e) { if (e.key === "Escape") finish(true); }
 
