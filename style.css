@@ -10,7 +10,6 @@
   --panel:       rgba(18, 17, 24, 0.84);
   --panel-solid: #121118;
   --line:        rgba(228, 222, 242, 0.13);
-  --line-soft:   rgba(228, 222, 242, 0.07);
   --text:        #eeebf3;
   --muted:       #c4bfce;
   --faint:       #978fa6;
@@ -82,6 +81,15 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 code { font-family: var(--font-mono); font-size: 0.84em; }
 h1, h2, h3 { margin: 0; }
 
+/* Headings, tabs and buttons are set in Bebas Neue, which has one weight and
+   no italic: keep them at 400 so the browser never fakes bold or slant. */
+.hero-lede, .panel-head h2, .tile h3, .tab, .btn, .player-name, a.tile.live strong,
+.footer-line, .project h4, .intro-quote blockquote, .job-head h3, .subhead, .motto-label, .status,
+.prompts a, .toolbox summary {
+  font-weight: 400;
+  font-synthesis: none;
+}
+
 .skip {
   position: absolute; left: 12px; top: -48px; z-index: 10;
   background: var(--accent); color: #12061f; padding: 8px 14px; border-radius: 4px;
@@ -93,9 +101,9 @@ h1, h2, h3 { margin: 0; }
 
 /* ==========================================================================
    The sky: everything behind the page, fixed to the viewport
-   - nebula:    three slow clouds of magenta, violet and cyan light
+   - nebula:    three slow clouds of violet light
    - sky-photo: two layers that cross-fade the photo of the current tab
-                (Cosmic Shore in-game shots and deep-space photographs)
+                (black-and-white space photographs, tinted)
    - starfield: three drifting star layers at different depths, which shift
                 with the mouse and jump to warp when the tab changes
    - shooting:  streaks that cross every few seconds
@@ -218,12 +226,11 @@ h1, h2, h3 { margin: 0; }
   flex: none;
   text-decoration: none;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 0.8125rem;
-  letter-spacing: 1.5px;
+  font-size: 1.0625rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--faint);
-  padding: 22px 12px 21px;
+  padding: 20px 12px 19px;
   transition: color 200ms ease;
 }
 .tab::after {
@@ -235,7 +242,7 @@ h1, h2, h3 { margin: 0; }
   transition: transform 260ms cubic-bezier(0.2, 0.7, 0.2, 1);
 }
 .tab:hover { color: var(--text); }
-.tab.on, .tab[aria-selected="true"] { color: #fff; text-shadow: 0 0 14px rgb(var(--accent-rgb) / 0.55); }
+.tab.on, .tab[aria-selected="true"] { color: #fff; }
 .tab.on::after, .tab[aria-selected="true"]::after { transform: scaleX(1); }
 
 .step {
@@ -259,8 +266,8 @@ h1, h2, h3 { margin: 0; }
   align-items: center;
   gap: 10px;
   font-family: var(--font-display);
-  font-size: 0.8125rem;
-  letter-spacing: 1.5px;
+  font-size: 1rem;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--muted);
   text-decoration: none;
@@ -295,7 +302,7 @@ h1, h2, h3 { margin: 0; }
 .avatar { position: relative; flex: none; width: 72px; height: 72px; border-radius: 50%; padding: 4px; }
 .avatar::before {
   content: ""; position: absolute; inset: 0; border-radius: 50%;
-  background: conic-gradient(from 0deg, #ff4fa3, #b66bff, #3fe4ff, rgb(var(--accent-2-rgb) / 0) 70%, #ff4fa3);
+  background: conic-gradient(from 0deg, var(--accent), #f1edf8, #b3a7d6, rgb(var(--accent-2-rgb) / 0) 70%, var(--accent));
   -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
           mask: radial-gradient(farthest-side, transparent calc(100% - 2px), #000 calc(100% - 2px));
 }
@@ -313,16 +320,15 @@ h1, h2, h3 { margin: 0; }
 .cn { position: absolute; left: 0; right: 0; top: 0; }
 .cn-2, .cn-3 { opacity: 0; }
 .player p { margin: 0; }
-.player-name { font-family: var(--font-display); font-size: 1.25rem; font-weight: 700; letter-spacing: 1px; }
+.player-name { font-family: var(--font-display); font-size: 1.75rem; letter-spacing: 0.05em; }
 .player-class { font-family: var(--font-mono); font-size: 0.8125rem; color: var(--accent-2); }
 
 .hero-lede {
   margin: 36px 0 0;
   font-family: var(--font-display);
-  font-weight: 600;
-  font-size: 2.5rem;
-  line-height: 1.12;
-  letter-spacing: -0.5px;
+  font-size: 3.75rem;
+  line-height: 0.98;
+  letter-spacing: 0.01em;
   background: linear-gradient(90deg, #ffffff 0%, var(--lede-a) 30%, #ffffff 50%, var(--lede-b) 75%, #ffffff 100%);
   background-size: 250% 100%;
   -webkit-background-clip: text;
@@ -343,8 +349,8 @@ h1, h2, h3 { margin: 0; }
 .btn {
   display: inline-flex; align-items: center; min-height: 44px;
   padding: 0 20px;
-  font-family: var(--font-display); font-weight: 600; font-size: 0.875rem;
-  letter-spacing: 1.5px; text-transform: uppercase; text-decoration: none;
+  font-family: var(--font-display); font-size: 1.125rem;
+  letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none;
   color: var(--text);
   border: 1px solid rgb(var(--text-rgb) / 0.35);
   border-radius: 4px;
@@ -380,9 +386,8 @@ h1, h2, h3 { margin: 0; }
 }
 .panel-head h2 {
   font-family: var(--font-display);
-  font-size: 1.5rem;
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-size: 2.25rem;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 .panel-head p { margin: 0; color: var(--muted); max-width: 42rem; }
@@ -422,7 +427,7 @@ h1, h2, h3 { margin: 0; }
 }
 .tile.sel > img:not(.logo) { width: 100%; border-radius: 4px; margin-bottom: 8px; }
 .tile.accent { border-color: rgb(var(--accent-rgb) / 0.5); }
-.tile h3 { font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.5px; }
+.tile h3 { font-family: var(--font-display); font-size: 1.5rem; letter-spacing: 0.03em; line-height: 1.05; }
 .tile p { margin: 0; font-size: 0.9063rem; color: var(--text); opacity: 0.92; }
 
 .tag {
@@ -445,7 +450,7 @@ a.tile.live {
   background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.22), rgb(var(--accent-2-rgb) / 0.14)), var(--panel);
   border-color: rgb(var(--accent-rgb) / 0.55);
 }
-a.tile.live strong { font-family: var(--font-display); font-size: 1.125rem; letter-spacing: 1px; text-transform: uppercase; line-height: 1.2; }
+a.tile.live strong { font-family: var(--font-display); font-size: 1.75rem; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.2; }
 a.tile.live span:last-child { color: var(--muted); }
 a.tile.live:hover { border-color: var(--accent-2); box-shadow: 0 12px 34px rgb(var(--accent-2-rgb) / 0.18); }
 a.tile.live:hover span:last-child { color: #fff; }
@@ -482,7 +487,7 @@ a.ref:hover { text-decoration-color: currentColor; }
 .tile p.job-when { margin: 4px 0 0; font-family: var(--font-mono); font-size: 0.8125rem; color: var(--faint); opacity: 1; }
 .job-main { display: flex; flex-direction: column; gap: 10px; min-width: 0; }
 .job-head { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-.job-head h3 { font-size: 1.125rem; }
+.job-head h3 { font-size: 1.625rem; letter-spacing: 0.03em; }
 
 /* Role chips: in the hero and on each job */
 .roles { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
@@ -499,23 +504,16 @@ a.ref:hover { text-decoration-color: currentColor; }
 .job-links a::after { content: " \2192"; color: var(--accent); }
 .job-links a:hover { color: #fff; }
 
-/* Fill-in slots: dashed so they are obvious until replaced */
-.ph, .roles li.ph {
-  display: inline-block; font-style: italic; color: var(--faint); opacity: 1;
-  border: 1px dashed rgb(var(--muted-rgb) / 0.45); border-radius: 4px; background: transparent; padding: 0 6px;
-}
-p.ph { display: block; padding: 6px 10px; }
-
 .subhead {
   margin: 40px 0 0;
-  font-family: var(--font-display); font-size: 0.875rem; font-weight: 600;
-  letter-spacing: 2px; text-transform: uppercase; color: var(--faint);
+  font-family: var(--font-display); font-size: 1.125rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--faint);
 }
 .projects { list-style: none; margin: 14px 0 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .project { flex-direction: row; align-items: center; gap: 16px; padding: 12px 16px; }
 .project img, .thumb-blank { width: 56px; height: 56px; object-fit: cover; border-radius: 8px; flex: none; }
 .thumb-blank { display: block; background: linear-gradient(135deg, rgb(var(--accent-rgb) / 0.35), rgb(var(--accent-2-rgb) / 0.25)); }
-.project h4 { margin: 0; font-family: var(--font-display); font-size: 1.0625rem; font-weight: 700; letter-spacing: 0.5px; }
+.project h4 { margin: 0; font-family: var(--font-display); font-size: 1.3125rem; letter-spacing: 0.03em; }
 .project p { margin: 2px 0 0; font-size: 0.9063rem; color: var(--muted); opacity: 1; }
 
 /* About */
@@ -532,7 +530,7 @@ p.ph { display: block; padding: 6px 10px; }
 .toolbox { padding: 0; }
 .toolbox summary {
   cursor: pointer; list-style: none; padding: 18px 22px;
-  font-family: var(--font-display); font-weight: 600; letter-spacing: 1px; text-transform: uppercase;
+  font-family: var(--font-display); font-size: 1.125rem; letter-spacing: 0.08em; text-transform: uppercase;
   color: var(--muted);
 }
 .toolbox summary::-webkit-details-marker { display: none; }
@@ -563,11 +561,11 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   background: linear-gradient(90deg, transparent, rgb(var(--accent-rgb) / 0.7), rgb(var(--accent-2-rgb) / 0.7), transparent);
 }
 .footer-in { padding-top: 72px; padding-bottom: 64px; display: grid; gap: 18px; }
-.footer-line { margin: 0; font-family: var(--font-display); font-size: 1.125rem; font-weight: 500; letter-spacing: 0.06em; }
+.footer-line { margin: 0; font-family: var(--font-display); font-size: 1.875rem; letter-spacing: 0.05em; }
 .prompts { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 12px 28px; }
 .prompts a {
   display: inline-flex; align-items: center; gap: 10px; min-height: 44px;
-  font-family: var(--font-display); letter-spacing: 1px; text-decoration: none; color: var(--text);
+  font-family: var(--font-display); font-size: 1.125rem; letter-spacing: 0.06em; text-decoration: none; color: var(--text);
 }
 .prompts a:hover { color: var(--accent); }
 .k {
@@ -588,7 +586,7 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
 @media (max-width: 960px) {
   .hero { padding-top: 300px; min-height: 0; }
   .sky-chart { grid-row: auto; }
-  .hero-lede { font-size: 2rem; }
+  .hero-lede { font-size: 3rem; }
   .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .tile.sel { grid-row: auto; }
 }
@@ -597,14 +595,14 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   :root { --gutter: 16px; }
   .bar { flex-wrap: wrap; gap: 0; }
   .status { order: -1; width: 100%; padding: 10px 0 0; }
-  .tab { padding: 14px 12px 13px; }
-  .hero-lede { font-size: 1.625rem; }
+  .tab { font-size: 0.9375rem; }
+  .hero-lede { font-size: 2.5rem; }
   .grid { grid-template-columns: minmax(0, 1fr); }
   .tile.wide, .tile.sel { grid-column: auto; }
   .tile.about { flex-direction: column; align-items: flex-start; }
   .projects { grid-template-columns: minmax(0, 1fr); }
   .job { grid-template-columns: minmax(0, 1fr); }
-  .panel-head h2 { font-size: 1.25rem; }
+  .panel-head h2 { font-size: 1.75rem; }
   .toolbox p { padding-left: 22px; }
 }
 
@@ -695,17 +693,6 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
 
 
 /* ==========================================================================
-   Type: wide, quiet capitals for headings and tabs
-   ========================================================================== */
-.tab { font-weight: 500; letter-spacing: 0.12em; }
-.tab.on, .tab[aria-selected="true"] { text-shadow: none; }
-.panel-head h2 { font-weight: 400; letter-spacing: 0.3em; }
-.hero-lede { font-weight: 300; letter-spacing: -0.01em; }
-.player-name { font-weight: 500; letter-spacing: 0.08em; }
-.tile h3 { font-weight: 600; letter-spacing: 0.02em; }
-.btn { font-weight: 500; letter-spacing: 0.18em; }
-
-/* ==========================================================================
    The floor of the sky
    The limb of a cold planet along the bottom of the screen.
    ========================================================================== */
@@ -784,7 +771,7 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.2em; text-transform: uppercase;
   color: var(--accent); border: 1px solid rgb(var(--accent-rgb) / 0.45); border-radius: 999px; padding: 2px 10px;
 }
-.motto q { font-family: var(--font-display); font-style: italic; font-weight: 300; font-size: 0.9375rem; letter-spacing: 0.02em; color: var(--text); }
+.motto q { font-style: italic; font-size: 0.9375rem; letter-spacing: 0.02em; color: var(--text); }
 .motto-by { font-family: var(--font-mono); font-size: 0.6875rem; letter-spacing: 0.12em; color: var(--faint); }
 .motto-by::before { content: "\2014\00a0"; }
 
@@ -801,8 +788,8 @@ html.intro::after { content: ""; position: fixed; inset: 0; z-index: 998; backgr
 }
 .intro-overlay.speak .intro-quote { opacity: 1; transform: none; }
 .intro-quote blockquote {
-  margin: 0; font-family: var(--font-display); font-style: italic; font-weight: 300;
-  font-size: clamp(1.375rem, 3.6vw, 2.5rem); letter-spacing: 0.04em; color: #f3ede2;
+  margin: 0; font-family: var(--font-display);
+  font-size: clamp(2rem, 5.4vw, 3.75rem); letter-spacing: 0.05em; line-height: 1; color: #f3ede2;
   text-shadow: 0 0 30px rgb(var(--accent-rgb) / 0.35); text-wrap: balance;
 }
 .intro-quote figcaption { margin-top: 16px; font-family: var(--font-mono); font-size: 0.75rem; letter-spacing: 0.32em; text-transform: uppercase; color: var(--faint); }
@@ -929,39 +916,6 @@ html.intro .hero-text > *, html.intro .hero-lede { animation-play-state: paused;
 .tile:nth-child(7n+6) { --card-img: url("images/bg/andromeda.webp");  --card-pos: 50% 50%; }
 .tile:nth-child(7n+7) { --card-img: url("images/bg/bh-lensing.webp"); --card-pos: 50% 50%; }
 
-
-/* ==========================================================================
-   Type: movie-poster headings. Bebas Neue has a single weight and no
-   italic, so every heading uses 400 and the browser never fakes bold.
-   ========================================================================== */
-.hero-lede, .panel-head h2, .tile h3, .tab, .btn, .player-name, a.tile.live strong,
-.footer-line, .project h4, .intro-quote blockquote, .job-head h3, .subhead, .motto-label, .status,
-.prompts a, .toolbox summary, .post-title {
-  font-weight: 400;
-  font-synthesis: none;
-}
-.hero-lede { font-size: 3.75rem; line-height: 0.98; letter-spacing: 0.01em; }
-.player-name { font-size: 1.75rem; letter-spacing: 0.05em; }
-.tab { font-size: 1.0625rem; letter-spacing: 0.08em; padding-top: 20px; padding-bottom: 19px; }
-.btn { font-size: 1.125rem; letter-spacing: 0.1em; }
-.panel-head h2 { font-size: 2.25rem; letter-spacing: 0.06em; }
-.tile h3 { font-size: 1.5rem; letter-spacing: 0.03em; line-height: 1.05; }
-a.tile.live strong { font-size: 1.75rem; letter-spacing: 0.04em; }
-.job-head h3 { font-size: 1.625rem; letter-spacing: 0.03em; }
-.project h4 { font-size: 1.3125rem; letter-spacing: 0.03em; }
-.footer-line { font-size: 1.875rem; letter-spacing: 0.05em; }
-.status { font-size: 1rem; letter-spacing: 0.1em; }
-.prompts a { font-size: 1.125rem; letter-spacing: 0.06em; }
-.subhead { font-size: 1.125rem; letter-spacing: 0.12em; }
-.toolbox summary { font-size: 1.125rem; letter-spacing: 0.08em; }
-.motto q { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 0.9375rem; }
-.intro-quote blockquote { font-style: normal; font-size: clamp(2rem, 5.4vw, 3.75rem); letter-spacing: 0.05em; line-height: 1; }
-@media (max-width: 960px) { .hero-lede { font-size: 3rem; } }
-@media (max-width: 640px) {
-  .hero-lede { font-size: 2.5rem; }
-  .panel-head h2 { font-size: 1.75rem; }
-  .tab { font-size: 0.9375rem; }
-}
 
 /* Company marks on the Experience timeline */
 .job-logo { width: 40px; height: 40px; border-radius: 8px; flex: none; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }

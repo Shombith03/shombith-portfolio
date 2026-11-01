@@ -14,12 +14,10 @@ A single static page, served by GitHub Pages. No build step, no framework.
 | `js/tabs.js` | Turns the sections into tabs and fades each tab's photo in. Without it, every section shows, stacked. |
 | `404.html` | Shown by GitHub Pages for any address that does not exist. |
 | `images/` | Screenshots, my photo, old project art (`work/`), the backgrounds (`bg/`) and the link-preview card. |
-| `docs/` | `PORTFOLIO_BRIEF.md`, `FACTS.md` and `VOICE.md`: what to build, what may be claimed, how it reads. `COPY_OPTIONS.md`: alternative headlines and bios. `REBUILD_REPORT.md`: what was done and what is open. |
 
 ## Common edits
 
-- **Change copy.** Edit the text in `index.html`. Every claim must come from
-  `docs/FACTS.md`, and the writing follows `docs/VOICE.md`.
+- **Change copy.** Edit the text in `index.html`.
 - **Add a tab.** Add a link in `.tablist` (`<a class="tab" href="#my-id" data-tab>`)
   and a matching `<section id="my-id" class="panel">` inside `#panels`.
 - **Use my own night-sky photos.** Each tab has a `data-bg` photo that fades in
