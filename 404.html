@@ -6,7 +6,7 @@
   <title>Not found · Shombith Chakraborty</title>
   <meta name="robots" content="noindex" />
   <meta name="color-scheme" content="dark" />
-  <meta name="theme-color" content="#070912" />
+  <meta name="theme-color" content="#0d0820" />
   <!-- GitHub Pages serves this page for any missing path, at any depth,
        so every link and asset here is absolute to the site root. -->
   <link rel="icon" href="/shombith-portfolio/favicon.svg" type="image/svg+xml" />
@@ -15,7 +15,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&amp;family=Chakra+Petch:wght@500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/shombith-portfolio/style.css" />
   <style>
-    :root { --sky-photo: url("/shombith-portfolio/images/sky.jpg"); }
+    :root { --sky-base: url("/shombith-portfolio/images/bg/synthwave.webp"); }
     .lost { min-height: 70vh; display: flex; flex-direction: column; justify-content: center; padding-top: 96px; padding-bottom: 96px; }
     .lost .tag { margin-bottom: 18px; }
     .lost h1 { font-family: var(--font-display); font-weight: 600; font-size: 3rem; line-height: 1.05; }
@@ -25,7 +25,14 @@
   </style>
 </head>
 <body>
-  <div class="sky" aria-hidden="true"></div>
+  <div class="sky" aria-hidden="true">
+    <div class="sky-base"></div>
+    <div class="stars stars-far"></div>
+    <div class="stars stars-mid"></div>
+    <div class="stars stars-near"></div>
+    <div class="shooting"><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="sky-shade"></div>
+  </div>
 
   <header class="topbar">
     <div class="bar">
@@ -36,8 +43,8 @@
           <a class="tab" href="/shombith-portfolio/#froglet-games">froglet.games</a>
           <a class="tab" href="/shombith-portfolio/#amoebius">Amoebius</a>
           <a class="tab" href="/shombith-portfolio/#tooling">Tooling</a>
-          <a class="tab" href="/shombith-portfolio/#more">More</a>
-          <a class="tab" href="/shombith-portfolio/#writing">Writing</a>
+          <a class="tab" href="/shombith-portfolio/#earlier-work">Earlier work</a>
+          <a class="tab" href="/shombith-portfolio/#about">About</a>
         </div>
       </nav>
       <a class="status" href="/shombith-portfolio/#contact"><span class="dot" aria-hidden="true"></span>Open to contract work</a>

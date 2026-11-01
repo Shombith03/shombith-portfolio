@@ -10,9 +10,9 @@ A single static page, served by GitHub Pages. No build step, no framework.
 |---|---|
 | `index.html` | All of the copy. Each tab is one `<section class="panel">`. |
 | `style.css` | The look. Colours, fonts and the background photo are tokens at the top. |
-| `js/tabs.js` | Turns the sections into tabs. Without it, every section shows, stacked. |
+| `js/tabs.js` | Turns the sections into tabs and fades each tab's photo in. Without it, every section shows, stacked. |
 | `404.html` | Shown by GitHub Pages for any address that does not exist. |
-| `images/` | Screenshots, my photo, the sky background and the link-preview card. |
+| `images/` | Screenshots, my photo, old project art (`work/`), the backgrounds (`bg/`) and the link-preview card. |
 | `docs/` | `PORTFOLIO_BRIEF.md`, `FACTS.md` and `VOICE.md`: what to build, what may be claimed, how it reads. |
 
 ## Common edits
@@ -21,8 +21,10 @@ A single static page, served by GitHub Pages. No build step, no framework.
   `docs/FACTS.md`, and the writing follows `docs/VOICE.md`.
 - **Add a tab.** Add a link in `.tablist` (`<a class="tab" href="#my-id" data-tab>`)
   and a matching `<section id="my-id" class="panel">` inside `#panels`.
-- **Use my own night-sky photo.** Replace `images/sky.jpg` with the new frame,
-  then update the credit line in the footer of `index.html`.
+- **Use my own night-sky photos.** Each tab has a `data-bg` photo that fades in
+  behind it (`images/bg/`). Replace any of those files with my own frames, then
+  update the credit line in the footer of `index.html`. The synthwave city at the
+  bottom of the sky is `images/bg/synthwave.webp` (`--sky-base` in `style.css`).
 - **Change colours or fonts.** Edit the tokens at the top of `style.css`.
 - **Refresh the link preview.** `images/og.jpg` is 1200 × 630 and is what
   LinkedIn, Slack and Discord show when the link is shared.
