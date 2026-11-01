@@ -1,51 +1,58 @@
 /* ==========================================================================
    Tokens
-   Interstellar: cold, real-sky blue with one warm accent, the colour of an
-   accretion disk.
+   Interstellar, tinted: black-and-white space photographs with a soft
+   violet cast (Tesseract mixed with Silver screen), lilac accents.
    Every colour is set here. Change a token and the whole site follows.
    ========================================================================== */
 
 :root {
-  --bg:          #05080e;
-  --panel:       rgba(16, 15, 15, 0.84);
-  --panel-solid: #121111;
-  --line:        rgba(235, 225, 210, 0.13);
-  --line-soft:   rgba(235, 225, 210, 0.07);
-  --text:        #efebe4;
-  --muted:       #c4bdb2;
-  --faint:       #978f84;
-  --accent:      #e2b06a;   /* amber: active tab, selected tile, tags */
-  --accent-2:    #dccfb8;   /* warm sand: commit hashes and PR links */
+  --bg:          #06060b;
+  --panel:       rgba(18, 17, 24, 0.84);
+  --panel-solid: #121118;
+  --line:        rgba(228, 222, 242, 0.13);
+  --line-soft:   rgba(228, 222, 242, 0.07);
+  --text:        #eeebf3;
+  --muted:       #c4bfce;
+  --faint:       #978fa6;
+  --accent:      #c9b8ff;   /* lilac: active tab, selected tile, tags */
+  --accent-2:    #e2dcf2;   /* pale lavender: commit hashes and PR links */
   --live:        #9fe3c0;   /* availability dot */
-  --gradient:    linear-gradient(90deg, #e2b06a 0%, #f1e6d2 55%, #c9b896 100%);
+  --gradient:    linear-gradient(90deg, #c9b8ff 0%, #f1edf8 55%, #b3a7d6 100%);
 
   --font-display: "Bebas Neue", "Oswald", Impact, "Arial Narrow", sans-serif;
   --font-body:    "Barlow", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono:    "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
+  /* The tint. Photos are black and white; this colours all of them.
+     --tint is the colour (R G B), --tint-mix how strongly it shows (0 to 1).
+     0 gives pure black and white. Now: Tesseract violet, half strength. */
+  --tint: 92 70 176;
+  --tint-mix: 0.5;
+  --tint-layer: rgb(var(--tint) / var(--tint-mix));
+
   --page: 80rem;
   --gutter: 24px;
 
   /* Channels for translucent colours, and theme-tinted extras */
-  --bg-rgb: 5 8 14;
-  --text-rgb: 239 235 228;
-  --muted-rgb: 196 189 178;
-  --accent-rgb: 226 176 106;
-  --accent-2-rgb: 220 207 184;
-  --neb-1: 70 100 140;
-  --neb-2: 120 150 190;
-  --neb-3: 40 62 98;
-  --lede-a: #f3e6cf;
-  --lede-b: #efe3cf;
-  --bot-light: #e2b06a;
+  --bg-rgb: 6 6 11;
+  --text-rgb: 238 235 243;
+  --muted-rgb: 196 191 206;
+  --accent-rgb: 201 184 255;
+  --accent-2-rgb: 226 220 242;
+  --neb-1: 64 54 112;
+  --neb-2: 112 104 146;
+  --neb-3: 40 36 72;
+  --lede-a: #e7defe;
+  --lede-b: #f3f0f8;
+  --bot-light: #c9b8ff;
 
   /* Spacetime canvas (js/spacetime.js) */
-  --st-grid-a: 176, 182, 192;
-  --st-grid-b: 226, 214, 194;
-  --st-hot: 255, 248, 236;
-  --st-warm: 238, 196, 136;
-  --st-cool: 190, 112, 70;
-  --st-glow: 230, 186, 128;
+  --st-grid-a: 182, 178, 202;
+  --st-grid-b: 222, 216, 238;
+  --st-hot: 255, 252, 255;
+  --st-warm: 214, 200, 255;
+  --st-cool: 140, 112, 204;
+  --st-glow: 188, 168, 242;
 }
 
 
@@ -112,6 +119,7 @@ h1, h2, h3 { margin: 0; }
   background-position: center top;
   background-size: cover;
   background-repeat: no-repeat;
+  background-blend-mode: color, normal;
   mix-blend-mode: screen;
   -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 90%);
           mask-image: linear-gradient(180deg, #000 0%, #000 45%, transparent 90%);
@@ -543,8 +551,10 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   border-top: 1px solid var(--line);
   background:
     linear-gradient(180deg, rgb(var(--bg-rgb) / 0.97) 0%, rgb(var(--bg-rgb) / 0.55) 45%, rgb(var(--bg-rgb) / 0.8) 100%),
-    url("images/bg/saturn.webp") center 62% / cover no-repeat,
+    linear-gradient(var(--tint-layer), var(--tint-layer)),
+    url("images/bg/carina.webp") center 30% / cover no-repeat,
     var(--bg);
+  background-blend-mode: normal, color, normal;
 }
 .footer::before {
   content: ""; position: absolute; left: 0; right: 0; top: -1px; height: 1px;
@@ -702,7 +712,7 @@ html:not(.has-tabs) .panel + .panel { padding-top: 24px; }
   position: absolute; left: 50%; top: 52%;
   width: 260vmax; height: 260vmax; transform: translateX(-50%);
   border-radius: 50%;
-  background: radial-gradient(circle, #03060b 0%, #03060b 49.55%, rgba(170, 205, 240, 0.55) 49.85%, rgba(120, 160, 210, 0.14) 50.6%, rgba(120, 160, 210, 0) 52.5%);
+  background: radial-gradient(circle, #03060b 0%, #03060b 49.55%, rgba(212, 204, 238, 0.5) 49.85%, rgba(150, 136, 200, 0.14) 50.6%, rgba(150, 136, 200, 0) 52.5%);
 }
 
 /* ==========================================================================
@@ -905,8 +915,10 @@ html.intro .hero-text > *, html.intro .hero-lede { animation-play-state: paused;
   --card-pos: 70% 40%;
   background:
     linear-gradient(165deg, rgb(var(--bg-rgb) / 0.62) 0%, rgb(var(--bg-rgb) / 0.86) 55%, rgb(var(--bg-rgb) / 0.94) 100%),
+    linear-gradient(var(--tint-layer), var(--tint-layer)),
     var(--card-img) var(--card-pos) / cover no-repeat,
     var(--panel-solid);
+  background-blend-mode: normal, color, normal;
 }
 .tile:nth-child(7n+2) { --card-img: url("images/bg/carina.webp");     --card-pos: 30% 20%; }
 .tile:nth-child(7n+3) { --card-img: url("images/bg/bh-disk.webp");    --card-pos: 55% 55%; }

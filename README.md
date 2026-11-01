@@ -38,6 +38,9 @@ A single static page, served by GitHub Pages. No build step, no framework.
   drives round any card you hover, and follows the cursor after a click. Card
   motifs come from `data-motif` on each card (orbit, pulse, flow, transfer,
   scan, wave, signal, grid).
+- **Change the tint.** The space photos are black and white; `--tint` (an R G B
+  colour) and `--tint-mix` (0 to 1) at the top of `style.css` colour all of them.
+  `--tint-mix: 0` gives pure black and white.
 - **Change colours or fonts.** Edit the tokens at the top of `style.css`.
 - **Refresh the link preview.** `images/og.jpg` is 1200 × 630 and is what
   LinkedIn, Slack and Discord show when the link is shared.

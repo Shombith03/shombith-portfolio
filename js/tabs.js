@@ -79,7 +79,7 @@
     var prev = photos[photoFront];
     var img = new Image();
     img.onload = function () {
-      next.style.backgroundImage = "url(\"" + src + "\")";
+      next.style.backgroundImage = "linear-gradient(var(--tint-layer), var(--tint-layer)), url(\"" + src + "\")";
       next.classList.add("show");
       prev.classList.remove("show");
       photoFront = 1 - photoFront;
