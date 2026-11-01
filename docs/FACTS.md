@@ -257,6 +257,10 @@ lifecycle and debounced polling
 progression ([#223](https://github.com/froglet-studio/Cosmic-Shore/pull/223));
 QuickPlay and the hangar unlock grid.
 
+**Experience, with dates (from Shombith's LinkedIn, 2026-11-01).** Froglet Games,
+Apr 2025 to present. Virtualize Technologies, May 2024 to Apr 2025. LOKII Software
+Development, Aug 2021 to Apr 2024. (The freelance founder entry is left off the site.)
+
 **Earlier work.** Mind Arcade — Lead Unity Developer; Gridlock Escape, Match
 Master, AssetBundle systems, a React Native–Unity bridge. Moon Racer, 3D ZigZag,
 Ultimate Beer Pong (hypercasual, 2022–2024). Scene Switcher Master, a Unity

@@ -45,6 +45,12 @@ A single static page, served by GitHub Pages. No build step, no framework.
 - **Refresh the link preview.** `images/og.jpg` is 1200 × 630 and is what
   LinkedIn, Slack and Discord show when the link is shared.
 
+## After changing CSS or JS
+
+`index.html` and `404.html` load `style.css` and the scripts with `?v=…`.
+Bump that value whenever those files change, so returning visitors get the
+new files instead of a cached copy.
+
 ## Preview locally
 
 Open `index.html` in a browser, or serve the folder:
