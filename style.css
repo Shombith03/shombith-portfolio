@@ -466,7 +466,9 @@ a.ref:hover { text-decoration-color: currentColor; }
 /* Experience: a short timeline of studios, then earlier projects */
 .jobs { list-style: none; margin: 24px 0 0; padding: 0 0 0 28px; position: relative; display: grid; gap: 12px; }
 .jobs::before { content: ""; position: absolute; left: 7px; top: 10px; bottom: 10px; width: 2px; background: var(--gradient); border-radius: 2px; opacity: 0.6; }
-.job { display: grid; grid-template-columns: 9rem minmax(0, 1fr); gap: 4px 24px; padding: 20px 24px; }
+.job { display: grid; grid-template-columns: minmax(0, 1fr); gap: 4px 24px; padding: 20px 24px; }
+/* Add <p class="job-when">2022 &ndash; 2024</p> as a job's first child and a dates column appears */
+.job:has(> .job-when) { grid-template-columns: 9rem minmax(0, 1fr); }
 .job::before {
   content: ""; position: absolute; left: -27px; top: 26px; width: 12px; height: 12px; border-radius: 50%;
   background: var(--panel-solid); border: 2px solid var(--accent-2);
