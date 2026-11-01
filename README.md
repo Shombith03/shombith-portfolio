@@ -10,6 +10,7 @@ A single static page, served by GitHub Pages. No build step, no framework.
 |---|---|
 | `index.html` | All of the copy. Each tab is one `<section class="panel">`. |
 | `style.css` | The look. Colours, fonts and the background photo are tokens at the top. |
+| `js/spacetime.js`, `js/companion.js` | The hero animation; the robot, card motifs and theme switch. |
 | `js/tabs.js` | Turns the sections into tabs and fades each tab's photo in. Without it, every section shows, stacked. |
 | `404.html` | Shown by GitHub Pages for any address that does not exist. |
 | `images/` | Screenshots, my photo, old project art (`work/`), the backgrounds (`bg/`) and the link-preview card. |
@@ -31,6 +32,14 @@ A single static page, served by GitHub Pages. No build step, no framework.
   `frame()`; colours are in `grid()` and `hole()`.
 - **Constellations.** Orion, Cassiopeia and Ursa Major, plotted from real star
   positions, take turns drawing themselves in the Night sky tile on the About tab.
+- **Themes.** Two looks share one page: `interstellar` (default, cold blue) and
+  `vapor` (neon). Tokens for each are at the top of `style.css`
+  (`:root` is vapor, `:root[data-theme="interstellar"]` overrides it). Visitors
+  switch in the footer, or with `?theme=vapor` / `?theme=interstellar`.
+- **The companion robot.** `js/companion.js`. It patrols the bottom of the screen,
+  drives round any card you hover, and follows the cursor after a click. Card
+  motifs come from `data-motif` on each card (orbit, pulse, flow, transfer,
+  scan, wave, signal, grid).
 - **Change colours or fonts.** Edit the tokens at the top of `style.css`.
 - **Refresh the link preview.** `images/og.jpg` is 1200 × 630 and is what
   LinkedIn, Slack and Discord show when the link is shared.
