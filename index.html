@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Shombith Chakraborty — UX director, systems engineer, game developer and designer</title>
-  <meta name="description" content="Game systems, the engines under them, and the pipelines that ship them. Cosmic Shore at Froglet, and Amoebius, a .NET engine that runs the game without Unity." />
+  <meta name="description" content="Game systems, the engines under them, and the pipelines that ship them. Cosmic Shore at Froglet: its systems, its delivery pipeline, and Amoebius, the engine I&rsquo;m building so it runs without Unity." />
   <meta name="color-scheme" content="dark" />
   <script>
     /* The big-bang intro plays once per visit; reduced motion skips it.
@@ -90,9 +90,9 @@
         <div class="tablist">
           <a class="tab on" href="#cosmic-shore" data-tab>Cosmic Shore</a>
           <a class="tab" href="#shipping" data-tab>Shipping</a>
-          <a class="tab" href="#froglet-games" data-tab>froglet.games</a>
           <a class="tab" href="#amoebius" data-tab>Amoebius</a>
           <a class="tab" href="#tooling" data-tab>Tooling</a>
+          <a class="tab" href="#froglet-games" data-tab>froglet.games</a>
           <a class="tab" href="#experience" data-tab>Experience</a>
           <a class="tab" href="#about" data-tab>About</a>
         </div>
@@ -136,7 +136,7 @@
       <section id="cosmic-shore" class="panel" aria-labelledby="cosmic-shore-h" data-bg="images/bg/saturn.webp">
         <div class="panel-head">
           <h2 id="cosmic-shore-h">Cosmic Shore</h2>
-          <p>The game I work on at Froglet. The systems I own, with the commits and PRs behind them.</p>
+          <p>The game I work on at Froglet. The systems I own, with the commits and PRs behind them; the engine I&rsquo;m building for it is under Amoebius.</p>
         </div>
         <div class="grid">
           <article class="tile sel">
@@ -224,36 +224,11 @@
         </div>
       </section>
 
-      <!-- ===================== froglet.games ===================== -->
-      <section id="froglet-games" class="panel" aria-labelledby="froglet-games-h" data-bg="images/bg/deep-field.webp">
-        <div class="panel-head">
-          <h2 id="froglet-games-h">froglet.games</h2>
-        </div>
-        <div class="grid">
-          <article class="tile sel">
-            <img src="images/froglet-games.webp" alt="The froglet.games home page, with the Cosmic Shore logo over gameplay" width="1440" height="900" />
-            <span class="tag">Built</span>
-            <h3>Site</h3>
-            <p>Jekyll on GitHub Pages, Cloudflare Pages previews on every branch, Google Consent Mode v2, forms posting through a Google Apps Script to a Sheet, and WebGL builds served from R2.</p>
-          </article>
-          <article class="tile" data-motif="grid">
-            <span class="tag">Built</span>
-            <h3>Team Studio</h3>
-            <p>A browser editor where the team updates their own profiles. They sign in with GitHub, and every save is a commit through the API.</p>
-          </article>
-          <a class="tile live" href="https://www.froglet.games/">
-            <span class="tag">Live</span>
-            <strong>froglet.games</strong>
-            <span>Visit the site &rarr;</span>
-          </a>
-        </div>
-      </section>
-
       <!-- ===================== Amoebius ===================== -->
       <section id="amoebius" class="panel" aria-labelledby="amoebius-h" data-bg="images/bg/bh-lensing.webp">
         <div class="panel-head">
           <h2 id="amoebius-h">Amoebius</h2>
-          <p>A .NET 10 engine I&rsquo;m writing that compiles and runs Cosmic Shore without Unity. Started June 2026; 15 projects under <code>Port/</code> in the game&rsquo;s repo.</p>
+          <p>The engine I&rsquo;m building for Cosmic Shore, so the game runs without Unity. Written in .NET 10, started June 2026: 15 projects under <code>Port/</code> in the game&rsquo;s repo.</p>
         </div>
         <div class="grid">
           <article class="tile sel">
@@ -352,6 +327,31 @@
         </div>
       </section>
 
+      <!-- ===================== froglet.games ===================== -->
+      <section id="froglet-games" class="panel" aria-labelledby="froglet-games-h" data-bg="images/bg/deep-field.webp">
+        <div class="panel-head">
+          <h2 id="froglet-games-h">froglet.games</h2>
+        </div>
+        <div class="grid">
+          <article class="tile sel">
+            <img src="images/froglet-games.webp" alt="The froglet.games home page, with the Cosmic Shore logo over gameplay" width="1440" height="900" />
+            <span class="tag">Built</span>
+            <h3>Site</h3>
+            <p>Jekyll on GitHub Pages, Cloudflare Pages previews on every branch, Google Consent Mode v2, forms posting through a Google Apps Script to a Sheet, and WebGL builds served from R2.</p>
+          </article>
+          <article class="tile" data-motif="grid">
+            <span class="tag">Built</span>
+            <h3>Team Studio</h3>
+            <p>A browser editor where the team updates their own profiles. They sign in with GitHub, and every save is a commit through the API.</p>
+          </article>
+          <a class="tile live" href="https://www.froglet.games/">
+            <span class="tag">Live</span>
+            <strong>froglet.games</strong>
+            <span>Visit the site &rarr;</span>
+          </a>
+        </div>
+      </section>
+
       <!-- ===================== Experience ===================== -->
       <section id="experience" class="panel" aria-labelledby="experience-h" data-bg="images/bg/bh-disk.webp">
         <div class="panel-head">
@@ -374,13 +374,13 @@
                 <li>Game developer</li>
                 <li>Game designer</li>
               </ul>
-              <p>Cosmic Shore: the UI, backend, cameras, analytics and the delivery pipeline. Amoebius, the engine. The froglet.games site.</p>
+              <p>Cosmic Shore: the UI, backend, cameras, analytics, the delivery pipeline, and Amoebius, the engine it runs on without Unity. Also the froglet.games site.</p>
               <ul class="job-links" aria-label="Related tabs">
                 <li><a href="#cosmic-shore">Cosmic Shore</a></li>
                 <li><a href="#shipping">Shipping</a></li>
                 <li><a href="#amoebius">Amoebius</a></li>
-                <li><a href="#froglet-games">froglet.games</a></li>
                 <li><a href="#tooling">Tooling</a></li>
+                <li><a href="#froglet-games">froglet.games</a></li>
               </ul>
             </div>
           </li>
