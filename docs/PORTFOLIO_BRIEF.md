@@ -9,6 +9,34 @@ copy. This brief governs the structure.
 
 ---
 
+## Status, 2026-11-01: built and live (read this first)
+
+This brief has been carried out. The site was rebuilt on the `rebuild`
+branch and merged into `main` (PR #1); a follow-up with the job dates, company
+logos and a caching fix is PR #2. The full story is in `docs/REBUILD_REPORT.md`.
+
+Shombith changed several things in the brief as the work went on. Where this
+brief and the site disagree, **the site and these notes win**:
+
+- **Structure:** seven tabs instead of five stacked sections: Cosmic Shore,
+  Shipping, froglet.games, Amoebius, Tooling, Experience, About. The
+  collapsed "More work" became the Experience and About tabs. There is no
+  Writing section; the dev log is linked from Amoebius.
+- **Hero:** headline "Game systems, the engines under them, and the pipelines
+  that ship them." The engine sentence moved into the Amoebius tab. The hero
+  carries the motto, his four roles, a short intro, and an animated
+  spacetime well with a black hole.
+- **Design:** Interstellar theme, tinted black-and-white space photos, lilac
+  accents, Bebas Neue over Barlow. Light/dark themes were dropped; the site
+  is dark only. See VOICE.md, Design.
+- **Motion:** "one orchestrated moment" was replaced by a fuller set (big-bang
+  intro, spacetime, robot companion, card motifs) at his request. All of it
+  stops under reduced motion.
+- **Content choices:** see FACTS.md, "Decisions made during the rebuild".
+
+---
+
+
 ## 1. What is wrong with the current site
 
 Not the theme. The content.

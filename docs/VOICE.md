@@ -9,12 +9,19 @@ Read this before writing any user-facing copy. These are rules, not preferences.
 
 ## Identity
 
-- He is **Shombith**. Solo, under his own name.
+- He is **Shombith Chakraborty**. Solo, under his own name.
 - **Never write YethGameDev, YethGameDevv, or "Yeth" anywhere.** That brand is
   retired. Do not invent a replacement studio name either. No "Companies I Run"
   section, no logo, no alias.
-- Role: Unity developer at Froglet Inc, working on Cosmic Shore. Based in
-  Kolkata. Open to contract work on Unity multiplayer, tooling and pipelines.
+- Roles he uses: **UX director, systems engineer, game developer, game
+  designer**, at Froglet Games, working on Cosmic Shore. (LinkedIn says
+  "Gameplay and Systems Developer"; see FACTS.md before changing either.)
+- Location: Kolkata. Say it once, in the About section, not everywhere.
+- Open to contract work on Unity multiplayer, tooling and pipelines.
+- **Motto:** "Do not go gentle into that good night." (Dylan Thomas). Use the
+  real line ("that good night", not "the good night"). It belongs in the
+  opening and as a small labelled line at the top of the hero. Not in the
+  footer, not repeated in every section.
 
 ## Banned, absolutely
 
@@ -43,6 +50,11 @@ Describe the system; do not tell the reader it was impressive, ambitious or
 hard. No "cutting-edge", "from the ground up", "complete overhaul". If a
 sentence would survive being read aloud to the colleague who reviewed the PR,
 it is the right register.
+
+**Headings are plain names.** "Unity CI", "UI rebuild", "Runtime",
+"Delivery pipeline". Not "CI that actually compiles Unity", not "Playable right
+now", not "An engine agents can drive". A heading that tries to sell reads as
+written by AI; he called those out and they were all replaced.
 
 **Keep it short.** Two to four sentences per system. A visitor skims; the
 details are in the linked PRs and that is what links are for.
@@ -118,32 +130,53 @@ sentence. Never present the combined number alone.
 
 ## Design
 
-**Deep space, observed rather than downloaded.** He is into deep space,
-stargazing, film, music, psychology and travel, and the site should feel like
-it came from someone who actually looks up. Synthwave is welcome — he likes it
-— but the current site is template-grade synthwave and that is the thing to
-fix, not the genre.
+The site went through several directions (night-sky editorial, pause menu,
+synthwave, vaporwave) before landing here. **This section describes the
+current design; it replaces the earlier rules about one glow and one moment
+of motion, which he overrode.**
 
-What that means concretely:
+**Theme: Interstellar, tinted.** His favourite film sets the mood. Deep-space
+photographs in black and white with a soft violet cast, a near-black violet
+ground, lilac accents. No gold (he disliked it), no heavy blue (he disliked
+that too), no vaporwave or synthwave city (tried and dropped).
 
-- **Palette from astrophotography, not from a vaporwave pack.** Deep blue-black
-  grounds, the magenta-into-cyan a nebula actually makes, one warm accent for
-  anything that matters. No #FF00FF, no purple-to-pink hero gradient, no
-  grid-horizon-and-sun.
-- **Glow is used once, where it means something.** The current site glows
-  everything, which flattens it. One element earns a bloom; the rest stays
-  crisp.
-- **His own photographs beat stock.** He shoots the night sky. A real frame of
-  his makes the site unmistakably his, where a stock nebula makes it anyone's.
-  Prefer his images wherever he has them.
-- **Dark-first is fine here.** This design can commit to dark rather than
-  shipping two themes, as long as every colour is set explicitly and the
-  background is a real token. If it does ship both, the light theme gets the
-  same care.
-- **Typography carries it.** A display face with character plus a clean body
-  face. Avoid Inter and Space Grotesk — they read as the default choice.
-- **One orchestrated moment of motion**, not scattered hovers. Respect
-  `prefers-reduced-motion`. Everything readable at rest.
+- **One tint setting.** Photos are stored black and white. `--tint` and
+  `--tint-mix` in `style.css` colour all of them. Current: Tesseract violet
+  (92 70 176) at 0.5, a mix of the "Tesseract" and "Silver screen" options.
+- **Palette tokens:** ground `#06060b`, panel `#121118`, text `#eeebf3`, muted
+  `#c4bfce`, faint `#978fa6`, accent lilac `#c9b8ff`, link lavender `#e2dcf2`.
+  Every text colour passes WCAG AA.
+- **Type:** "Movie poster". Bebas Neue for headings, the name, tabs, buttons
+  and card titles (single weight, no faked bold); Barlow for body and the
+  italic motto line; JetBrains Mono for commit hashes, tags and labels.
+  Avoid Inter and Space Grotesk.
+- **Photos:** NASA/ESA/CSA/STScI/JPL-Caltech public-domain images (Saturn,
+  Earth's limb, the Hubble deep field, two black holes, Carina, Andromeda),
+  credited in the footer as placeholders. His own night-sky photographs
+  should replace them when he has them. Cosmic Shore screenshots appear on
+  cards only, not as page backgrounds.
+- **Every card has a background:** its own darkened, tinted patch of space.
+  Plain flat cards were rejected as bland.
+- **Footer:** the Carina cliffs, tinted. Never a flat footer.
+- **Layout:** a sticky tab bar (seven tabs, Q/E to switch), a hero, then one
+  panel at a time. Tiles in a grid; the selected tile carries a screenshot.
+
+**Motion is wanted, not minimised.** He asked for more animation. Current set:
+a big-bang opening that ends on the motto (once per visit, skippable);
+an animated spacetime grid bending into a black hole behind the hero (keep it
+realistic, not cartoonish); drifting star layers, shooting stars and slow
+nebula clouds; a warp jump on tab change; tiles that stagger in and lift on
+hover; a small animated motif on each card; and a companion robot.
+
+**The companion robot** is an original three-slab design in the spirit of
+TARS, never a copy of the film's character and never named TARS on the site.
+It patrols the bottom of the screen, drives round any card you hover, and
+follows the cursor after a click. Keep it cute: rounded slabs, a face screen
+with blinking eyes, an antenna light.
+
+**Always:** respect `prefers-reduced-motion` (every animation off, intro
+skipped), keep focus states visible, no horizontal scroll at 400px, and make
+the page readable with JavaScript off.
 
 The test: it should look like a working engineer's site that happens to be
 beautiful, not a theme with his name dropped into it.

@@ -14,7 +14,7 @@ A single static page, served by GitHub Pages. No build step, no framework.
 | `js/tabs.js` | Turns the sections into tabs and fades each tab's photo in. Without it, every section shows, stacked. |
 | `404.html` | Shown by GitHub Pages for any address that does not exist. |
 | `images/` | Screenshots, my photo, old project art (`work/`), the backgrounds (`bg/`) and the link-preview card. |
-| `docs/` | `PORTFOLIO_BRIEF.md`, `FACTS.md` and `VOICE.md`: what to build, what may be claimed, how it reads. `COPY_OPTIONS.md`: alternative headlines and bios. |
+| `docs/` | `PORTFOLIO_BRIEF.md`, `FACTS.md` and `VOICE.md`: what to build, what may be claimed, how it reads. `COPY_OPTIONS.md`: alternative headlines and bios. `REBUILD_REPORT.md`: what was done and what is open. |
 
 ## Common edits
 

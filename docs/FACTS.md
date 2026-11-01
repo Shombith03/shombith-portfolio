@@ -42,19 +42,31 @@ guesses.
 
 ## The lede
 
+The original lede, still true and still used in the Amoebius tab:
+
 > I wrote a .NET 10 engine that compiles and runs an existing Unity game
 > without Unity.
 
-Everything else on the site supports that sentence. It is the headline, the
-page title's subject, and the first thing a visitor reads.
+**Live headline (chosen 2026-11-01, docs/COPY_OPTIONS.md option 2):** Game
+systems, the engines under them, and the pipelines that ship them.
+**Live intro (option 3):** Game developer at Froglet. I work on Cosmic Shore,
+from its interface to its build pipeline, and I'm writing an engine that runs
+it without Unity.
+**Motto:** "Do not go gentle into that good night." (Dylan Thomas). Shown in
+the opening animation and as a small labelled line at the top of the hero.
+Not in the footer.
 
-**Role line:** Software engineer, Kolkata.
+**Role line:** Software engineer. Location appears only in the About tab.
 **Designations (from Shombith, 2026-11-01):** UX director, systems engineer,
 game developer, game designer. Shown in the hero and on the Froglet Games job.
 **Positioning:** I build engines, multiplayer systems and the pipelines that
 ship them.
-**Availability:** Kolkata. Open to contract work.
+**Availability:** Open to contract work (on Unity multiplayer, tooling and
+pipelines).
 **Email:** shombithofficial@outlook.com
+**GitHub:** https://github.com/Shombith03
+**LinkedIn:** https://www.linkedin.com/in/shombith/
+**Location:** Kolkata, India.
 
 ---
 
@@ -89,14 +101,16 @@ Use it once, in the AI-tools section only, never in a headline block.
 
 ## Section order
 
-Five sections, roughly equal weight. Cosmic Shore is the body of work; Amoebius
-is one strong section among several, not the whole page.
+The live site is seven tabs, in this order. Cosmic Shore is the body of work;
+Amoebius is one strong tab among several, not the whole page.
 
 1. Cosmic Shore — the systems he owns
-2. Shipping it — the launch pipeline, four platforms
+2. Shipping — the launch pipeline, four platforms
 3. froglet.games — the studio site he built
 4. Amoebius — his engine
-5. Tooling — Froglet Compute, cs-asset, the agent pipeline
+5. Tooling — Froglet Compute, cs-asset, the agent pipeline, in-project tools
+6. Experience — dated job timeline, then earlier projects
+7. About — bio, hobbies, night-sky chart, toolbox (skills)
 
 ---
 
@@ -309,3 +323,56 @@ direct conversations.
   repo.
 - **The skills repo does not exist** until stream D creates it.
 - **Froglet Compute has no public repo.** Describe it; do not link code.
+
+---
+
+## Personal (for the About tab)
+
+- **Bio line (chosen, option 2):** I live in Kolkata and build Cosmic Shore at
+  Froglet Games. Outside work it's the night sky, film (Interstellar above
+  all), music, psychology and travel.
+- **Quote from his froglet.games profile, verbatim:** "I love exploring new
+  ideas and bringing them to life. Music philosophy and the cosmic land is my
+  nirvana."
+- **Hobbies:** stargazing and night-sky photography, deep space, film,
+  music, psychology, travel.
+- **Favourite film:** Interstellar. The site's look and the black hole come
+  from this.
+- **His own photographs:** he shoots the night sky. The site's space photos
+  are NASA/ESA public-domain placeholders until his frames replace them.
+
+## Experience (from LinkedIn, 2026-11-01)
+
+| Dates | Company | Role on the site | Title on LinkedIn |
+|---|---|---|---|
+| Apr 2025 – Present | Froglet Games (full-time, Michigan, US, remote) | UX director, systems engineer, game developer, game designer | Gameplay and Systems Developer |
+| May 2024 – Apr 2025 | Virtualize Technologies Private Limited (Chandigarh) | Game Developer II | Game Developer |
+| Aug 2021 – Apr 2024 | LOKII Software Development (Pune, remote) | Unity Developer | Software Engineer |
+
+- The site titles are the ones Shombith gave; LinkedIn's differ. Decide
+  which wins before changing either.
+- **Virtualize:** led Unity development on Mind Arcade (Gridlock Escape, Match
+  Master), built client projects, made Ultimate Beer Pong.
+- **LOKII:** Unity development on in-house projects and client projects.
+- **Left off on purpose:** the freelance "Founder | Unity Tools Developer"
+  entry (Mar 2025 – present).
+- LOKII has no company logo on LinkedIn; the site uses a lettered "L" mark.
+
+## Decisions made during the rebuild (2026-11-01)
+
+These are Shombith's calls. They override earlier defaults in this file and
+in VOICE.md.
+
+- **Never list:** the co-op and lobby PRs #436, #492, #418, #487 (team
+  selection, four-player scoring, late-joiner spawning, lobby lifecycle).
+- **Removed from Cosmic Shore:** the Cameras card (#50, #59). Still fully his;
+  he chose not to feature it. The hero intro also no longer mentions cameras.
+- **Unity 6.3 LTS migration (#555):** folded into a "Delivery pipeline" card
+  rather than its own card.
+- **iOS card:** no commit hash shown (566bd5888 removed on request).
+- **Writing tab:** removed. The Amoebius dev log is linked from the Amoebius
+  tab instead. The second post is still an unchecked draft; do not publish it.
+- **Cosmic Shore repo is public,** so commit and PR links work for visitors.
+- **Tooling tab** has seven cards: Froglet Compute, cs-asset, /ship, skills
+  and hooks, CSDebug, the benchmark tool, the dialogue system. The repo's
+  skill library is 35 skills; only /ship and its lanes are named as his.
