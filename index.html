@@ -122,7 +122,7 @@
           <li>Game designer</li>
         </ul>
         <h1 class="hero-lede">Game systems, the engines under them, and the pipelines that ship them.</h1>
-        <p class="hero-intro">Game developer at Froglet. I work on Cosmic Shore, from its interface to its build pipeline, and I&rsquo;m writing an engine that runs it without Unity.</p>
+        <p class="hero-intro">Game developer at Froglet. I work on Cosmic Shore, from its interface to its build pipeline, and I&rsquo;m directing the build of an engine that runs it without Unity.</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="https://www.froglet.games/play">Play Cosmic Shore</a>
           <a class="btn" href="#about">About me</a>
@@ -170,6 +170,13 @@
             <a class="play" href="#shipping">See Shipping &rarr;</a>
           </article>
 
+          <article class="tile" data-motif="grid">
+            <span class="tag">Owned</span>
+            <h3>Stats pipeline</h3>
+            <p>An <code>IStatExposable</code> interface, a <code>UniversalStatsProvider</code> with its own editor, and stat modules as ScriptableObjects, with the scoreboard rebuilt on top. A week later I replaced the provider with an event-driven one.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/b4859b2">b4859b2</a></p>
+          </article>
+
           <article class="tile" data-motif="orbit">
             <span class="tag">Shared</span>
             <h3>Also worked on</h3>
@@ -177,7 +184,7 @@
             <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/424">#424</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/444">#444</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/223">#223</a></p>
           </article>
 
-          <a class="tile live fill-md" href="https://www.froglet.games/play">
+          <a class="tile live full-lg" href="https://www.froglet.games/play">
             <span class="tag">Live</span>
             <strong>Play Cosmic Shore</strong>
             <span>In the browser, at froglet.games/play &rarr;</span>
@@ -221,6 +228,11 @@
             <p>The Unity CI job had never run because its runner label was never set, so green builds only meant the Python checks passed. I replaced it with a push-triggered job that validates, compiles and opens an autofix PR.</p>
             <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/14129ba73">14129ba73</a></p>
           </article>
+          <article class="tile full" data-motif="flow">
+            <span class="tag">CI</span>
+            <h3>Workflows</h3>
+            <p>Eleven GitHub workflows run the project, among them <code>unity-ci</code>, <code>ios-testflight</code>, <code>ugs-deploy</code>, <code>perf-daily</code> and <code>amoebius-parity-ci</code>. Between them they cover builds, TestFlight uploads, UGS deploys, a daily performance run and the engine&rsquo;s parity check.</p>
+          </article>
         </div>
       </section>
 
@@ -228,14 +240,14 @@
       <section id="amoebius" class="panel" aria-labelledby="amoebius-h" data-bg="images/bg/bh-lensing.webp">
         <div class="panel-head">
           <h2 id="amoebius-h">Amoebius</h2>
-          <p>The engine I&rsquo;m building for Cosmic Shore, so the game runs without Unity. Written in .NET 10, started June 2026: 15 projects under <code>Port/</code> in the game&rsquo;s repo.</p>
+          <p>The engine I&rsquo;m building for Cosmic Shore, so the game runs without Unity. The architecture, the parity standard and the verification are mine; most of the code was written by Claude Code sessions I directed and reviewed across more than thirty pull requests. .NET 10, started June 2026: 15 projects under <code>Port/</code> in the game&rsquo;s repo.</p>
         </div>
         <div class="grid">
           <article class="tile sel">
             <img src="images/amoebius-launcher.webp" alt="The Amoebius launcher&rsquo;s Play page, with START and START ONLINE buttons" width="1360" height="820" />
             <span class="tag">Owned</span>
             <h3>Running Cosmic Shore</h3>
-            <p>The game&rsquo;s own <code>Assets/_Scripts</code> compile against the engine&rsquo;s API surfaces with zero errors. The launcher fetches a branch, compiles it, runs it, and builds Android and iOS.</p>
+            <p>The game&rsquo;s own <code>Assets/_Scripts</code> compile against the engine&rsquo;s API surfaces with zero errors. The launcher fetches a branch, compiles it, runs it, and builds Android and iOS. The engine has 259 xunit tests in 40 files under <code>Port/tests</code>, and the game&rsquo;s own scripts have 400 files that reference the Unity Test Framework.</p>
             <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/6a4ace506ca9d93ae349289743521df55de21672">6a4ace506</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/8fddab744d7f09594c0d5388fcab27cd3bd5a1cd">8fddab744</a></p>
           </article>
           <article class="tile" data-motif="orbit">
@@ -289,12 +301,18 @@
           <article class="tile wide" data-motif="pulse">
             <span class="tag">Owned</span>
             <h3>Froglet Compute</h3>
-            <p>A compute server on a VM. It takes job requests through git, runs them, and writes each job&rsquo;s best result and a heartbeat back to the repo. It runs per-vessel tuning, a bioform forge and Unity training jobs.</p>
+            <p>A distributed parameter search that runs on collaborators&rsquo; idle machines: a Python worker and supervisor, CMA-ES and MAP-Elites searchers, and evaluators that port the game&rsquo;s course generation to Python. Jobs go in through git, and each job&rsquo;s best result and a heartbeat are written back to the repo. It runs per-vessel tuning, a bioform forge and Unity training jobs.</p>
           </article>
           <article class="tile" data-motif="transfer">
             <span class="tag">Owned</span>
             <h3>cs-asset</h3>
             <p>Edits Unity scenes and prefabs and writes them back byte for byte, without Unity. Checked against 2,030 files.</p>
+          </article>
+          <article class="tile wide-lg" data-motif="grid">
+            <span class="tag">In-project</span>
+            <h3>Mini-game maker</h3>
+            <p>An editor tool for building new game modes: an editor window, a scene assembler and controller code generation. A validator interface checks each mode, with root, spawn-point and dependency validators.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/2c7a1cd">2c7a1cd</a></p>
           </article>
           <article class="tile" data-motif="flow">
             <span class="tag">Agents</span>
@@ -304,7 +322,7 @@
           <article class="tile wide-lg" data-motif="scan">
             <span class="tag">Agents</span>
             <h3>Skills and hooks</h3>
-            <p>I work heavily with Claude Code, and write skills and hooks that make it useful on a 4,700-file Unity project, which has a library of 35 skills. 1,952 commits from sessions I directed landed through my pull requests.</p>
+            <p>I work heavily with Claude Code, and write skills and hooks that make it useful on a 4,700-file Unity project, which has a library of 35 skills. Most of the engine and much of the tooling came through sessions I directed, landed through my pull requests.</p>
           </article>
           <article class="tile" data-motif="wave">
             <span class="tag">In-project</span>
@@ -318,11 +336,11 @@
             <p>Performance runs with a CPU/GPU split and bound-verdict overlays.</p>
             <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/529">#529</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/544">#544</a></p>
           </article>
-          <article class="tile" data-motif="orbit">
+          <article class="tile wide" data-motif="orbit">
             <span class="tag">In-project</span>
             <h3>Dialogue system</h3>
-            <p>In-game dialogue driven by SOAP events.</p>
-            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/434">#434</a></p>
+            <p>In-game dialogue driven by SOAP events: runtime models, a manager, an event layer and a UI controller, with a 575-line editor window for authoring dialogue sets. Later rebuilt as a tutorial sequence editor.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/760b9df">760b9df</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/434">#434</a></p>
           </article>
         </div>
       </section>
