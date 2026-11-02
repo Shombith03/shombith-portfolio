@@ -301,12 +301,18 @@
           <article class="tile wide" data-motif="pulse">
             <span class="tag">Owned</span>
             <h3>Froglet Compute</h3>
-            <p>A compute server on a VM. It takes job requests through git, runs them, and writes each job&rsquo;s best result and a heartbeat back to the repo. It runs per-vessel tuning, a bioform forge and Unity training jobs.</p>
+            <p>A distributed parameter search that runs on collaborators&rsquo; idle machines: a Python worker and supervisor, CMA-ES and MAP-Elites searchers, and evaluators that port the game&rsquo;s course generation to Python. Jobs go in through git, and each job&rsquo;s best result and a heartbeat are written back to the repo. It runs per-vessel tuning, a bioform forge and Unity training jobs.</p>
           </article>
           <article class="tile" data-motif="transfer">
             <span class="tag">Owned</span>
             <h3>cs-asset</h3>
             <p>Edits Unity scenes and prefabs and writes them back byte for byte, without Unity. Checked against 2,030 files.</p>
+          </article>
+          <article class="tile wide-lg" data-motif="grid">
+            <span class="tag">In-project</span>
+            <h3>Mini-game maker</h3>
+            <p>An editor tool for building new game modes: an editor window, a scene assembler and controller code generation. A validator interface checks each mode, with root, spawn-point and dependency validators.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/2c7a1cd">2c7a1cd</a></p>
           </article>
           <article class="tile" data-motif="flow">
             <span class="tag">Agents</span>
@@ -330,11 +336,11 @@
             <p>Performance runs with a CPU/GPU split and bound-verdict overlays.</p>
             <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/529">#529</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/544">#544</a></p>
           </article>
-          <article class="tile" data-motif="orbit">
+          <article class="tile wide" data-motif="orbit">
             <span class="tag">In-project</span>
             <h3>Dialogue system</h3>
-            <p>In-game dialogue driven by SOAP events.</p>
-            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/434">#434</a></p>
+            <p>In-game dialogue driven by SOAP events: runtime models, a manager, an event layer and a UI controller, with a 575-line editor window for authoring dialogue sets. Later rebuilt as a tutorial sequence editor.</p>
+            <p class="refs"><a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/commit/760b9df">760b9df</a> <a class="ref" href="https://github.com/froglet-studio/Cosmic-Shore/pull/434">#434</a></p>
           </article>
         </div>
       </section>
